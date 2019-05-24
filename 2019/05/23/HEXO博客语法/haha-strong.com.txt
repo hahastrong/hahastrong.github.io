@@ -1,0 +1,5 @@
+主机|类型|线路|记录值|MX优先级|TTL|备注
+@	NS	默认	f1g1ns1.dnspod.net.	0	86400	
+@	NS	默认	f1g1ns2.dnspod.net.	0	86400	
+cname	CNAME	默认	hahastrong.github.io.	0	600	
+www	CNAME	默认	www.hahastrong.github.io.	0	600	
