@@ -3659,7 +3659,7 @@ a.gitment-editor-footer-tip:hover {
   font-size: 12px;
 }
 .article-entry pre,
-.article-entry .highlight {
+.highlight {
   background: #002b36;
   margin: 10px 0;
   padding: 10px 10px;
@@ -3667,8 +3667,8 @@ a.gitment-editor-footer-tip:hover {
   color: #4c4c4c;
   line-height: 22.400000000000002px;
 }
-.article-entry .highlight .gutter pre,
-.article-entry .gist .gist-file .gist-data .line-numbers {
+.highlight .gutter pre,
+.gist .gist-file .gist-data .line-numbers {
   color: #9e90ff;
 }
 .article-entry pre,
@@ -3742,6 +3742,16 @@ a.gitment-editor-footer-tip:hover {
 .article-entry h1 {
   font-size: 1.5em;
   margin-top: 30px;
+  color: #fff;
+  background: #5a5a5a;
+  border: 1px dashed #020202;
+  padding: 0.2em 0.6em;
+  font-weight: normal;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
+.article-entry h1::after {
+  content: " > ";
 }
 .article-entry h2 {
   font-size: 1.3em;
@@ -3760,18 +3770,21 @@ a.gitment-editor-footer-tip:hover {
 }
 .article-entry h3 {
   margin: 0.5em auto;
-  color: #fff;
-  background: rgba(0,0,0,0.27);
-  border: 1px dashed #020202;
+  color: #438aac;
+  background: rgba(243,248,253,0.6);
+  border: 1px solid #d2e8fa;
   padding: 0.2em 0.6em;
-  font-weight: normal;
-  border-radius: 6px;
+  -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.15);
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.15);
 }
-.article-entry h3:hover {
-  content: " > ";
+.article-entry h3::hover a {
+  text-decoration: underline;
 }
-.article-entry h4 {
-  margin: 1.5em auto;
+.article-entry h3::after {
+  content: " >";
+}
+h4 {
+  margin: 1.5em;
   color: #fff;
   background: #5a5a5a;
   border: 1px dashed #020202;
@@ -3780,10 +3793,10 @@ a.gitment-editor-footer-tip:hover {
   -webkit-border-radius: 6px;
   border-radius: 6px;
 }
-.article-entry h4::after {
+h4::after {
   content: " > ";
 }
-.article-entry h5 {
+h5 {
   margin: 0.5em auto;
   color: #fff;
   background: #8e8d8d;
@@ -3793,7 +3806,7 @@ a.gitment-editor-footer-tip:hover {
   -webkit-border-radius: 6px;
   border-radius: 6px;
 }
-.article-entry h6 {
+h6 {
   margin: 0.5em auto;
   color: #fff;
   border: 1px dashed #020202;
@@ -3802,37 +3815,37 @@ a.gitment-editor-footer-tip:hover {
   -webkit-border-radius: 6px;
   border-radius: 6px;
 }
-.article-entry hr {
+hr {
   background-color: #2f2f2f;
   height: 3px;
   border: 0;
   margin: 10px 0;
 }
-.article-entry ul li:before {
+ul li:before {
   content: "\f05d";
   font: normal normal normal 14px/1 FontAwesome;
   display: inline-block;
   margin: 0 10px;
   line-height: 28px;
 }
-.article-entry ul li:before ul li {
+ul li:before ul li {
   margin-left: 20px;
 }
-.article-entry ul li:before ul li:before {
+ul li:before ul li:before {
   content: "\f05d";
   font: normal normal normal 14px/1 FontAwesome;
   display: inline-block;
   margin: 0 10px;
   line-height: 28px;
 }
-.article-entry ol li {
+ol li {
   list-style: decimal;
   margin: 0 10px;
 }
-.article-entry li:hover {
+li:hover {
   background-color: #2e2e2e;
 }
-.article-entry .highlight::before {
+.highlight::before {
   content: attr(data-lang) " code";
   display: block;
   background-color: #0083a0;
@@ -3845,63 +3858,63 @@ a.gitment-editor-footer-tip:hover {
   border-bottom: dashed 1px #000;
   text-transform: capitalize;
 }
-.article-entry .highlight {
+.highlight {
   border-radius: 4px;
   padding: 0 10px;
   color: #fff;
 }
-.article-entry .highlight pre {
+.highlight pre {
   border: none;
   margin: 0;
   padding: 0;
 }
-.article-entry .highlight table {
+.highlight table {
   margin: 20px 0;
   width: auto;
   color: #fff;
 }
-.article-entry .highlight table thead tr {
+.highlight table thead tr {
   background: #2d2d2d;
 }
-.article-entry .highlight table thead tr:hover {
+.highlight table thead tr:hover {
   background: #151414;
 }
-.article-entry .highlight td {
+.highlight td {
   border: none;
   padding: 0;
 }
-.article-entry .highlight th {
+.highlight th {
   border: 1.5px dashed #020202;
 }
-.article-entry .highlight figcaption {
+.highlight figcaption {
   font-size: 0.85em;
   color: #75715e;
   line-height: 1em;
   margin-bottom: 1em;
 }
-.article-entry .highlight figcaption:before,
-.article-entry .highlight figcaption:after {
+.highlight figcaption:before,
+.highlight figcaption:after {
   content: "";
   display: table;
 }
-.article-entry .highlight figcaption:after {
+.highlight figcaption:after {
   clear: both;
 }
-.article-entry .highlight figcaption a {
+.highlight figcaption a {
   float: right;
 }
-.article-entry .highlight .gutter pre {
+.highlight .gutter pre {
   text-align: right;
   padding-right: 20px;
 }
-.article-entry .highlight .gutter pre .line {
+.highlight .gutter pre .line {
   text-shadow: none;
 }
-.article-entry .highlight .line {
+.highlight .line {
   font-size: 15px;
   height: 1.5em;
 }
-.article-entry .gist {
+.gist {
   margin: 0 -20px;
   border-style: solid;
   border-color: #ddd;
@@ -3909,29 +3922,29 @@ a.gitment-editor-footer-tip:hover {
   background: #002b36;
   padding: 15px 20px 15px 0;
 }
-.article-entry .gist .gist-file {
+.gist .gist-file {
   border: none;
   font-family: Menlo, Consolas, "Source Code Pro", Inconsolata, Monaco, monospace;
   margin: 0;
 }
-.article-entry .gist .gist-file .gist-data {
+.gist .gist-file .gist-data {
   background: none;
   border: none;
 }
-.article-entry .gist .gist-file .gist-data .line-numbers {
+.gist .gist-file .gist-data .line-numbers {
   background: none;
   border: none;
   padding: 0 20px 0 0;
 }
-.article-entry .gist .gist-file .gist-data .line-data {
+.gist .gist-file .gist-data .line-data {
   padding: 0 !important;
 }
-.article-entry .gist .gist-file .highlight {
+.gist .gist-file .highlight {
   margin: 0;
   padding: 0;
   border: none;
 }
-.article-entry .gist .gist-file .gist-meta {
+.gist .gist-file .gist-meta {
   background: #002b36;
   color: #75715e;
   font: 0.85em "Lucida Grande", Verdana, "Helvetica Neue", Arial, sans-serif;
@@ -3940,11 +3953,11 @@ a.gitment-editor-footer-tip:hover {
   margin-top: 1em;
   margin-left: 20px;
 }
-.article-entry .gist .gist-file .gist-meta a {
+.gist .gist-file .gist-meta a {
   color: #258fb8;
   font-weight: normal;
 }
-.article-entry .gist .gist-file .gist-meta a:hover {
+.gist .gist-file .gist-meta a:hover {
   text-decoration: underline;
 }
 pre .doctype {
