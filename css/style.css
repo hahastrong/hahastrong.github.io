@@ -3771,7 +3771,7 @@ a.gitment-editor-footer-tip:hover {
   content: " > ";
 }
 .article-entry h4 {
-  margin: 0.5em auto;
+  margin: 1.5em auto;
   color: #fff;
   background: #5a5a5a;
   border: 1px dashed #020202;
@@ -3779,6 +3779,9 @@ a.gitment-editor-footer-tip:hover {
   font-weight: normal;
   -webkit-border-radius: 6px;
   border-radius: 6px;
+}
+.article-entry h4::after {
+  content: " > ";
 }
 .article-entry h5 {
   margin: 0.5em auto;
