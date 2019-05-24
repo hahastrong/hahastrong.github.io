@@ -3742,16 +3742,6 @@ a.gitment-editor-footer-tip:hover {
 .article-entry h1 {
   font-size: 1.5em;
   margin-top: 30px;
-  color: #fff;
-  background: #5a5a5a;
-  border: 1px dashed #020202;
-  padding: 0.2em 0.6em;
-  font-weight: normal;
-  -webkit-border-radius: 6px;
-  border-radius: 6px;
-}
-.article-entry h1::after {
-  content: " > ";
 }
 .article-entry h2 {
   font-size: 1.3em;
@@ -3769,9 +3759,10 @@ a.gitment-editor-footer-tip:hover {
   content: " —— ";
 }
 .article-entry h3 {
-  margin: 0.5em auto;
-  color: #438aac;
-  background: rgba(243,248,253,0.6);
+  margin: 1.5em auto;
+  color: #fff;
+  margin-top: 30px;
+  background: #8e8d8d;
   border: 1px solid #d2e8fa;
   padding: 0.2em 0.6em;
   -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.15);
