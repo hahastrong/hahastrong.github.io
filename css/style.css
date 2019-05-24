@@ -3744,6 +3744,8 @@ a.gitment-editor-footer-tip:hover {
   color: #fff;
   background: #8e8d8d;
   border: 1px solid #020202;
+  border-left: 6px solid #1874cd;
+  border-radius: 4px;
   padding: 0.2em 0.6em;
   font-family: Consolas, "Courier New", Courier;
 }

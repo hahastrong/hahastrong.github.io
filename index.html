@@ -210,6 +210,101 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-自定义标题样式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/05/24/自定义标题样式/" class="article-date">
+      <time datetime="2019-05-24T13:53:40.000Z" itemprop="datePublished">2019-05-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/24/自定义标题样式/">自定义标题样式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>在一般的Hexo主题中，不同的标题格式只是字体大小与行缩进不同。如下图所示：</p>
+<img src="/2019/05/24/自定义标题样式/0524-1.png" title="This is an image">
+<p>这种标题看起来就没有下面的这种 <em>cool</em></p>
+<img src="/2019/05/24/自定义标题样式/0524-2.png" title="This is an image">
+<img src="/2019/05/24/自定义标题样式/0524-4.png" title="This is an image">
+<p>那么，我们该如何才能打造如此酷炫的标题呢！！！！</p>
+<h1 id="定位css位置"><a href="#定位css位置" class="headerlink" title="定位css位置"></a>定位css位置</h1><p>首先找到定义标题样式的文件，一般在主题主目录中 $/css/_partial$ 文件夹中的highlight.styl<br>如下图所示：</p>
+<img src="/2019/05/24/自定义标题样式/0524-3.png" title="This is an image">
+<p>标题样式css如下：</p>
+<img src="/2019/05/24/自定义标题样式/0524-5.png" title="This is an image">
+<h1 id="修改标题样式css"><a href="#修改标题样式css" class="headerlink" title="修改标题样式css"></a>修改标题样式css</h1><p>分析示例中的标题样式，可以发现他们是在标题文字周围添加了一个方框，并在方框内添加了颜色。并设置了不同的边框宽度，使其呈现不同的视觉效果。<br>经查找相关资料，发现以下$css$属性对样式的修改有帮助：</p>
+<pre><code>color
+background
+border
+border-left
+border-radius
+</code></pre><p>下面来详细说明各个属性的作用：</p>
+<ul>
+<li>$color$是用于定义标题的颜色</li>
+<li>$background$是用于定义标题方框背景色</li>
+<li>$border$是设置边框的宽度、颜色等信息</li>
+<li>$border-left$用来单独设置某一条边框的宽度颜色等信息</li>
+<li>$border-radius$用于设置边框倒角大小</li>
+</ul>
+<h1 id="标题-CSS-样式参数设置"><a href="#标题-CSS-样式参数设置" class="headerlink" title="标题$CSS$样式参数设置"></a>标题$CSS$样式参数设置</h1><p>如果我们想要字体颜色为白色、边框背景色为灰色、左边框稍宽、倒角较小，则$CSS$参数设置如下：</p>
+<pre><code>color: #fff
+background: #8E8D8D
+border: 1px solid #020202
+border-left: 6px solid #1874CD
+border-radius: 4px
+</code></pre><p>其中$solid$表示边框为实线，若想设置为虚线，则改为$dashed$</p>
+<p>效果如下所示：</p>
+<img src="/2019/05/24/自定义标题样式/0524-6.png" title="This is an image">
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/博客书写/">博客书写</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HEXO/">HEXO</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-HEXO博客语法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
