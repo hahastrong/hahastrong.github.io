@@ -6,21 +6,24 @@
   <script src="https://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
   <meta charset="utf-8">
   
-  <title>works | hahastrong</title>
+  <title>目标跟踪论文笔记《三》：Towards a Better Match in Siamese Network Based Visual Object Tracker (Siam-BM) | hahastrong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="该页面正在装修中！！! 请稍后再来！！!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="works">
-<meta property="og:url" content="http://haha-strong.com/works/index.html">
+  <meta name="description" content="本文提出使用角度估计和空间mask来提升跟踪性能！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="目标跟踪论文笔记《三》：Towards a Better Match in Siamese Network Based Visual Object Tracker (Siam-BM)">
+<meta property="og:url" content="http://haha-strong.com/2019/05/31/20190531-Siam-BM/index.html">
 <meta property="og:site_name" content="hahastrong">
-<meta property="og:description" content="该页面正在装修中！！! 请稍后再来！！!">
+<meta property="og:description" content="本文提出使用角度估计和空间mask来提升跟踪性能！">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://source.unsplash.com/random/1600x900?wallpapers">
-<meta property="og:updated_time" content="2019-05-25T10:16:05.952Z">
+<meta property="og:image" content="http://haha-strong.com/2019/05/31/20190531-Siam-BM/0531-1.png">
+<meta property="og:image" content="http://haha-strong.com/2019/05/31/20190531-Siam-BM/0531-2.png">
+<meta property="og:image" content="http://haha-strong.com/2019/05/31/20190531-Siam-BM/0531-3.png">
+<meta property="og:image" content="http://haha-strong.com/2019/05/31/20190531-Siam-BM/0531-4.png">
+<meta property="og:updated_time" content="2019-05-31T15:05:56.466Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="works">
-<meta name="twitter:description" content="该页面正在装修中！！! 请稍后再来！！!">
-<meta name="twitter:image" content="https://source.unsplash.com/random/1600x900?wallpapers">
+<meta name="twitter:title" content="目标跟踪论文笔记《三》：Towards a Better Match in Siamese Network Based Visual Object Tracker (Siam-BM)">
+<meta name="twitter:description" content="本文提出使用角度估计和空间mask来提升跟踪性能！">
+<meta name="twitter:image" content="http://haha-strong.com/2019/05/31/20190531-Siam-BM/0531-1.png">
   
     <link rel="alternative" href="/atom.xml" title="hahastrong" type="application/atom+xml">
   
@@ -44,7 +47,7 @@
           fancybox: false,
           animate: true,
           isHome: false,
-          isPost: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -209,11 +212,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-20190531-Siam-BM" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/works/index.html" class="article-date">
-      <time datetime="2019-05-25T05:16:18.000Z" itemprop="datePublished">2019-05-25</time>
+      <a href="/2019/05/31/20190531-Siam-BM/" class="article-date">
+      <time datetime="2019-05-31T12:54:23.000Z" itemprop="datePublished">2019-05-31</time>
 </a>
     </div>
   
@@ -224,7 +227,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      works
+      目标跟踪论文笔记《三》：Towards a Better Match in Siamese Network Based Visual Object Tracker (Siam-BM)
     </h1>
   
 
@@ -232,6 +235,10 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/目标跟踪/">目标跟踪</a>
+    </div>
+
 
         
         <div class="clearfix"></div>
@@ -241,43 +248,15 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta {
-        display: none;
-    }
-    #container .article .article-title {
-        padding-right: 0;
-    }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover {
-        border-left: none;
-    }
-    .article-title {
-        font-size: 1.6em
-    }
-    .article-meta {
-        display: none;
-    }
-    .article-entry hr {
-        margin: 0;
-    }
-    #container .article-info-post.article-info {
-      display: none;
-      }
-    #container .article .article-title {
-    padding: 0;
-    }
-</style>
+        <h1 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h1><p>在训练网络和跟踪时，对那些目标长宽比例远大于1的添加一个mask，减少背景信息的干扰；同时，在跟踪过程中，同时预测目标的尺度和目标旋转角度的预测。</p>
+<h1 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h1><p>CNN网络提取的特征对目标的尺度和旋转不具有不变性，同时对那些目标长宽比例不匀的视频序列来说，CNN提取的特征占有太多的背景信息，导致对目标固有信息的偏离。</p>
+<h1 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h1><h2 id="角度和尺度估计"><a href="#角度和尺度估计" class="headerlink" title="角度和尺度估计"></a>角度和尺度估计</h2><p>跟尺度估计一样，选取不同的角度偏转 candidate 以适应角度估计的目标。但是不能简单与尺度估计采取一一枚举的方法，本文作者采用了定一法。就是固定尺度或者角度，只改变角度偏转或者尺度大小，如下图：</p>
+<div style="text-align: center;"><br><img src="/2019/05/31/20190531-Siam-BM/0531-1.png" title="This is an image"><br></div><br>如上图所示，作者选取3个尺度和3个角度。采用定一法则有5个组合$(1.0375, 0), (0.964,0), (1,0), (1, \pi/8), (1, -\pi/8)，相较于一一组合数量降低了一半，大大减少了计算量。<br>## Spatial Mask<br><div style="texe-align: center;"><br><img src="/2019/05/31/20190531-Siam-BM/0531-2.png" title="This is an image"><br></div><br>目标跟踪benchmark数据集中有些目标的长宽比例不协调，远大于1（如上图所示），在提取特征进行相似性计算时，会过多地考虑背景信息，导致跟踪失败。<br>想到最近的SA-Siam算法采用channel-wise的注意机制来更好的服务于相似性问题，本文作者提出一种空间mask的方式来提升跟踪性能。具体做法如下：<br>设置一个spatial thresh来对CNN特征添加mask，值得注意的是作者只对semantic branch添加mask。因为该分支的特征跟位置的相关性较大。下图所示为分别对Conv4和Conv5添加的mask。<br><div style="text-align:center;"><br><img src="/2019/05/31/20190531-Siam-BM/0531-3.png" title="This is an image"><br></div><br><strong>为了最大化提升性能，该部分在测试和训练时均需加上！！！！</strong><br># 模板更新<br>为了更好的应对目标的变化，作者增加了一个模板更新策略。具体的更新方式如下：<br><div style="text-align: center;"><br><img src="/2019/05/31/20190531-Siam-BM/0531-4.png" title="This is an image"><br></div>
 
-
-          
-        <p><font color="red"><big><big><center>该页面正在装修中！！!</center></big></big></font></p>
-<p><font color="#0000FF"><big><big><center>请稍后再来！！!</center></big></big></font><br><br><br><img style="width: 600px; margin: auto;" src="https://source.unsplash.com/random/1600x900?wallpapers"><br><br></p>
+<h1 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h1><ul>
+<li>针对部分目标长宽比例不匀， 导致跟踪算法无法实时获取目标的位置变化，作者添加了mask减少背景信息的干扰。针对相似目标有啥解决方案吗？ 难道在训练时采用图片数据集，增加样本的多样性和背景的复杂性，从而提升模型的分辨力？</li>
+<li>针对目标存在旋转情况，此时模型的IOU分数不高，作者添加一个角度偏转估计。这种方法对那些刚性旋转目标的跟踪性能有较大的的提升。。。<strong>但是像人那样两条腿交互位置的变化、跳水时身体的展开和蜷缩、人体转身问题似乎暂时想不到较好的解决方案！！！！</strong></li>
+</ul>
 
       
        
@@ -339,11 +318,68 @@
   
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/05/31/20190531-Siam-BM/">目标跟踪论文笔记《三》：Towards a Better Match in Siamese Network Based Visual Object Tracker (Siam-BM)</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Hahastrong 的个人博客">Hahastrong</a></p>
+        <p><span>发布时间:</span>2019年05月31日 - 20时54分</p>
+        <p><span>最后更新:</span>2019年05月31日 - 23时05分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/05/31/20190531-Siam-BM/" title="目标跟踪论文笔记《三》：Towards a Better Match in Siamese Network Based Visual Object Tracker (Siam-BM)">http://haha-strong.com/2019/05/31/20190531-Siam-BM/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/05/31/20190531-Siam-BM/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/31/20190531-ubuntu-strages/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Ubuntu 一些常用命令</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
   
 </div></article>
 
+
+
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#算法思路"><span class="toc-number">1.</span> <span class="toc-text">算法思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#motivation"><span class="toc-number">2.</span> <span class="toc-text">motivation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#做法"><span class="toc-number">3.</span> <span class="toc-text">做法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#角度和尺度估计"><span class="toc-number">3.1.</span> <span class="toc-text">角度和尺度估计</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Thoughts"><span class="toc-number">4.</span> <span class="toc-text">Thoughts</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
 
 
 
@@ -364,7 +400,55 @@
 
 
 
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'hahastrong',
+      repo: 'hahastrong.github.io',
+      oauth: {
+        client_id: '',
+        client_secret: '',
+      },
+    })
+    gitment.render('gitments')
+</script>
+    
 
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2019/05/31/20190531-ubuntu-strages/" title="下一篇: Ubuntu 一些常用命令">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-Siam-BM/">目标跟踪论文笔记《三》：Towards a Better Match in Siamese Network Based Visual Object Tracker (Siam-BM)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-ubuntu-strages/">Ubuntu 一些常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/30/20190530-inroomcoordinate/">基于全景图片进行室内定位</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/29/English-Words/">English_Words</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/20190528-Kalman-filter/">目标跟踪论文笔记《二》：A New Approach to Linear Filtering and Prediction Problems（卡尔曼滤波跟踪算法）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/27/20190527-PTS/">目标跟踪论文笔记《一》：Prediction-Tracking-Segmentation (PTS)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/26/20190526-trackingxinde/">目标跟踪论文--心得体会</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/25/如何写文献综述/">如何写文献综述</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/24/自定义标题样式/">自定义标题样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/23/HEXO博客语法/">HEXO博客语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/21/开干！-开干！！/">开干！ 开干！！</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
 
 
 
