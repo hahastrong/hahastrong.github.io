@@ -6,27 +6,26 @@
   <script src="https://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
   <meta charset="utf-8">
   
-  <title>目标跟踪论文--心得体会 | hahastrong</title>
+  <title>20190602-SA-Siam | hahastrong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目标跟踪领域论文阅读笔记">
-<meta name="keywords" content="目标跟踪">
+  <meta name="description" content="SA-Siam算法结合语义特征和外表特征，有效的提升了算法的跟踪性能。同时作者引入了通道注意机制，提升语义特征对不同目标的影响。">
+<meta name="keywords" content="论文笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="目标跟踪论文--心得体会">
-<meta property="og:url" content="http://haha-strong.com/2019/05/26/20190526-trackingxinde/index.html">
+<meta property="og:title" content="20190602-SA-Siam">
+<meta property="og:url" content="http://haha-strong.com/2019/06/02/20190602-SA-Siam/index.html">
 <meta property="og:site_name" content="hahastrong">
-<meta property="og:description" content="目标跟踪领域论文阅读笔记">
+<meta property="og:description" content="SA-Siam算法结合语义特征和外表特征，有效的提升了算法的跟踪性能。同时作者引入了通道注意机制，提升语义特征对不同目标的影响。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://haha-strong.com/2019/05/26/20190526-trackingxinde/0526-1.png">
-<meta property="og:image" content="http://haha-strong.com/2019/05/26/20190526-trackingxinde/0526-2.png">
-<meta property="og:image" content="http://haha-strong.com/2019/05/26/20190526-trackingxinde/0526-3.png">
-<meta property="og:image" content="http://haha-strong.com/2019/05/26/20190526-trackingxinde/0526-4.png">
-<meta property="og:image" content="http://haha-strong.com/2019/05/26/20190526-trackingxinde/0526-5.png">
-<meta property="og:image" content="http://haha-strong.com/2019/05/26/20190526-trackingxinde/0526-6.jpg">
-<meta property="og:updated_time" content="2019-05-26T14:13:13.420Z">
+<meta property="og:image" content="http://haha-strong.com/2019/06/02/20190602-SA-Siam/0602-1.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/02/20190602-SA-Siam/0602-2.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/02/20190602-SA-Siam/0602-3.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/02/20190602-SA-Siam/0602-4.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/02/20190602-SA-Siam/0602-5.png">
+<meta property="og:updated_time" content="2019-06-02T13:41:04.347Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="目标跟踪论文--心得体会">
-<meta name="twitter:description" content="目标跟踪领域论文阅读笔记">
-<meta name="twitter:image" content="http://haha-strong.com/2019/05/26/20190526-trackingxinde/0526-1.png">
+<meta name="twitter:title" content="20190602-SA-Siam">
+<meta name="twitter:description" content="SA-Siam算法结合语义特征和外表特征，有效的提升了算法的跟踪性能。同时作者引入了通道注意机制，提升语义特征对不同目标的影响。">
+<meta name="twitter:image" content="http://haha-strong.com/2019/06/02/20190602-SA-Siam/0602-1.png">
   
     <link rel="alternative" href="/atom.xml" title="hahastrong" type="application/atom+xml">
   
@@ -215,11 +214,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-20190526-trackingxinde" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-20190602-SA-Siam" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/05/26/20190526-trackingxinde/" class="article-date">
-      <time datetime="2019-05-26T11:04:07.000Z" itemprop="datePublished">2019-05-26</time>
+      <a href="/2019/06/02/20190602-SA-Siam/" class="article-date">
+      <time datetime="2019-06-02T12:30:13.000Z" itemprop="datePublished">2019-06-02</time>
 </a>
     </div>
   
@@ -230,7 +229,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      目标跟踪论文--心得体会
+      20190602-SA-Siam
     </h1>
   
 
@@ -245,7 +244,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/目标跟踪/">目标跟踪</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文笔记/">论文笔记</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -255,42 +254,24 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>目标跟踪领域论文阅读笔记<br><a id="more"></a></p>
-<h1 id="Siam-BM"><a href="#Siam-BM" class="headerlink" title="Siam-BM"></a>Siam-BM</h1><blockquote>
-<p>Towards a Better Match in Siamese Network Based Visual Object Tracker <a href="https://arxiv.org/pdf/1809.01368.pdf" target="_blank" rel="noopener">论文地址</a></p>
-</blockquote>
-<h2 id="1-加入能够预测角度的模块"><a href="#1-加入能够预测角度的模块" class="headerlink" title="1. 加入能够预测角度的模块"></a>1. 加入能够预测角度的模块</h2><p>关于角度的实现，是枚举几个角度，然后根据这些角度进行提feature作为candidates，最后选择分最高的那个对应的角度和位置，还有ratio. 如果有M个scale choices和N个angle choices的话，那么为了速度上的原因，使用的是M+N-1个candidates，方法是比如M个scale的choices分别是<code>[1, a,b,c]</code>, angle的choices分别是<code>[0, d,e]</code>,那么最终用的pairs就是<code>[(1,0), (1,d),(1,e), (a,0), (b,0), (c,0)]</code>, 如下图所示</p>
-<div style="text-align: center;"><br><img src="/2019/05/26/20190526-trackingxinde/0526-1.png" title="This is an image"><br></div>
-
-<h2 id="2-加入spatial-mask"><a href="#2-加入spatial-mask" class="headerlink" title="2. 加入spatial mask"></a>2. 加入spatial mask</h2><p>对那些目标长宽比例远大于1的模板添加一个mask，提出目标附近背景信息的干扰（如跳水视频，背景信息导致算法无法抓住目标的位置变化信息，而过多的关注背景信息）。长宽比例失调的如下图：</p>
-<div style="text-align: center;"><br><img src="/2019/05/26/20190526-trackingxinde/0526-2.png" title="This is an image"><br></div>
-
-<p>加上mask是这样的</p>
-<div style="text-align: center;"><br><img src="/2019/05/26/20190526-trackingxinde/0526-3.png" title="This is an image"><br></div><br>## 3. 在tracking的阶段会有模板更新的mechanism<br>具体方法如下：<br><div style="text-align: center;"><br><img src="/2019/05/26/20190526-trackingxinde/0526-4.png" title="This is an image"><br></div><br><font color="red"><big>有待阅读论文查看详细信息！！！</big></font><br><br># SA-Siam<br>&gt; A Twofold Siamese Network for Real-Time Object Tracking <a href="https://arxiv.org/abs/1802.08817" target="_blank" rel="noopener">论文地址</a><br><br>## 将类别语义信息分支加入跟踪框架<br>改进了siameseFC跟踪算法，将类别语义信息分支加入跟踪框架，使得效果有所提升.整体图下所示：<br><br><div style="text-align: center;"><br><img src="/2019/05/26/20190526-trackingxinde/0526-5.png" title="This is an image"><br></div>
-
-<p><strong>较深层的语义特征对于图片的形变，旋转等具有很好的鲁棒性，但是会导致判别力低,为了增加语义特征的判别力，作者设计了channel-attention模块</strong></p>
-<h1 id="PTS"><a href="#PTS" class="headerlink" title="PTS"></a>PTS</h1><blockquote>
-<p>Prediction-Tracking-Segmentation<a href="https://arxiv.org/abs/1904.03280" target="_blank" rel="noopener">论文地址</a></p>
-</blockquote>
-<p>该论文一大亮点是使用了目标运动估计模型：</p>
+        <a id="more"></a>
+<h1 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h1><p>采用SiameseNet为算法总框架，选取semantic和apperance特征作为相似性计算的特征，并且在semantic特征分支添加通道注意机制和多层特征融合入机制，最后以不同权重融合这两种特征产生的响应图作为最终的响应图。算法框架如下图所示：</p>
+<p><div style="text-align: center;"><br><img src="/2019/06/02/20190602-SA-Siam/0602-1.png" title="This is an image"><br></div><br>如上图所示，整个算法分为A-Net和S-Net。</p>
+<h1 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h1><p>SiamFC通过线下训练，可以很好地学习到一种区分性，但是当目标发生较大的外观变化时就失去了较好的区分性，无法保持与目标的一致性。</p>
+<h1 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h1><p>每次跟踪时送入网络的图片为$z, z^s, X$，分别为目标，带有背景信息的目标，搜索区域。</p>
+<h2 id="A-Net"><a href="#A-Net" class="headerlink" title="A-Net"></a>A-Net</h2><p>该分支直接采用SiamFC算法的网络模型。</p>
+<h2 id="S-Net"><a href="#S-Net" class="headerlink" title="S-Net"></a>S-Net</h2><p>该分支网络结构与A-Net一样，都是Alext结构的简单修改版，该部分采用用于目标检测的与训练模型权重，并且不参与训练。<strong>防止训练后导致两分支同一化。</strong><br>高层语义特征对目标的外观变化具有较强的鲁棒性，同时不同层特征对不同目标具有不同的特征贡献。为了提升整体性能，作者采用通道注意机制提升通道特征的权重。</p>
 <ul>
-<li><p>为下一桢作一个定位是多个tracker都有的想法，只不过有不同的实现，这里是通过运动的信息，然后利用当前桢的segmentation做一下refine,而atom中是靠预测heatmap，根据最高的response来进行定位的，这个定位的好不好，很大程度上决定了跟踪的好不好.</p>
-</li>
-<li><p>这里的想法是通过一个运动变换来预测得到下一桢的大致位置，或许也可以通过建立向量场的方式来得到运动信息.</p>
-</li>
+<li>Channel Attention(通道注意机制)<br>对$conv4$和$conv5$层的每一通道特征使用attention module计算他们权重系数，具体方法如下图：<br><div style="text-align: center;"><img src="/2019/06/02/20190602-SA-Siam/0602-2.png" title="This is an image">
+</div><br>先对特征图进行网格划分，在进行最大池化，最后接着采用MLP输出权重。为了防止部分通道的权重退化为0，在MLP层添加一个0.5的bias。<h2 id="分支组合性能对比"><a href="#分支组合性能对比" class="headerlink" title="分支组合性能对比"></a>分支组合性能对比</h2><div style="text-align: center;"><img src="/2019/06/02/20190602-SA-Siam/0602-3.png" title="This is an image">
+</div><br>从上图可以看出，选取semantic和apperance特征的结合可以极大地提升跟踪性能。channel attention也可以提升3个点的性能。<h1 id="性能比较"><a href="#性能比较" class="headerlink" title="性能比较"></a>性能比较</h1>下图为该算法与现有算法在OTB-50，OTB-100，OTB-2013上的性能比较<br><div style="text-align: center;"><img src="/2019/06/02/20190602-SA-Siam/0602-4.png" title="This is an image">
+</div><br>该算法在这些数据集上取得最佳的跟踪性能，无论在精度、AUC，还是跟踪速度上。</li>
 </ul>
-<h1 id="SiamRPN"><a href="#SiamRPN" class="headerlink" title="SiamRPN++"></a>SiamRPN++</h1><blockquote>
-<p>SiamRPN++: Evolution of Siamese Visual Tracking with Very Deep Networks <a href="https://arxiv.org/pdf/1812.11703.pdf" target="_blank" rel="noopener">论文地址</a></p>
-</blockquote>
-<h2 id="训练样本标签问题"><a href="#训练样本标签问题" class="headerlink" title="训练样本标签问题"></a>训练样本标签问题</h2><p>按照SiamFC的训练方法，正样本都在正中心，网络会学到这种统计特性，学到样本中正样本分布的情况；如果把正样本均匀分布在某个范围内，而不是一直在中心时（范围是离中心点一定距离，该距离为shift；正样本在这个范围内均匀分布），随着shift的不断增大，这种现象能够逐渐得到缓解。下图为训练样本带有shift的实验性能提升结果图。</p>
-<p><div style="text-align: center;"><br><img src="/2019/05/26/20190526-trackingxinde/0526-6.jpg" title="This is an image"><br></div><br>从上图可知，通过均匀分布的采样方式让目标在中心点附近进行偏移，可以缓解网络因为破坏了严格平移不变性带来的影响，即消除了位置偏见，让现代深度网络可以应用于跟踪中。</p>
-<blockquote>
-<p>额外讨论：<br>为什么你所说的问题在检测和语义分割中并不存在？ 因为对于物体检测和语义分割而言，训练过程中，物体本身就是在全图的每个位置较为均匀的分布。我们可以很容易的验证，如果在物体检测网络只训练标注在图像中心的样本，而边缘的样本都不进行训练，那么显然，这样训练的网络只会对图像的中心位置产生高响应，边缘位置就随缘了，不难想象这种时候边缘位置的性能显然会大幅衰减。而更为致命的是，按照SiamFC的训练方式，中心位置为正样本，边缘位置为负样本。那么网络只会记录下边缘永远为负，不管表观是什么样子了。这完全背离了我们训练的初衷。</p>
-</blockquote>
-<h2 id="模板与搜索卷积问题"><a href="#模板与搜索卷积问题" class="headerlink" title="模板与搜索卷积问题"></a>模板与搜索卷积问题</h2><blockquote>
-<p>SiamRPN中与SiamFC不同，比如回归分支，是非对称的，因为输出不是一个响应值；需要模版分支和搜索分支关注不同的内容</p>
-</blockquote>
-<p>采用Depthwise Cross Correlation， 每一通道单独进行卷积，得到1xchannel的响应图，后续跟需要 进行降维。</p>
+<p>下图为该算法与现有算法在VOT2016，VOT2017数据集上的性能对比</p>
+<p><div style="text-align: center;"><br><img src="/2019/06/02/20190602-SA-Siam/0602-5.png" title="This is an image"><br></div><br>综合来看，该算法取得较好的性能，</p>
+<h1 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h1><ul>
+<li>使用语义特征来增强模型的特征匹配性能，可以有效的提升网络的跟踪性能。在后续研究中，可以考虑更好的融合方式。不同特征融合，不同通道融合。</li>
+</ul>
 
       
        
@@ -354,13 +335,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/05/26/20190526-trackingxinde/">目标跟踪论文--心得体会</a></p>
+        <p><span>本文标题:</span><a href="/2019/06/02/20190602-SA-Siam/">20190602-SA-Siam</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Hahastrong 的个人博客">Hahastrong</a></p>
-        <p><span>发布时间:</span>2019年05月26日 - 19时04分</p>
-        <p><span>最后更新:</span>2019年05月26日 - 22时13分</p>
+        <p><span>发布时间:</span>2019年06月02日 - 20时30分</p>
+        <p><span>最后更新:</span>2019年06月02日 - 21时41分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/05/26/20190526-trackingxinde/" title="目标跟踪论文--心得体会">http://haha-strong.com/2019/05/26/20190526-trackingxinde/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/05/26/20190526-trackingxinde/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/06/02/20190602-SA-Siam/" title="20190602-SA-Siam">http://haha-strong.com/2019/06/02/20190602-SA-Siam/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/06/02/20190602-SA-Siam/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
             
@@ -379,18 +360,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/05/27/20190527-PTS/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          目标跟踪论文笔记《一》：Prediction-Tracking-Segmentation (PTS)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/05/25/如何写文献综述/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">如何写文献综述</div>
+    <a href="/2019/05/31/20190531-Siam-BM/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">目标跟踪论文笔记《三》：Towards a Better Match in Siamese Network Based Visual Object Tracker (Siam-BM)</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -404,7 +376,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Siam-BM"><span class="toc-number">1.</span> <span class="toc-text">Siam-BM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-加入能够预测角度的模块"><span class="toc-number">1.1.</span> <span class="toc-text">1. 加入能够预测角度的模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-加入spatial-mask"><span class="toc-number">1.2.</span> <span class="toc-text">2. 加入spatial mask</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PTS"><span class="toc-number">2.</span> <span class="toc-text">PTS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SiamRPN"><span class="toc-number">3.</span> <span class="toc-text">SiamRPN++</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#训练样本标签问题"><span class="toc-number">3.1.</span> <span class="toc-text">训练样本标签问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模板与搜索卷积问题"><span class="toc-number">3.2.</span> <span class="toc-text">模板与搜索卷积问题</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#算法思路"><span class="toc-number">1.</span> <span class="toc-text">算法思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#motivation"><span class="toc-number">2.</span> <span class="toc-text">motivation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#做法"><span class="toc-number">3.</span> <span class="toc-text">做法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#A-Net"><span class="toc-number">3.1.</span> <span class="toc-text">A-Net</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#S-Net"><span class="toc-number">3.2.</span> <span class="toc-text">S-Net</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分支组合性能对比"><span class="toc-number">3.3.</span> <span class="toc-text">分支组合性能对比</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#性能比较"><span class="toc-number">4.</span> <span class="toc-text">性能比较</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Thoughts"><span class="toc-number">5.</span> <span class="toc-text">Thoughts</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
 
@@ -471,13 +443,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/05/27/20190527-PTS/" title="上一篇: 目标跟踪论文笔记《一》：Prediction-Tracking-Segmentation (PTS)">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2019/05/25/如何写文献综述/" title="下一篇: 如何写文献综述">
+            <a href="/2019/05/31/20190531-Siam-BM/" title="下一篇: 目标跟踪论文笔记《三》：Towards a Better Match in Siamese Network Based Visual Object Tracker (Siam-BM)">
                 <i class="fa fa-angle-right"></i>
             </a>
         
