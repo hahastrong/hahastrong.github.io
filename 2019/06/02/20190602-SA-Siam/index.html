@@ -6,12 +6,12 @@
   <script src="https://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
   <meta charset="utf-8">
   
-  <title>20190602-SA-Siam | hahastrong</title>
+  <title>目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam) | hahastrong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="SA-Siam算法结合语义特征和外表特征，有效的提升了算法的跟踪性能。同时作者引入了通道注意机制，提升语义特征对不同目标的影响。">
 <meta name="keywords" content="论文笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="20190602-SA-Siam">
+<meta property="og:title" content="目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)">
 <meta property="og:url" content="http://haha-strong.com/2019/06/02/20190602-SA-Siam/index.html">
 <meta property="og:site_name" content="hahastrong">
 <meta property="og:description" content="SA-Siam算法结合语义特征和外表特征，有效的提升了算法的跟踪性能。同时作者引入了通道注意机制，提升语义特征对不同目标的影响。">
@@ -21,9 +21,9 @@
 <meta property="og:image" content="http://haha-strong.com/2019/06/02/20190602-SA-Siam/0602-3.png">
 <meta property="og:image" content="http://haha-strong.com/2019/06/02/20190602-SA-Siam/0602-4.png">
 <meta property="og:image" content="http://haha-strong.com/2019/06/02/20190602-SA-Siam/0602-5.png">
-<meta property="og:updated_time" content="2019-06-02T13:41:04.347Z">
+<meta property="og:updated_time" content="2019-06-03T13:49:03.087Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="20190602-SA-Siam">
+<meta name="twitter:title" content="目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)">
 <meta name="twitter:description" content="SA-Siam算法结合语义特征和外表特征，有效的提升了算法的跟踪性能。同时作者引入了通道注意机制，提升语义特征对不同目标的影响。">
 <meta name="twitter:image" content="http://haha-strong.com/2019/06/02/20190602-SA-Siam/0602-1.png">
   
@@ -229,7 +229,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      20190602-SA-Siam
+      目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)
     </h1>
   
 
@@ -255,6 +255,9 @@
       
           
         <a id="more"></a>
+<blockquote>
+<p><a href="https://arxiv.org/abs/1802.08817" target="_blank" rel="noopener">A Twofold Siamese Network for Real-Time Object Tracking</a></p>
+</blockquote>
 <h1 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h1><p>采用SiameseNet为算法总框架，选取semantic和apperance特征作为相似性计算的特征，并且在semantic特征分支添加通道注意机制和多层特征融合入机制，最后以不同权重融合这两种特征产生的响应图作为最终的响应图。算法框架如下图所示：</p>
 <p><div style="text-align: center;"><br><img src="/2019/06/02/20190602-SA-Siam/0602-1.png" title="This is an image"><br></div><br>如上图所示，整个算法分为A-Net和S-Net。</p>
 <h1 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h1><p>SiamFC通过线下训练，可以很好地学习到一种区分性，但是当目标发生较大的外观变化时就失去了较好的区分性，无法保持与目标的一致性。</p>
@@ -333,12 +336,12 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/06/02/20190602-SA-Siam/">20190602-SA-Siam</a></p>
+        <p><span>本文标题:</span><a href="/2019/06/02/20190602-SA-Siam/">目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Hahastrong 的个人博客">Hahastrong</a></p>
         <p><span>发布时间:</span>2019年06月02日 - 20时30分</p>
-        <p><span>最后更新:</span>2019年06月02日 - 21时41分</p>
+        <p><span>最后更新:</span>2019年06月03日 - 21时49分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/06/02/20190602-SA-Siam/" title="20190602-SA-Siam">http://haha-strong.com/2019/06/02/20190602-SA-Siam/</a>
+            <span>原始链接:</span><a class="post-url" href="/2019/06/02/20190602-SA-Siam/" title="目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)">http://haha-strong.com/2019/06/02/20190602-SA-Siam/</a>
             <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/06/02/20190602-SA-Siam/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
@@ -447,7 +450,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/06/02/20190602-SA-Siam/">20190602-SA-Siam</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-Siam-BM/">目标跟踪论文笔记《三》：Towards a Better Match in Siamese Network Based Visual Object Tracker (Siam-BM)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-ubuntu-strages/">Ubuntu 一些常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/30/20190530-inroomcoordinate/">基于全景图片进行室内定位</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/29/English-Words/">English_Words</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/20190528-Kalman-filter/">目标跟踪论文笔记《二》：A New Approach to Linear Filtering and Prediction Problems（卡尔曼滤波跟踪算法）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/27/20190527-PTS/">目标跟踪论文笔记《一》：Prediction-Tracking-Segmentation (PTS)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/26/20190526-trackingxinde/">目标跟踪论文--心得体会</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/25/如何写文献综述/">如何写文献综述</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/24/自定义标题样式/">自定义标题样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/23/HEXO博客语法/">HEXO博客语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/21/开干！-开干！！/">开干！ 开干！！</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/06/02/20190602-SA-Siam/">目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-Siam-BM/">目标跟踪论文笔记《三》：Towards a Better Match in Siamese Network Based Visual Object Tracker (Siam-BM)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-ubuntu-strages/">Ubuntu 一些常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/30/20190530-inroomcoordinate/">基于全景图片进行室内定位</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/29/English-Words/">English_Words</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/20190528-Kalman-filter/">目标跟踪论文笔记《二》：A New Approach to Linear Filtering and Prediction Problems（卡尔曼滤波跟踪算法）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/27/20190527-PTS/">目标跟踪论文笔记《一》：Prediction-Tracking-Segmentation (PTS)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/26/20190526-trackingxinde/">目标跟踪论文--心得体会</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/25/如何写文献综述/">如何写文献综述</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/24/自定义标题样式/">自定义标题样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/23/HEXO博客语法/">HEXO博客语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/21/开干！-开干！！/">开干！ 开干！！</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
