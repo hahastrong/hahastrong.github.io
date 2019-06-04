@@ -3,21 +3,27 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>wechat | hahastrong</title>
+  <title>目标跟踪论文笔记《四》：SiamRPN++： Evolution of Siamese Visual Tracking with Very Deep Networks (SiamRPN++) | hahastrong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="打开微信，扫一扫上方二维码即可添加我为好友！！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wechat">
-<meta property="og:url" content="http://haha-strong.com/wechat/index.html">
+  <meta name="description" content="对深度框架进行优化，得以使用深度网络作为特征提取。">
+<meta name="keywords" content="论文笔记,SiamNet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="目标跟踪论文笔记《四》：SiamRPN++： Evolution of Siamese Visual Tracking with Very Deep Networks (SiamRPN++)">
+<meta property="og:url" content="http://haha-strong.com/2019/06/03/20190603-SiamRPN/index.html">
 <meta property="og:site_name" content="hahastrong">
-<meta property="og:description" content="打开微信，扫一扫上方二维码即可添加我为好友！！">
+<meta property="og:description" content="对深度框架进行优化，得以使用深度网络作为特征提取。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://haha-strong.com/wechat/index/wechat.jpg">
-<meta property="og:updated_time" content="2019-05-25T06:42:43.492Z">
+<meta property="og:image" content="http://haha-strong.com/2019/06/03/20190603-SiamRPN/0603-1.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/03/20190603-SiamRPN/0603-2.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/03/20190603-SiamRPN/0603-3.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/03/20190603-SiamRPN/0603-4.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/03/20190603-SiamRPN/0603-5.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/03/20190603-SiamRPN/0603-6.png">
+<meta property="og:updated_time" content="2019-06-04T03:11:56.441Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wechat">
-<meta name="twitter:description" content="打开微信，扫一扫上方二维码即可添加我为好友！！">
-<meta name="twitter:image" content="http://haha-strong.com/wechat/index/wechat.jpg">
+<meta name="twitter:title" content="目标跟踪论文笔记《四》：SiamRPN++： Evolution of Siamese Visual Tracking with Very Deep Networks (SiamRPN++)">
+<meta name="twitter:description" content="对深度框架进行优化，得以使用深度网络作为特征提取。">
+<meta name="twitter:image" content="http://haha-strong.com/2019/06/03/20190603-SiamRPN/0603-1.png">
   
     <link rel="alternative" href="/atom.xml" title="hahastrong" type="application/atom+xml">
   
@@ -41,7 +47,7 @@
           fancybox: false,
           animate: true,
           isHome: false,
-          isPost: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -205,11 +211,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-20190603-SiamRPN" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/wechat/index.html" class="article-date">
-      <time datetime="2019-05-25T04:38:52.000Z" itemprop="datePublished">2019-05-25</time>
+      <a href="/2019/06/03/20190603-SiamRPN/" class="article-date">
+      <time datetime="2019-06-03T12:39:13.000Z" itemprop="datePublished">2019-06-03</time>
 </a>
     </div>
   
@@ -220,7 +226,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      wechat
+      目标跟踪论文笔记《四》：SiamRPN++： Evolution of Siamese Visual Tracking with Very Deep Networks (SiamRPN++)
     </h1>
   
 
@@ -228,8 +234,16 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/目标跟踪/">目标跟踪</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SiamNet/">SiamNet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文笔记/">论文笔记</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -237,51 +251,20 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta {
-        display: none;
-    }
-    #container .article .article-title {
-        padding-right: 0;
-    }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover {
-        border-left: none;
-    }
-    .article-title {
-        font-size: 1.6em
-    }
-    .article-meta {
-        display: none;
-    }
-    .article-entry hr {
-        margin: 0;
-    }
-    #container .article-info-post.article-info {
-      display: none;
-      }
-    #container .article .article-title {
-    padding: 0;
-    }
-</style>
+        <a id="more"></a>
+<blockquote>
+<p><a href="https://arxiv.org/abs/1812.11703" target="_blank" rel="noopener">SiamRPN++: Evolution of Siamese Visual Tracking with Very Deep Networks (SiamRPN++)</a></p>
+</blockquote>
+<h1 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h1><p>使用ResNet-50作为特征提取的网络构架，提出depthwise和layerwise操作针对特征进行优化，提升SiamRPN网络的性能。下图为该算法框架图</p>
+<div style="text-align: center;"><br><img src="/2019/06/03/20190603-SiamRPN/0603-1.png" title="This is an image"><br></div><br>上图中显示了SiamRPN模块使用多层特征作为输入，并且总共有16层卷积层，有利于提取深层卷积特征。<br># motivation<br>现存很多基于SiamNet算法的网络深度基本与Alext相似，作者多次尝试使用ResNet等深层网络，但<strong>性能并没有什么提升</strong>（这里的想法和SiamDW论文相似）。经分析知，<strong>由于$padding$导致特征图失去了严格的裁剪不变性</strong>，不能很好的根据响应图位置反推目标的位置。<br>为了能够使用深层网络来提取更加鲁棒的特征，作者提出一种有效的采样方式来打破空间不变的限制。<br># 做法<br>- 针对padding带来的裁剪不变性丢失的问题，作者引入了一种新的有效的采样策略。<br>深层网络中使用padding会导致网络习得隐藏的规律，目标所在的位置就在中心，从而导致响应图的最大值在中心附近。为了打破这种规律，作者在训练时将样本对中标签样本分布添加一个shift，从而保证样本中心的一种近似随机分布。<br><div style="text-align: center;"><br><img src="/2019/06/03/20190603-SiamRPN/0603-2.png" title="This is an image"><br></div><br>上图中从左往右显示了不同shift的响应图可视化。可以看出添加shift后，响应图的最大值分布会往四周扩散，有效地减轻了网络习得的中心化响应。<br>- 针对SiamRPN网络中UP-Channel操作带来的巨大网络参数量以及训练时难以拟合，作者提出一种Channel-wise操作，针对通道间进行卷积，有效的减少了网络参数量，同时加快了网络的拟合。<br>普通卷积、UP-Channel卷积、Channel-wise卷积如下图所示：<br><div style="text-align: center;"><br><img src="/2019/06/03/20190603-SiamRPN/0603-3.png" title="This is an image"><br></div><br>上图（b）中，可以明显的看出网络的通道数增加了2k倍，不仅带来了巨大的内存消耗，同时还难以拟合优化；图（c）采用了Channel-wise则有效的减少了网络的内存开销以及网络的优化参数。<br>- 使用深层网络作为特征提取结构，网络的输出是目标的深层语义特征，而那些用于定位目标的浅层特征则未被利用。为了合理的结合深-浅层特征，作者提出channel-wise模块用于结合不同层特征，最大化提升网络的跟踪性能。<br><div style="text-align: center;"><br><img src="/2019/06/03/20190603-SiamRPN/0603-4.png" title="This is an image"><br></div><br>上图红框框出了不同层间跟踪性能，其中多层结合对极大地提升算法的跟踪性能，大概3%左右。<br># 性能比较<br>在VOT2018数据集上，Siam-RPN++在EAO、accuracy、AO指标上获得最佳成绩。<br><div style="text-align: center;"><br><img src="/2019/06/03/20190603-SiamRPN/0603-5.png" title="This is an image"><br></div>
 
+<p>在OTB2015数据集上，性能也优于采用KCF方法的ECO算法，在成功率指标上获得最佳性能。</p>
+<div style="text-align: center;"><br><img src="/2019/06/03/20190603-SiamRPN/0603-6.png" title="This is an image"><br></div>
 
-          
-        <center><img style="width: 300px; margin: auto;" src="index/wechat.jpg"></center>
-
-
-
-
-<p><br><br><br></p>
-<font color="red"><big><big><big><big><center>打开微信，扫一扫上方二维码<br>即可添加我为好友！！<center></center></center></big></big></big></big></font>
-
-<p><br></p>
-<center><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=430053201&auto=0&height=66"></iframe></center>
+<h1 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h1><ul>
+<li>Siam-RPN++从另一个角度解决深层网络带来的性能退化问题–标签样本的shift。</li>
+<li>利用Channel-wise和layer-wise来提升目标特征的选择，提升跟踪性能。深浅层特征结合在KCF相关论文里早已提及，说明以后使用深层网络时需注意不同层特征之间的结合，以最大化利用浅层信息与深层信息。</li>
+</ul>
 
       
        
@@ -342,11 +325,68 @@
   
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/06/03/20190603-SiamRPN/">目标跟踪论文笔记《四》：SiamRPN++： Evolution of Siamese Visual Tracking with Very Deep Networks (SiamRPN++)</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Hahastrong 的个人博客">Hahastrong</a></p>
+        <p><span>发布时间:</span>2019年06月03日 - 20时39分</p>
+        <p><span>最后更新:</span>2019年06月04日 - 11时11分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/06/03/20190603-SiamRPN/" title="目标跟踪论文笔记《四》：SiamRPN++： Evolution of Siamese Visual Tracking with Very Deep Networks (SiamRPN++)">http://haha-strong.com/2019/06/03/20190603-SiamRPN/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/06/03/20190603-SiamRPN/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/02/20190602-SA-Siam/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
   
 </article>
 
+
+
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#算法思路"><span class="toc-number">1.</span> <span class="toc-text">算法思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Thoughts"><span class="toc-number">2.</span> <span class="toc-text">Thoughts</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
 
 
 
@@ -366,7 +406,55 @@
 
 
 
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'hahastrong',
+      repo: 'hahastrong.github.io',
+      oauth: {
+        client_id: '',
+        client_secret: '',
+      },
+    })
+    gitment.render('gitments')
+</script>
+    
 
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2019/06/02/20190602-SA-Siam/" title="下一篇: 目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/06/03/20190603-SiamRPN/">目标跟踪论文笔记《四》：SiamRPN++： Evolution of Siamese Visual Tracking with Very Deep Networks (SiamRPN++)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/02/20190602-SA-Siam/">目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-Siam-BM/">目标跟踪论文笔记《三》：Towards a Better Match in Siamese Network Based Visual Object Tracker (Siam-BM)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-ubuntu-strages/">Ubuntu 一些常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/30/20190530-inroomcoordinate/">基于全景图片进行室内定位</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/29/English-Words/">English_Words</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/20190528-Kalman-filter/">目标跟踪论文笔记《二》：A New Approach to Linear Filtering and Prediction Problems（卡尔曼滤波跟踪算法）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/27/20190527-PTS/">目标跟踪论文笔记《一》：Prediction-Tracking-Segmentation (PTS)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/26/20190526-trackingxinde/">目标跟踪论文--心得体会</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/25/如何写文献综述/">如何写文献综述</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/24/自定义标题样式/">自定义标题样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/23/HEXO博客语法/">HEXO博客语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/21/开干！-开干！！/">开干！ 开干！！</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
 
 
 
