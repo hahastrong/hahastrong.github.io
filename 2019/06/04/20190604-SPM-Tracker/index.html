@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://haha-strong.com/2019/06/04/20190604-SPM-Tracker/0604-3.png">
 <meta property="og:image" content="http://haha-strong.com/2019/06/04/20190604-SPM-Tracker/0604-4.png">
 <meta property="og:image" content="http://haha-strong.com/2019/06/04/20190604-SPM-Tracker/0604-6.png">
-<meta property="og:updated_time" content="2019-06-04T07:40:03.888Z">
+<meta property="og:updated_time" content="2019-06-07T13:38:36.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="目标跟踪论文笔记《四》：SPM-Tracker">
 <meta name="twitter:description" content="本文提出一种基于SiamFC的SPM算法，用于解决跟踪过程中鲁棒性和判别性问题">
@@ -142,7 +142,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/HEXO/" style="font-size: 10px;">HEXO</a> <a href="/tags/SiamNet/" style="font-size: 10px;">SiamNet</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/传统跟踪算法/" style="font-size: 10px;">传统跟踪算法</a> <a href="/tags/单词/" style="font-size: 10px;">单词</a> <a href="/tags/小技巧/" style="font-size: 10px;">小技巧</a> <a href="/tags/目标跟踪/" style="font-size: 15px;">目标跟踪</a> <a href="/tags/英语学习/" style="font-size: 10px;">英语学习</a> <a href="/tags/论文笔记/" style="font-size: 20px;">论文笔记</a>
+                        <a href="/tags/HEXO/" style="font-size: 10px;">HEXO</a> <a href="/tags/SiamNet/" style="font-size: 10px;">SiamNet</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/传统跟踪算法/" style="font-size: 10px;">传统跟踪算法</a> <a href="/tags/单词/" style="font-size: 10px;">单词</a> <a href="/tags/小技巧/" style="font-size: 10px;">小技巧</a> <a href="/tags/目标跟踪/" style="font-size: 15px;">目标跟踪</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/英语学习/" style="font-size: 10px;">英语学习</a> <a href="/tags/论文笔记/" style="font-size: 20px;">论文笔记</a>
                     </div>
                 </section>
                 
@@ -255,10 +255,12 @@
 <p>Distractor-aware Siamese Networks for Visual Object Tracking <a href="https://arxiv.org/pdf/1808.06048.pdf" target="_blank" rel="noopener">论文地址</a></p>
 </blockquote>
 <h1 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h1><p>采用two-stage增强跟踪性能，CM用于粗略匹配，FM根据粗匹配结果refine出最终结果。</p>
-<div style="text-align: center;"><br><img src="/2019/06/04/20190604-SPM-Tracker/0604-1.png" title="This is an image"><br></div><br>CM将intraclass匹配结果送给FM，FM对interclass进行refine，得到最终的目标位置以及box。在FM stage结合了多层特征（这是目前深度网络比较流行的一种做法，结合深浅层特征信息）。<br><br># motivation<br>目前跟踪算法大多实现了discrimination，而对于同类目标的robustness性能不佳，对于那些相似的目标算法难以将其判为负样本。<br><br># 做法<br>采用SiamRPN作为CM，大致匹配出候选目标位置以及框，再利用relate network进行refine，根据distance measurement选出最佳候选位置。<br>CM，FM的实现如下图所示：<br><div style="text-align: center;"><br><img src="/2019/06/04/20190604-SPM-Tracker/0604-2.png" title="This is an image"><br></div>
+<div style="text-align: center;"><br><img src="/2019/06/04/20190604-SPM-Tracker/0604-1.png" title="This is an image"><br></div><br>CM将intraclass匹配结果送给FM，FM对interclass进行refine，得到最终的目标位置以及box。在FM stage结合了多层特征（这是目前深度网络比较流行的一种做法，结合深浅层特征信息）。<br><br><br># motivation<br>目前跟踪算法大多实现了discrimination，而对于同类目标的robustness性能不佳，对于那些相似的目标算法难以将其判为负样本。<br><br><br># 做法<br>采用SiamRPN作为CM，大致匹配出候选目标位置以及框，再利用relate network进行refine，根据distance measurement选出最佳候选位置。<br>CM，FM的实现如下图所示：<br><div style="text-align: center;"><br><img src="/2019/06/04/20190604-SPM-Tracker/0604-2.png" title="This is an image"><br></div>
+
 
 <h2 id="解决类内问题"><a href="#解决类内问题" class="headerlink" title="解决类内问题"></a>解决类内问题</h2><p>采用DaSiamRPN的样本扩充方法，使用静态图片来增强网络对类内目标的区分能力，即即使目标外表发生变化也可以将其检测出来。</p>
 <div style="text-align: center;"><br><img src="/2019/06/04/20190604-SPM-Tracker/0604-3.png" title="This is an image"><br></div><br>图中Search image 1绿色和红色是不同的目标，为了学习到同一类别目标不同形态下的特征，将其视为同一目标进行训练学习。<br><br>下图为使用了这种策略后，当目标发生加大形变该算法仍可以检测出目标的位置<br><div style="text-align: center;"><br><img src="/2019/06/04/20190604-SPM-Tracker/0604-4.png" title="This is an image"><br></div>
+
 
 <h1 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h1><p>首先来看一下样本扩充训练后性能的提升</p>
 <table>
@@ -355,7 +357,7 @@
         <p><span>本文标题:</span><a href="/2019/06/04/20190604-SPM-Tracker/">目标跟踪论文笔记《四》：SPM-Tracker</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Hahastrong 的个人博客">Hahastrong</a></p>
         <p><span>发布时间:</span>2019年06月04日 - 14时27分</p>
-        <p><span>最后更新:</span>2019年06月04日 - 15时40分</p>
+        <p><span>最后更新:</span>2019年06月07日 - 21时38分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/06/04/20190604-SPM-Tracker/" title="目标跟踪论文笔记《四》：SPM-Tracker">http://haha-strong.com/2019/06/04/20190604-SPM-Tracker/</a>
             <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/06/04/20190604-SPM-Tracker/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -370,6 +372,15 @@
 
 
 <nav id="article-nav">
+  
+    <a href="/2019/06/05/20190605-numpy/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          20190605-numpy
+        
+      </div>
+    </a>
   
   
     <a href="/2019/06/03/20190603-SiamRPN/" id="article-nav-older" class="article-nav-link-wrap">
@@ -453,7 +464,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2019/06/05/20190605-numpy/" title="上一篇: 20190605-numpy">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
@@ -462,7 +475,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/20190604-SPM-Tracker/">目标跟踪论文笔记《四》：SPM-Tracker</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/03/20190603-SiamRPN/">目标跟踪论文笔记《四》：SiamRPN++： Evolution of Siamese Visual Tracking with Very Deep Networks (SiamRPN++)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/02/20190602-SA-Siam/">目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-Siam-BM/">目标跟踪论文笔记《三》：Siam-BM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-ubuntu-strages/">Ubuntu 一些常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/30/20190530-inroomcoordinate/">基于全景图片进行室内定位</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/29/English-Words/">English_Words</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/20190528-Kalman-filter/">目标跟踪论文笔记《二》：A New Approach to Linear Filtering and Prediction Problems（卡尔曼滤波跟踪算法）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/27/20190527-PTS/">目标跟踪论文笔记《一》：Prediction-Tracking-Segmentation (PTS)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/26/20190526-trackingxinde/">目标跟踪论文--心得体会</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/25/如何写文献综述/">如何写文献综述</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/24/自定义标题样式/">自定义标题样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/23/HEXO博客语法/">HEXO博客语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/21/开干！-开干！！/">开干！ 开干！！</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/20190607-zongjie/">20190607-zongjie</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/20190607-LeetCode-twosum/">LeetCode <1>：twosum</1></a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/05/20190605-numpy/">20190605-numpy</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/20190604-SPM-Tracker/">目标跟踪论文笔记《四》：SPM-Tracker</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/03/20190603-SiamRPN/">目标跟踪论文笔记《四》：SiamRPN++： Evolution of Siamese Visual Tracking with Very Deep Networks (SiamRPN++)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/02/20190602-SA-Siam/">目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-Siam-BM/">目标跟踪论文笔记《三》：Siam-BM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-ubuntu-strages/">Ubuntu 一些常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/30/20190530-inroomcoordinate/">基于全景图片进行室内定位</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/29/English-Words/">English_Words</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/20190528-Kalman-filter/">目标跟踪论文笔记《二》：A New Approach to Linear Filtering and Prediction Problems（卡尔曼滤波跟踪算法）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/27/20190527-PTS/">目标跟踪论文笔记《一》：Prediction-Tracking-Segmentation (PTS)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/26/20190526-trackingxinde/">目标跟踪论文--心得体会</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/25/如何写文献综述/">如何写文献综述</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/24/自定义标题样式/">自定义标题样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/23/HEXO博客语法/">HEXO博客语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/21/开干！-开干！！/">开干！ 开干！！</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
