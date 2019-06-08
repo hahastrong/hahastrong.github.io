@@ -229,39 +229,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <a id="more"></a>
-<blockquote>
-<p>Siamese Cascaded Region Proposal Networks for Real-Time Visual Tracking <a href="https://arxiv.org/abs/1812.06148" target="_blank" rel="noopener">论文地址</a></p>
-</blockquote>
-<h1 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h1><p>通过叠加多个RPN结构以实现对不同卷积层特征进行融合与refine，有效地提升跟踪精度，减少网络对相似目标的误判。<br>整个网络的框架图如下图所示：</p>
-<div style="text-align: center;"><br>{ % asset_img 0608-1.png This is an image %}<br></div>
-
-<p>上图三个RPN即为级联的RPN模块，用于多特征融合以及refine目标坐标。</p>
-<h1 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h1><ul>
-<li>目前训练样本的分布不均，负样本数量过多，并且负样本过于简单</li>
-<li>底层特征信息未被使用， 高层特征难以区分相似目标</li>
-<li>two-stage可以获得更加精准的位置信息即使目标发生较大的形变</li>
-</ul>
-<h1 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h1><ul>
-<li>提出多stage跟踪框架，用于解决类不平衡问题</li>
-<li>与one-stage SiamRPN相比，在位置定位上多stage更加准确，不同层间的特征使用提升了模型的分辨力</li>
-</ul>
-<h1 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h1><p>级联多个RPN结构，低级RPN将结果送给下一级RPN，并传递anchor信息，提出简易负样本。<br>越低级的RPB使用的特征越高层。<br>不同层间的特征融合使用作者提出的FTB（Feature Transfer Block）模块。模块具体结构如下图</p>
-<div style="text-align: center;"><br>{ % asset_img 0608-2.png This is an image %}<br></div>
-
-<p>不同层特征通过解卷积、卷积、差值得到。</p>
-<p>训练过程中，网络的负样本是最后一级RPN中的负样本，因为训练的负样本数量大大减少，达到正负样本比例均衡。</p>
-<div style="text-align: center;"><br>{ % asset_img 0608-3.png This is an image %}<br></div>
-
-<p>上图为三个不同级别RPN的响应图，从左往右级别逐渐升高，可以看出高级别的RPN已经有效地提出那些相似样本。使得结果更加准确。</p>
-<h1 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h1><div style="text-align: center;"><br>{ % asset_img 0608-4.png This is an image %}<br></div>
-
-<p>上图为CRPN与其他算法在OTB2013和OTB2015数据集上的AUC曲线图。CRPN相对于SiamRPN分别有1.7%和2.6%的性能提升。证明多层特征融合对性能提升是有帮助的。</p>
-<h1 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h1><ul>
-<li>通过级联RPN减少easy负样本，达到正负样本保持平衡。同时融合多层特征，提升定位目标的精度。</li>
-<li>级联RPN对速度应该有部分的损失，3-stage只有23fps。有点得不偿失。</li>
-</ul>
-
+              叠加多个RPN，以实现利用多层特征。减少负样本数量同时提升跟踪精度。
+          
       
       
       
@@ -280,6 +249,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/201812/">201812</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SiamNet/">SiamNet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文笔记/">论文笔记</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2019/06/08/20190608-C-RPN/#more">查看全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
