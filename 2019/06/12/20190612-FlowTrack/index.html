@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>目标跟踪论文笔记《十一》：FlowTrack | hahastrong</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="FlowTrack考虑目标移动信息，引入flow information从而提升提取特征的鲁棒性">
+<meta name="keywords" content="论文笔记,CVPR2018">
+<meta property="og:type" content="article">
+<meta property="og:title" content="目标跟踪论文笔记《十一》：FlowTrack">
+<meta property="og:url" content="http://haha-strong.com/2019/06/12/20190612-FlowTrack/index.html">
+<meta property="og:site_name" content="hahastrong">
+<meta property="og:description" content="FlowTrack考虑目标移动信息，引入flow information从而提升提取特征的鲁棒性">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://haha-strong.com/2019/06/12/20190612-FlowTrack/0612-1.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/12/20190612-FlowTrack/0612-2.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/12/20190612-FlowTrack/0612-3.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/12/20190612-FlowTrack/0612-4.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/12/20190612-FlowTrack/0612-5.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/12/20190612-FlowTrack/0612-6.png">
+<meta property="og:updated_time" content="2019-06-12T14:01:13.169Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="目标跟踪论文笔记《十一》：FlowTrack">
+<meta name="twitter:description" content="FlowTrack考虑目标移动信息，引入flow information从而提升提取特征的鲁棒性">
+<meta name="twitter:image" content="http://haha-strong.com/2019/06/12/20190612-FlowTrack/0612-1.png">
+  
+    <link rel="alternative" href="/atom.xml" title="hahastrong" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: false,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Hahastrong</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">博客首页</a></li>
+                        
+                            <li><a href="/works">作品展示</a></li>
+                        
+                            <li><a href="/about">留言打卡</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/hahastrong" title="github">github</a>
+                            
+                                <a class="fl wechat" target="_blank" href="/wechat" title="wechat">wechat</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/201606/" style="font-size: 10px;">201606</a> <a href="/tags/201808/" style="font-size: 10px;">201808</a> <a href="/tags/201812/" style="font-size: 10px;">201812</a> <a href="/tags/201904/" style="font-size: 10px;">201904</a> <a href="/tags/CVPR-2018/" style="font-size: 10px;">CVPR 2018</a> <a href="/tags/CVPR2018/" style="font-size: 10px;">CVPR2018</a> <a href="/tags/HEXO/" style="font-size: 10px;">HEXO</a> <a href="/tags/ICCV-2015/" style="font-size: 10px;">ICCV 2015</a> <a href="/tags/SiamNet/" style="font-size: 16.67px;">SiamNet</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/传统跟踪算法/" style="font-size: 10px;">传统跟踪算法</a> <a href="/tags/单词/" style="font-size: 10px;">单词</a> <a href="/tags/小技巧/" style="font-size: 10px;">小技巧</a> <a href="/tags/小记/" style="font-size: 10px;">小记</a> <a href="/tags/目标跟踪/" style="font-size: 13.33px;">目标跟踪</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/英语学习/" style="font-size: 10px;">英语学习</a> <a href="/tags/论文笔记/" style="font-size: 20px;">论文笔记</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">游走于宿舍、实验室、食堂。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Hahastrong</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Hahastrong</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">博客首页</a></li>
+                
+                    <li><a href="/works">作品展示</a></li>
+                
+                    <li><a href="/about">留言打卡</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/hahastrong" title="github">github</a>
+                    
+                        <a class="wechat" target="_blank" href="/wechat" title="wechat">wechat</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-20190612-FlowTrack" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/06/12/20190612-FlowTrack/" class="article-date">
+      <time datetime="2019-06-12T12:51:51.000Z" itemprop="datePublished">2019-06-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      目标跟踪论文笔记《十一》：FlowTrack
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/目标跟踪/">目标跟踪</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CVPR2018/">CVPR2018</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文笔记/">论文笔记</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <a id="more"></a>
+<blockquote>
+<p>End-to-end Flow Correlation Tracking with Spatial-temporal Attention  <a href="https://arxiv.org/abs/1711.01124" target="_blank" rel="noopener">论文地址</a></p>
+</blockquote>
+<h1 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h1><p>利用之前T帧信息提取上一帧与之前T帧的Flow信息，加上提取的外表特征构建spatial-temporal attention模块，结合当前帧的特征信息利用CF layer得到响应图。<br>整个算法框架如下所示;</p>
+<div style="text-align: center;"><br><img src="/2019/06/12/20190612-FlowTrack/0612-1.png" title="This is an image"><br></div>
+
+
+<h1 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h1><p>目前大多基于DCF的算法只考虑目标当前帧的外表特征，难以利用目标的运动信息以及帧间信息。当目标发生遮挡时，容易更出错或者更新出错。</p>
+<h1 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h1><h2 id="Aggregation-using-optical-flow"><a href="#Aggregation-using-optical-flow" class="headerlink" title="Aggregation using optical flow"></a>Aggregation using optical flow</h2><p>光流法是用于编码两张图片之间的相关性。</p>
+<div style="text-align: center;"><br><img src="/2019/06/12/20190612-FlowTrack/0612-2.png" title="This is an image"><br></div>
+
+<p>通过相邻帧与当前帧获得两帧的光流</p>
+<h2 id="Spatial-temporal-attention"><a href="#Spatial-temporal-attention" class="headerlink" title="Spatial temporal attention"></a>Spatial temporal attention</h2><p>在每一集成的帧中，使用自适应权重来权衡每一点位置的重要程度，权重的获得通过相似性获得。<br>对于temporal attention的获得采用以下方法：</p>
+<div style="text-align: center;"><br><img src="/2019/06/12/20190612-FlowTrack/0612-3.png" title="This is an image"><br></div>
+
+<p>如上图所示，spatial attention的输出首先通过一个全局池化产生一个通道描述。然后使用两个全连接层基于每个通道的相关性学习描述他们的系数。最后接上原始的特征权重，输出temporal attention权重。</p>
+<h2 id="模型更新"><a href="#模型更新" class="headerlink" title="模型更新"></a>模型更新</h2><p>一般带更新的算法，要么每帧都更新，要么隔几帧更新一下模型。当目标跟踪错误时，容易引入错误的背景信息。<br>为了避免此种情况的发生，我们不仅考虑了响应图的最大值，还照顾到其他响应值的分布情况。采用PNR来检测响应图的分布情况。PNR公式定义如下：</p>
+<div style="text-align: center;"><br><img src="/2019/06/12/20190612-FlowTrack/0612-4.png" title="This is an image"><br></div>
+
+<p>当PNR的值很大时，说明整个响应图噪声较少或者只有一个尖峰。<br>为了判断何时进行模型更新，何时不进行模型更新，必须引入一个标准（即阈值）。本文中，作者使用历史平均PNR与历史平均$R_{max}$作为阈值，来判断当前帧是否需要更新模型。</p>
+<h1 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h1><h2 id="OTB2013"><a href="#OTB2013" class="headerlink" title="OTB2013"></a>OTB2013</h2><div style="text-align: center;"><br><img src="/2019/06/12/20190612-FlowTrack/0612-5.png" title="This is an image"><br></div>
+
+<p>可以看出本文提出的FlowTrack在Success plot和Precision plot中均获得最好的性能。</p>
+<p>##OTB2015</p>
+<div style="text-align: center;"><br><img src="/2019/06/12/20190612-FlowTrack/0612-6.png" title="This is an image"><br></div>
+
+<p>在OTB2015中，本文提出的算法也获得了最佳的性能。</p>
+<h1 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h1><ul>
+<li>使用光流法来捕获相邻帧间目标的运动信息，运用的前T帧的光流信息，即使目标发生遮挡也能很好的利用光流信息得到目标下一帧的位置。</li>
+<li>该方法原理也是通过区域特征匹配先决定摄像头的运动，在进行目标的匹配决定目标的运动信息吗？？？？？？（有待查看原始程序的实现）</li>
+</ul>
+
+      
+       
+        <div>
+          <wb:share-button appkey="2140538160" addition="number" type="button" ralateuid="3197318510"></wb:share-button>
+        </div>
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫">
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝"></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信"></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/06/12/20190612-FlowTrack/">目标跟踪论文笔记《十一》：FlowTrack</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Hahastrong 的个人博客">Hahastrong</a></p>
+        <p><span>发布时间:</span>2019年06月12日 - 20时51分</p>
+        <p><span>最后更新:</span>2019年06月12日 - 22时01分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/06/12/20190612-FlowTrack/" title="目标跟踪论文笔记《十一》：FlowTrack">http://haha-strong.com/2019/06/12/20190612-FlowTrack/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/06/12/20190612-FlowTrack/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2019/06/12/20190612-daily0612/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          小记之第一次刷LeetCode链表题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/11/20190611-STRCF/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">目标跟踪论文笔记《十》：STRCF</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#算法思路"><span class="toc-number">1.</span> <span class="toc-text">算法思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#motivation"><span class="toc-number">2.</span> <span class="toc-text">motivation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#做法"><span class="toc-number">3.</span> <span class="toc-text">做法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Aggregation-using-optical-flow"><span class="toc-number">3.1.</span> <span class="toc-text">Aggregation using optical flow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spatial-temporal-attention"><span class="toc-number">3.2.</span> <span class="toc-text">Spatial temporal attention</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模型更新"><span class="toc-number">3.3.</span> <span class="toc-text">模型更新</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#性能"><span class="toc-number">4.</span> <span class="toc-text">性能</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#OTB2013"><span class="toc-number">4.1.</span> <span class="toc-text">OTB2013</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Thoughts"><span class="toc-number">5.</span> <span class="toc-text">Thoughts</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'hahastrong',
+      repo: 'hahastrong.github.io',
+      oauth: {
+        client_id: '',
+        client_secret: '',
+      },
+    })
+    gitment.render('gitments')
+</script>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/06/12/20190612-daily0612/" title="上一篇: 小记之第一次刷LeetCode链表题">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2019/06/11/20190611-STRCF/" title="下一篇: 目标跟踪论文笔记《十》：STRCF">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/20190612-daily0612/">小记之第一次刷LeetCode链表题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/20190612-FlowTrack/">目标跟踪论文笔记《十一》：FlowTrack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/20190611-STRCF/">目标跟踪论文笔记《十》：STRCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/20190611-SRDCF/">目标跟踪论文笔记《九》：SRDCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/ALLLEETCODE/">ALLLEETCODE</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/09/20190609-DaSiamRPN/">目标跟踪论文笔记《八》：DaSiamRPN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/09/20190609-SiamNet/">目标跟踪论文笔记《七》：SiamNet</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-C-RPN/">目标跟踪论文笔记《六》：C-RPN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-TADT/">目标跟踪论文笔记《五》：TADT</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/Achangnanju/">英语精读--长难句</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-LeetCode-2-addtwonums/">LeetCode <2>：add two nums</2></a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/20190607-zongjie/">小总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/20190607-LeetCode-twosum/">LeetCode <1>：twosum</1></a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/05/20190605-numpy/">20190605-numpy</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/20190604-SPM-Tracker/">目标跟踪论文笔记《四》：SPM-Tracker</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/03/20190603-SiamRPN/">目标跟踪论文笔记《四》：SiamRPN++： Evolution of Siamese Visual Tracking with Very Deep Networks (SiamRPN++)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/02/20190602-SA-Siam/">目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-Siam-BM/">目标跟踪论文笔记《三》：Siam-BM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-ubuntu-strages/">Ubuntu 一些常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/30/20190530-inroomcoordinate/">基于全景图片进行室内定位</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/29/English-Words/">English_Words</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/20190528-Kalman-filter/">目标跟踪论文笔记《二》：A New Approach to Linear Filtering and Prediction Problems（卡尔曼滤波跟踪算法）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/27/20190527-PTS/">目标跟踪论文笔记《一》：Prediction-Tracking-Segmentation (PTS)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/26/20190526-trackingxinde/">目标跟踪论文--心得体会</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/25/如何写文献综述/">如何写文献综述</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/24/自定义标题样式/">自定义标题样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/23/HEXO博客语法/">HEXO博客语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/21/开干！-开干！！/">开干！ 开干！！</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2019 Hahastrong
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit">海贼到访数:
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit">本页阅读量:
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
