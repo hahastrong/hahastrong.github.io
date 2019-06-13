@@ -3,26 +3,23 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam) | hahastrong</title>
+  <title>目标跟踪论文笔记《十二》：CSRDCF | hahastrong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SA-Siam算法结合语义特征和外表特征，有效的提升了算法的跟踪性能。同时作者引入了通道注意机制，提升语义特征对不同目标的影响。">
-<meta name="keywords" content="论文笔记">
+  <meta name="description" content="该篇论文引入channel and spatial reliability concepts到目标跟踪中，以学习到目标局部信息和不同通道信息，增强算法的鲁棒性。">
+<meta name="keywords" content="论文笔记,CVPR2017">
 <meta property="og:type" content="article">
-<meta property="og:title" content="目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)">
-<meta property="og:url" content="http://haha-strong.com/2019/06/02/20190602-SA-Siam/index.html">
+<meta property="og:title" content="目标跟踪论文笔记《十二》：CSRDCF">
+<meta property="og:url" content="http://haha-strong.com/2019/06/13/20190613-CSRDCF/index.html">
 <meta property="og:site_name" content="hahastrong">
-<meta property="og:description" content="SA-Siam算法结合语义特征和外表特征，有效的提升了算法的跟踪性能。同时作者引入了通道注意机制，提升语义特征对不同目标的影响。">
+<meta property="og:description" content="该篇论文引入channel and spatial reliability concepts到目标跟踪中，以学习到目标局部信息和不同通道信息，增强算法的鲁棒性。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://haha-strong.com/2019/06/02/20190602-SA-Siam/0602-1.png">
-<meta property="og:image" content="http://haha-strong.com/2019/06/02/20190602-SA-Siam/0602-2.png">
-<meta property="og:image" content="http://haha-strong.com/2019/06/02/20190602-SA-Siam/0602-3.png">
-<meta property="og:image" content="http://haha-strong.com/2019/06/02/20190602-SA-Siam/0602-4.png">
-<meta property="og:image" content="http://haha-strong.com/2019/06/02/20190602-SA-Siam/0602-5.png">
-<meta property="og:updated_time" content="2019-06-07T13:39:09.585Z">
+<meta property="og:image" content="http://haha-strong.com/2019/06/13/20190613-CSRDCF/0613-1.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/13/20190613-CSRDCF/0613-2.png">
+<meta property="og:updated_time" content="2019-06-13T11:54:19.172Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)">
-<meta name="twitter:description" content="SA-Siam算法结合语义特征和外表特征，有效的提升了算法的跟踪性能。同时作者引入了通道注意机制，提升语义特征对不同目标的影响。">
-<meta name="twitter:image" content="http://haha-strong.com/2019/06/02/20190602-SA-Siam/0602-1.png">
+<meta name="twitter:title" content="目标跟踪论文笔记《十二》：CSRDCF">
+<meta name="twitter:description" content="该篇论文引入channel and spatial reliability concepts到目标跟踪中，以学习到目标局部信息和不同通道信息，增强算法的鲁棒性。">
+<meta name="twitter:image" content="http://haha-strong.com/2019/06/13/20190613-CSRDCF/0613-1.png">
   
     <link rel="alternative" href="/atom.xml" title="hahastrong" type="application/atom+xml">
   
@@ -210,11 +207,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-20190602-SA-Siam" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-20190613-CSRDCF" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/06/02/20190602-SA-Siam/" class="article-date">
-      <time datetime="2019-06-02T12:30:13.000Z" itemprop="datePublished">2019-06-02</time>
+      <a href="/2019/06/13/20190613-CSRDCF/" class="article-date">
+      <time datetime="2019-06-13T10:28:32.000Z" itemprop="datePublished">2019-06-13</time>
 </a>
     </div>
   
@@ -225,7 +222,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)
+      目标跟踪论文笔记《十二》：CSRDCF
     </h1>
   
 
@@ -240,7 +237,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文笔记/">论文笔记</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CVPR2017/">CVPR2017</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文笔记/">论文笔记</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -250,27 +247,24 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <a id="more"></a>
-<blockquote>
-<p>A Twofold Siamese Network for Real-Time Object Tracking<a href="https://arxiv.org/abs/1802.08817" target="_blank" rel="noopener">论文地址</a></p>
+        <blockquote>
+<p>Discriminative Correlation Filter with Channel and Spatial Reliability <a href="https://arxiv.org/abs/1611.08461v1" target="_blank" rel="noopener">论文地址</a></p>
 </blockquote>
-<h1 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h1><p>采用SiameseNet为算法总框架，选取semantic和apperance特征作为相似性计算的特征，并且在semantic特征分支添加通道注意机制和多层特征融合入机制，最后以不同权重融合这两种特征产生的响应图作为最终的响应图。算法框架如下图所示：</p>
-<p><div style="text-align: center;"><br><img src="/2019/06/02/20190602-SA-Siam/0602-1.png" title="This is an image"><br></div><br>如上图所示，整个算法分为A-Net和S-Net。</p>
-<h1 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h1><p>SiamFC通过线下训练，可以很好地学习到一种区分性，但是当目标发生较大的外观变化时就失去了较好的区分性，无法保持与目标的一致性。</p>
-<h1 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h1><p>每次跟踪时送入网络的图片为$z, z^s, X$，分别为目标，带有背景信息的目标，搜索区域。</p>
-<h2 id="A-Net"><a href="#A-Net" class="headerlink" title="A-Net"></a>A-Net</h2><p>该分支直接采用SiamFC算法的网络模型。</p>
-<h2 id="S-Net"><a href="#S-Net" class="headerlink" title="S-Net"></a>S-Net</h2><p>该分支网络结构与A-Net一样，都是Alext结构的简单修改版，该部分采用用于目标检测的与训练模型权重，并且不参与训练。<strong>防止训练后导致两分支同一化。</strong><br>高层语义特征对目标的外观变化具有较强的鲁棒性，同时不同层特征对不同目标具有不同的特征贡献。为了提升整体性能，作者采用通道注意机制提升通道特征的权重。</p>
-<ul>
-<li>Channel Attention(通道注意机制)<br>对$conv4$和$conv5$层的每一通道特征使用attention module计算他们权重系数，具体方法如下图：<br><div style="text-align: center;"><img src="/2019/06/02/20190602-SA-Siam/0602-2.png" title="This is an image">
-</div><br>先对特征图进行网格划分，在进行最大池化，最后接着采用MLP输出权重。为了防止部分通道的权重退化为0，在MLP层添加一个0.5的bias。</li>
-</ul>
-<h2 id="分支组合性能对比"><a href="#分支组合性能对比" class="headerlink" title="分支组合性能对比"></a>分支组合性能对比</h2><p><div style="text-align: center;"><br><img src="/2019/06/02/20190602-SA-Siam/0602-3.png" title="This is an image"><br></div><br>从上图可以看出，选取semantic和apperance特征的结合可以极大地提升跟踪性能。channel attention也可以提升3个点的性能。</p>
-<h1 id="性能比较"><a href="#性能比较" class="headerlink" title="性能比较"></a>性能比较</h1><p>下图为该算法与现有算法在OTB-50，OTB-100，OTB-2013上的性能比较</p>
-<p><div style="text-align: center;"><br><img src="/2019/06/02/20190602-SA-Siam/0602-4.png" title="This is an image"><br></div><br>该算法在这些数据集上取得最佳的跟踪性能，无论在精度、AUC，还是跟踪速度上。</p>
-<p>下图为该算法与现有算法在VOT2016，VOT2017数据集上的性能对比</p>
-<p><div style="text-align: center;"><br><img src="/2019/06/02/20190602-SA-Siam/0602-5.png" title="This is an image"><br></div><br>综合来看，该算法取得较好的性能，</p>
+<blockquote>
+<p>🐖 ： 本文只是用HOG特征和颜色特征</p>
+</blockquote>
+<h1 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h1><p>针对DCF模板存在的背景信息过多的问题，本文在滤波模板上添加一个mask，使非目标区域的模板系数为0；同时考虑到不同通道学习到的目标信息不同，添加一个Channel reliablity抑制有多个峰值的通道响应图。<br>其中spatial reliability和channel reliability如下图所示</p>
+<div style="text-align: center;"><br><img src="/2019/06/13/20190613-CSRDCF/0613-1.png" title="This is an image"><br></div>
+
+<h1 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h1><p>由于DCF在训练时要保证训练模板大小与跟踪时的目标模板大小一致，虽然搜索目标框变大了，却导致模板中考虑了较多的背景信息。从而带来了不必要的边界效应。<br>因此作者提出使用一种spatial reliability来抑制背景信息带来的影响，同时也考虑到背景中相似目标也会导致响应图中有较大的的峰值，使用最大次大响应来为每个特征图赋予一个权重，对那些有多峰值的通道给予较小的抑制，从而变相得来抑制该通道带来的影响。</p>
+<h1 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h1><h2 id="Constructing-spatial-reliability-map"><a href="#Constructing-spatial-reliability-map" class="headerlink" title="Constructing spatial reliability map"></a>Constructing spatial reliability map</h2><p>首先作者定义了一个spatial reliability map $m\subset[0, 1]^{d_w \times d_h}$，m中的值表明每一个像素学习时的可信度，可信度根据是否属于目标区域来确定其大小。<br>通过 $h=m \odot h$，将其作用于学习到的滤波模板上。</p>
+<h2 id="Channel-reliability-estimation"><a href="#Channel-reliability-estimation" class="headerlink" title="Channel reliability estimation"></a>Channel reliability estimation</h2><p>若搜索区域只有一个目标且没有相似目标，则响应图只有一个峰值，若有相似的目标则有多个峰值。因此可以根据次大峰值与最大峰值之间的比值来确定该通道特征图是否对相似目标具有较强的分辨力。<br>每个通道的权重公式如下所示：<br>$w_d^{(det)} = 1 - min( \rho_{max2} / \rho_{max1}, \frac{1}{2} )$</p>
+<h1 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h1><p>本文的算法只能算是在SRDCF算法上一个小改进。下面是该算法杂OTB100数据集上的评测结果。</p>
+<div style="text-align: center;"><br><img src="/2019/06/13/20190613-CSRDCF/0613-2.png" title="This is an image"><br></div>
+
+<p>在跟踪精度上略高于SRDCF，由于本算法较差的尺度估计因此你在AUC上略低于SRDCF。</p>
 <h1 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h1><ul>
-<li>使用语义特征来增强模型的特征匹配性能，可以有效的提升网络的跟踪性能。在后续研究中，可以考虑更好的融合方式。不同特征融合，不同通道融合。</li>
+<li>之前看KCF还没有关注到模板的大小是跟搜索框一样大的，之前还以为模板比目标框大一倍是为了考虑更多的背景信息呢。所以也可以考虑使用无背景信息的网络吗？？？？下一次的试试。</li>
 </ul>
 
       
@@ -333,13 +327,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/06/02/20190602-SA-Siam/">目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)</a></p>
+        <p><span>本文标题:</span><a href="/2019/06/13/20190613-CSRDCF/">目标跟踪论文笔记《十二》：CSRDCF</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Hahastrong 的个人博客">Hahastrong</a></p>
-        <p><span>发布时间:</span>2019年06月02日 - 20时30分</p>
-        <p><span>最后更新:</span>2019年06月07日 - 21时39分</p>
+        <p><span>发布时间:</span>2019年06月13日 - 18时28分</p>
+        <p><span>最后更新:</span>2019年06月13日 - 19时54分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/06/02/20190602-SA-Siam/" title="目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)">http://haha-strong.com/2019/06/02/20190602-SA-Siam/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/06/02/20190602-SA-Siam/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/06/13/20190613-CSRDCF/" title="目标跟踪论文笔记《十二》：CSRDCF">http://haha-strong.com/2019/06/13/20190613-CSRDCF/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/06/13/20190613-CSRDCF/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -352,18 +346,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/06/03/20190603-SiamRPN/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          目标跟踪论文笔记《四》：SiamRPN++： Evolution of Siamese Visual Tracking with Very Deep Networks (SiamRPN++)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/05/31/20190531-Siam-BM/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">目标跟踪论文笔记《三》：Siam-BM</div>
+    <a href="/2019/06/12/20190612-daily0612/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">小记之第一次刷LeetCode链表题</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -377,7 +362,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#算法思路"><span class="toc-number">1.</span> <span class="toc-text">算法思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#motivation"><span class="toc-number">2.</span> <span class="toc-text">motivation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#做法"><span class="toc-number">3.</span> <span class="toc-text">做法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#A-Net"><span class="toc-number">3.1.</span> <span class="toc-text">A-Net</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#S-Net"><span class="toc-number">3.2.</span> <span class="toc-text">S-Net</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分支组合性能对比"><span class="toc-number">3.3.</span> <span class="toc-text">分支组合性能对比</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#性能比较"><span class="toc-number">4.</span> <span class="toc-text">性能比较</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Thoughts"><span class="toc-number">5.</span> <span class="toc-text">Thoughts</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#算法思路"><span class="toc-number">1.</span> <span class="toc-text">算法思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#motivation"><span class="toc-number">2.</span> <span class="toc-text">motivation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#做法"><span class="toc-number">3.</span> <span class="toc-text">做法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Constructing-spatial-reliability-map"><span class="toc-number">3.1.</span> <span class="toc-text">Constructing spatial reliability map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Channel-reliability-estimation"><span class="toc-number">3.2.</span> <span class="toc-text">Channel reliability estimation</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#性能"><span class="toc-number">4.</span> <span class="toc-text">性能</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Thoughts"><span class="toc-number">5.</span> <span class="toc-text">Thoughts</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
 
@@ -443,13 +428,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/06/03/20190603-SiamRPN/" title="上一篇: 目标跟踪论文笔记《四》：SiamRPN++： Evolution of Siamese Visual Tracking with Very Deep Networks (SiamRPN++)">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2019/05/31/20190531-Siam-BM/" title="下一篇: 目标跟踪论文笔记《三》：Siam-BM">
+            <a href="/2019/06/12/20190612-daily0612/" title="下一篇: 小记之第一次刷LeetCode链表题">
                 <i class="fa fa-angle-right"></i>
             </a>
         
