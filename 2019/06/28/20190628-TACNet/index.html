@@ -3,24 +3,29 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>目标跟踪论文笔记《七》：SiamNet | hahastrong</title>
+  <title>论文分享：TACNet | hahastrong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SiamNet网络的开篇之作，将相似性学习引入到目标跟踪领域中。">
-<meta name="keywords" content="论文笔记,SiamNet,201606">
+  <meta name="description" content="提出时序上下文检测器和过渡感知分类器">
+<meta name="keywords" content="论文笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="目标跟踪论文笔记《七》：SiamNet">
-<meta property="og:url" content="http://haha-strong.com/2019/06/09/20190609-SiamNet/index.html">
+<meta property="og:title" content="论文分享：TACNet">
+<meta property="og:url" content="http://haha-strong.com/2019/06/28/20190628-TACNet/index.html">
 <meta property="og:site_name" content="hahastrong">
-<meta property="og:description" content="SiamNet网络的开篇之作，将相似性学习引入到目标跟踪领域中。">
+<meta property="og:description" content="提出时序上下文检测器和过渡感知分类器">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://haha-strong.com/2019/06/09/20190609-SiamNet/0609-1.png">
-<meta property="og:image" content="http://haha-strong.com/2019/06/09/20190609-SiamNet/0609-2.png">
-<meta property="og:image" content="http://haha-strong.com/2019/06/09/20190609-SiamNet/0609-3.png">
-<meta property="og:updated_time" content="2019-06-09T08:25:31.986Z">
+<meta property="og:image" content="http://haha-strong.com/_posts/20190628-TACNet/0629-1.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/28/20190628-TACNet/0629-1.png">
+<meta property="og:image" content="http://haha-strong.com/_posts/20190628-TACNet/0629-2.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/28/20190628-TACNet/0629-2.png">
+<meta property="og:image" content="http://haha-strong.com/_posts/20190628-TACNet/0629-3.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/28/20190628-TACNet/0629-3.png">
+<meta property="og:image" content="http://haha-strong.com/_posts/20190628-TACNet/0629-4.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/28/20190628-TACNet/0629-4.png">
+<meta property="og:updated_time" content="2019-06-28T12:06:25.140Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="目标跟踪论文笔记《七》：SiamNet">
-<meta name="twitter:description" content="SiamNet网络的开篇之作，将相似性学习引入到目标跟踪领域中。">
-<meta name="twitter:image" content="http://haha-strong.com/2019/06/09/20190609-SiamNet/0609-1.png">
+<meta name="twitter:title" content="论文分享：TACNet">
+<meta name="twitter:description" content="提出时序上下文检测器和过渡感知分类器">
+<meta name="twitter:image" content="http://haha-strong.com/_posts/20190628-TACNet/0629-1.png">
   
     <link rel="alternative" href="/atom.xml" title="hahastrong" type="application/atom+xml">
   
@@ -208,11 +213,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-20190609-SiamNet" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-20190628-TACNet" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/06/09/20190609-SiamNet/" class="article-date">
-      <time datetime="2019-06-09T07:39:05.000Z" itemprop="datePublished">2019-06-09</time>
+      <a href="/2019/06/28/20190628-TACNet/" class="article-date">
+      <time datetime="2019-06-28T05:57:58.000Z" itemprop="datePublished">2019-06-28</time>
 </a>
     </div>
   
@@ -223,7 +228,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      目标跟踪论文笔记《七》：SiamNet
+      论文分享：TACNet
     </h1>
   
 
@@ -232,13 +237,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/目标跟踪/">目标跟踪</a>
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/201606/">201606</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SiamNet/">SiamNet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文笔记/">论文笔记</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文笔记/">论文笔记</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -249,41 +254,18 @@
       
           
         <a id="more"></a>
-<blockquote>
-<p>Fully-Convolutional Siamese Networks for Object Tracking<a href="https://arxiv.org/abs/1606.09549" target="_blank" rel="noopener">论文地址</a></p>
-</blockquote>
-<h1 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h1><p>使用两个分支网络分别提取模板目标与搜索，目标的CNN特征，通过相关卷积获得相似性响应图。<br>下图所示为该算法的框架图</p>
-<div style="text-align: center;"><br><img src="/2019/06/09/20190609-SiamNet/0609-1.png" title="This is an image"><br></div>
+ <big>论文分享第一周第二篇 </big><br>FROM <font color="blue">hahstrong</font><br><br>&gt; TACNet: Transition-Aware Context Network for Spatio-Temporal Action Detection <a href="https://arxiv.org/abs/1905.13417" target="_blank" rel="noopener">论文地址</a>：<a href="https://arxiv.org/abs/1905.13417" target="_blank" rel="noopener">https://arxiv.org/abs/1905.13417</a><br><br><br># 算法思路<br><br><big><br>这篇论文是动作检测领域的文章。<br>目前常见的动作检测算法在使用时空信息时是将这二者分成两步进行，本文提出的两个模块来融合这二者，首先是提取时空信息的时序上下文检测器和用于解决相似目标的过渡感知分类器。提取的时空特征直接送入到后续的过渡感知分类器，算法总体框架如图所示：<br><br></big><br><br><br><br><img src="/_posts/20190628-TACNet/0629-1.png" alt><br><br><div style="text-align: center;"><br><img src="/2019/06/28/20190628-TACNet/0629-1.png" title="This is an image"><br></div><br><big><br>左边是时序上下文检测器，右边是过渡感知分类器。其中左边部分由two-stream组成。<br></big>
 
-<h1 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h1><p>目前现有的使用深度卷积网络的跟踪算法，要么仅仅使用深度特征，要么使用SGD优化网络权重。简单的使用深度特征进行，目标跟踪并没有发挥出端到端学习的优势；而采用SGD更新网络的方法虽然获得了较好跟踪性能，但是在速度方面不尽人意，只有几帧每秒。<br>作者提出一种<strong>离线学习深度网络函数以解决通用的相似性学习问题</strong>，该函数（function）在跟踪过程中简单而有效。</p>
-<h1 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h1><p>通过一个双支网络提取模板与搜索样本的特征，经过相关得到各个位置上的响应图，最后与真实值进行求损失，进而优化网络，最终得到一个表征相似性学习的网络。</p>
-<ul>
-<li><p>使用全卷积网络作为SiameseNet卷积，可以保持图片的平移不变性。<br><center>网络结构</center></p>
-<div style="text-align: center;"><br><img src="/2019/06/09/20190609-SiamNet/0609-2.png" title="This is an image"><br></div>
-</li>
-<li><p>正负样本标签设置采用一个距离函数，距离小于R即为正样本，对正负样本都添加一个权重以保证类平衡</p>
-</li>
-<li>由于全卷积网络对任何位置的特征都一视同仁，所有裁剪图片时以目标中心为中心进行裁剪</li>
-<li>为了保证模板样本有少量背景信息，提升跟踪的鲁棒性，在裁剪样本时考虑少量背景信息</li>
-</ul>
-<h1 id="网络架构具体信息"><a href="#网络架构具体信息" class="headerlink" title="网络架构具体信息"></a>网络架构具体信息</h1><blockquote>
-<p>该网络的步长（stride）为8，网络卷积时不添加padding，以保证网络的裁剪不变性，</p>
-<p>在跟踪时，不更新模板样本，也不考虑额外的信息如光流、颜色直方图，不使用边框回归已得到更精准的预测结果</p>
-<p>通过多尺度样本来获取目标的尺度变化信息</p>
-</blockquote>
-<h1 id="训练跟踪参数"><a href="#训练跟踪参数" class="headerlink" title="训练跟踪参数"></a>训练跟踪参数</h1><ul>
-<li>总共训练50epochs，每epoch训练样本50,000个</li>
-<li>mini-batch设置为8</li>
-<li>训练的学习率从$10^{-2}$到$10^{-5}$<br><br></li>
-<li>跟新模板时，采用0.35的阻尼，防止更新尺度的超调</li>
-</ul>
-<h1 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h1><p>下图为SiamNet在OTB2013上OPE, true, SRE的性能展示</p>
-<p><div style="text-align: center;"><br><img src="/2019/06/09/20190609-SiamNet/0609-3.png" title="This is an image"><br></div><br>与这些算法相比，该网络取得不错的性能（当时是2016年，很多更好的算法还未出现）</p>
-<h1 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h1><ul>
-<li>将目标跟踪带入一个新的领域，相似性学习的问题。与CF具有相同的意义吧，我认为。</li>
-<li>该算法使用一个简单的相似性函数，不仅跟踪性能较好，同时跟踪速度极快。达到实时性的要求。后续可以在这个网络上添枝加叶，克服更多挑战！！！</li>
-<li>该算法改进版有SiamRPN，DaSiam，Siam-DW，Siam-BM，SiamVGG，ATOM，SiamRPN++等等，以上这些算法都是从不同角度提升跟踪的性能。</li>
-</ul>
+<h1 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h1><big><br>目前的一些算法将视频帧当成一组单独的图像，而没有充分发掘他们时序上的潜能。ACT算法采用简单的堆叠策略来挖掘短期时序上下文背景信息，但是对于目标跳跃的情况无法处理。同时对于一些似是而非的目标容易判错。<br></big>
+
+<h1 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h1><big><br>以目标检测算法SSD为基础框架，在不同尺度卷积层间添加Conv-LSTM用来融合入不同帧之间的信息。如下图所示，通过融合三帧的背景信息，来习得目标之间的位置随时间变化关系。<br></big>
+
+<p><img src="/_posts/20190628-TACNet/0629-2.png" alt></p>
+<div style="text-align: center;"><br><img src="/2019/06/28/20190628-TACNet/0629-2.png" title="This is an image"><br></div><br><br><br><big><br>过渡性状态中的实例与目标动作具有相似性，因此检测较容易发生混淆。大多数现有方法将其作为背景，并依赖后处理算法剪裁它们。然而，由于这些状态与背景非常不同（比如场景和其他目标），将其看作背景会加大类内差异，降低检测性能。在本文中，旷视研究院提出一个过渡感知的分类器，以同时进行动作分类和过渡状态分类，具体细节如下图所示：<br></big><br><br><br><br><br><img src="/_posts/20190628-TACNet/0629-3.png" alt><br><br><div style="text-align: center;"><br><img src="/2019/06/28/20190628-TACNet/0629-3.png" title="This is an image"><br></div><br><big><br>通过上述的过渡感知分类器得到的结果，联合动作分类结果和过渡状态分类可以更准确地实现检测动作。<br></big><br><br># 性能<br><br><img src="/_posts/20190628-TACNet/0629-4.png" alt><br><br><div style="text-align: center;"><br><img src="/2019/06/28/20190628-TACNet/0629-4.png" title="This is an image"><br></div>
+
+<big><br>与其他算法在J-HNDB、UCF101-14测试集上，本文算法均获得最佳的分数。<br></big>
+
+<h1 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h1><big><br>- 该算法首次将Conv-LSTM引入到动作检测这一算法中，从而可以帮助算法捕获时序上下文信息，增强算法的鲁棒性，提升动作检测的精确度。<br>- 是不是针对时序问题都可以考虑引入LSTM来学习上下文信息，而不是简单地叠加不同帧的信息。<br></big>
 
       
        
@@ -345,13 +327,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/06/09/20190609-SiamNet/">目标跟踪论文笔记《七》：SiamNet</a></p>
+        <p><span>本文标题:</span><a href="/2019/06/28/20190628-TACNet/">论文分享：TACNet</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Hahastrong 的个人博客">Hahastrong</a></p>
-        <p><span>发布时间:</span>2019年06月09日 - 15时39分</p>
-        <p><span>最后更新:</span>2019年06月09日 - 16时25分</p>
+        <p><span>发布时间:</span>2019年06月28日 - 13时57分</p>
+        <p><span>最后更新:</span>2019年06月28日 - 20时06分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/06/09/20190609-SiamNet/" title="目标跟踪论文笔记《七》：SiamNet">http://haha-strong.com/2019/06/09/20190609-SiamNet/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/06/09/20190609-SiamNet/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/06/28/20190628-TACNet/" title="论文分享：TACNet">http://haha-strong.com/2019/06/28/20190628-TACNet/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/06/28/20190628-TACNet/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -364,18 +346,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/06/09/20190609-DaSiamRPN/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          目标跟踪论文笔记《八》：DaSiamRPN
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/08/20190608-C-RPN/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">目标跟踪论文笔记《六》：C-RPN</div>
+    <a href="/2019/06/26/20190626-KNN/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">论文分享：KNN</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -389,7 +362,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#算法思路"><span class="toc-number">1.</span> <span class="toc-text">算法思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#motivation"><span class="toc-number">2.</span> <span class="toc-text">motivation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#做法"><span class="toc-number">3.</span> <span class="toc-text">做法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网络架构具体信息"><span class="toc-number">4.</span> <span class="toc-text">网络架构具体信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#训练跟踪参数"><span class="toc-number">5.</span> <span class="toc-text">训练跟踪参数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#性能"><span class="toc-number">6.</span> <span class="toc-text">性能</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Thoughts"><span class="toc-number">7.</span> <span class="toc-text">Thoughts</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#motivation"><span class="toc-number">1.</span> <span class="toc-text">motivation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#做法"><span class="toc-number">2.</span> <span class="toc-text">做法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Thoughts"><span class="toc-number">3.</span> <span class="toc-text">Thoughts</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
 
@@ -455,13 +428,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/06/09/20190609-DaSiamRPN/" title="上一篇: 目标跟踪论文笔记《八》：DaSiamRPN">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2019/06/08/20190608-C-RPN/" title="下一篇: 目标跟踪论文笔记《六》：C-RPN">
+            <a href="/2019/06/26/20190626-KNN/" title="下一篇: 论文分享：KNN">
                 <i class="fa fa-angle-right"></i>
             </a>
         

@@ -13,10 +13,15 @@
 <meta property="og:site_name" content="hahastrong">
 <meta property="og:description" content="叠加多个RPN，以实现利用多层特征。减少负样本数量同时提升跟踪精度。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-08T11:57:31.274Z">
+<meta property="og:image" content="http://haha-strong.com/2019/06/08/20190608-C-RPN/0608-1.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/08/20190608-C-RPN/0608-2.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/08/20190608-C-RPN/0608-3.png">
+<meta property="og:image" content="http://haha-strong.com/2019/06/08/20190608-C-RPN/0608-4.png">
+<meta property="og:updated_time" content="2019-06-16T11:21:21.560Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="目标跟踪论文笔记《六》：C-RPN">
 <meta name="twitter:description" content="叠加多个RPN，以实现利用多层特征。减少负样本数量同时提升跟踪精度。">
+<meta name="twitter:image" content="http://haha-strong.com/2019/06/08/20190608-C-RPN/0608-1.png">
   
     <link rel="alternative" href="/atom.xml" title="hahastrong" type="application/atom+xml">
   
@@ -249,7 +254,7 @@
 <p>Siamese Cascaded Region Proposal Networks for Real-Time Visual Tracking <a href="https://arxiv.org/abs/1812.06148" target="_blank" rel="noopener">论文地址</a></p>
 </blockquote>
 <h1 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h1><p>通过叠加多个RPN结构以实现对不同卷积层特征进行融合与refine，有效地提升跟踪精度，减少网络对相似目标的误判。<br>整个网络的框架图如下图所示：</p>
-<div style="text-align: center;"><br>{ % asset_img 0608-1.png This is an image %}<br></div>
+<div style="text-align: center;"><br><img src="/2019/06/08/20190608-C-RPN/0608-1.png" title="This is an image"><br></div>
 
 <p>上图三个RPN即为级联的RPN模块，用于多特征融合以及refine目标坐标。</p>
 <h1 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h1><ul>
@@ -262,16 +267,14 @@
 <li>与one-stage SiamRPN相比，在位置定位上多stage更加准确，不同层间的特征使用提升了模型的分辨力</li>
 </ul>
 <h1 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h1><p>级联多个RPN结构，低级RPN将结果送给下一级RPN，并传递anchor信息，提出简易负样本。<br>越低级的RPB使用的特征越高层。<br>不同层间的特征融合使用作者提出的FTB（Feature Transfer Block）模块。模块具体结构如下图</p>
-<div style="text-align: center;"><br>{ % asset_img 0608-2.png This is an image %}<br></div>
+<div style="text-align: center;"><br><img src="/2019/06/08/20190608-C-RPN/0608-2.png" title="This is an image"><br></div>
 
 <p>不同层特征通过解卷积、卷积、差值得到。</p>
 <p>训练过程中，网络的负样本是最后一级RPN中的负样本，因为训练的负样本数量大大减少，达到正负样本比例均衡。</p>
-<div style="text-align: center;"><br>{ % asset_img 0608-3.png This is an image %}<br></div>
+<div style="text-align: center;"><br><img src="/2019/06/08/20190608-C-RPN/0608-3.png" title="This is an image"><br></div>
 
 <p>上图为三个不同级别RPN的响应图，从左往右级别逐渐升高，可以看出高级别的RPN已经有效地提出那些相似样本。使得结果更加准确。</p>
-<h1 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h1><div style="text-align: center;"><br>{ % asset_img 0608-4.png This is an image %}<br></div>
-
-<p>上图为CRPN与其他算法在OTB2013和OTB2015数据集上的AUC曲线图。CRPN相对于SiamRPN分别有1.7%和2.6%的性能提升。证明多层特征融合对性能提升是有帮助的。</p>
+<h1 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h1><p><div style="text-align: center;"><br><img src="/2019/06/08/20190608-C-RPN/0608-4.png" title="This is an image"><br></div><br>上图为CRPN与其他算法在OTB2013和OTB2015数据集上的AUC曲线图。CRPN相对于SiamRPN分别有1.7%和2.6%的性能提升。证明多层特征融合对性能提升是有帮助的。</p>
 <h1 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h1><ul>
 <li>通过级联RPN减少easy负样本，达到正负样本保持平衡。同时融合多层特征，提升定位目标的精度。</li>
 <li>级联RPN对速度应该有部分的损失，3-stage只有23fps。有点得不偿失。</li>
@@ -340,7 +343,7 @@
         <p><span>本文标题:</span><a href="/2019/06/08/20190608-C-RPN/">目标跟踪论文笔记《六》：C-RPN</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Hahastrong 的个人博客">Hahastrong</a></p>
         <p><span>发布时间:</span>2019年06月08日 - 19时08分</p>
-        <p><span>最后更新:</span>2019年06月08日 - 19时57分</p>
+        <p><span>最后更新:</span>2019年06月16日 - 19时21分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/06/08/20190608-C-RPN/" title="目标跟踪论文笔记《六》：C-RPN">http://haha-strong.com/2019/06/08/20190608-C-RPN/</a>
             <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/06/08/20190608-C-RPN/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -458,7 +461,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/06/13/20190613-CSRDCF/">目标跟踪论文笔记《十二》：CSRDCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/20190612-daily0612/">小记之第一次刷LeetCode链表题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/20190612-FlowTrack/">目标跟踪论文笔记《十一》：FlowTrack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/20190611-STRCF/">目标跟踪论文笔记《十》：STRCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/20190611-SRDCF/">目标跟踪论文笔记《九》：SRDCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/ALLLEETCODE/">ALLLEETCODE</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/09/20190609-DaSiamRPN/">目标跟踪论文笔记《八》：DaSiamRPN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/09/20190609-SiamNet/">目标跟踪论文笔记《七》：SiamNet</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-C-RPN/">目标跟踪论文笔记《六》：C-RPN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-TADT/">目标跟踪论文笔记《五》：TADT</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/Achangnanju/">英语精读--长难句</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-LeetCode-2-addtwonums/">LeetCode <2>：add two nums</2></a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/20190607-zongjie/">小总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/20190607-LeetCode-twosum/">LeetCode <1>：twosum</1></a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/05/20190605-numpy/">20190605-numpy</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/20190604-SPM-Tracker/">目标跟踪论文笔记《四》：SPM-Tracker</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/03/20190603-SiamRPN/">目标跟踪论文笔记《四》：SiamRPN++： Evolution of Siamese Visual Tracking with Very Deep Networks (SiamRPN++)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/02/20190602-SA-Siam/">目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-Siam-BM/">目标跟踪论文笔记《三》：Siam-BM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-ubuntu-strages/">Ubuntu 一些常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/30/20190530-inroomcoordinate/">基于全景图片进行室内定位</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/29/English-Words/">English_Words</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/20190528-Kalman-filter/">目标跟踪论文笔记《二》：A New Approach to Linear Filtering and Prediction Problems（卡尔曼滤波跟踪算法）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/27/20190527-PTS/">目标跟踪论文笔记《一》：Prediction-Tracking-Segmentation (PTS)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/26/20190526-trackingxinde/">目标跟踪论文--心得体会</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/25/如何写文献综述/">如何写文献综述</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/24/自定义标题样式/">自定义标题样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/23/HEXO博客语法/">HEXO博客语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/21/开干！-开干！！/">开干！ 开干！！</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/06/28/20190628-TACNet/">论文分享：TACNet</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/26/20190626-KNN/">论文分享：KNN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/13/20190613-CSRDCF/">目标跟踪论文笔记《十二》：CSRDCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/20190612-daily0612/">小记之第一次刷LeetCode链表题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/20190612-FlowTrack/">目标跟踪论文笔记《十一》：FlowTrack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/20190611-STRCF/">目标跟踪论文笔记《十》：STRCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/20190611-SRDCF/">目标跟踪论文笔记《九》：SRDCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/ALLLEETCODE/">ALLLEETCODE</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/09/20190609-DaSiamRPN/">目标跟踪论文笔记《八》：DaSiamRPN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/09/20190609-SiamNet/">目标跟踪论文笔记《七》：SiamNet</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-C-RPN/">目标跟踪论文笔记《六》：C-RPN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-TADT/">目标跟踪论文笔记《五》：TADT</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/Achangnanju/">英语精读--长难句</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-LeetCode-2-addtwonums/">LeetCode <2>：add two nums</2></a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/20190607-zongjie/">小总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/20190607-LeetCode-twosum/">LeetCode <1>：twosum</1></a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/05/20190605-numpy/">20190605-numpy</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/20190604-SPM-Tracker/">目标跟踪论文笔记《四》：SPM-Tracker</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/03/20190603-SiamRPN/">目标跟踪论文笔记《四》：SiamRPN++： Evolution of Siamese Visual Tracking with Very Deep Networks (SiamRPN++)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/02/20190602-SA-Siam/">目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-Siam-BM/">目标跟踪论文笔记《三》：Siam-BM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-ubuntu-strages/">Ubuntu 一些常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/30/20190530-inroomcoordinate/">基于全景图片进行室内定位</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/29/English-Words/">English_Words</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/20190528-Kalman-filter/">目标跟踪论文笔记《二》：A New Approach to Linear Filtering and Prediction Problems（卡尔曼滤波跟踪算法）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/27/20190527-PTS/">目标跟踪论文笔记《一》：Prediction-Tracking-Segmentation (PTS)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/26/20190526-trackingxinde/">目标跟踪论文--心得体会</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/25/如何写文献综述/">如何写文献综述</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/24/自定义标题样式/">自定义标题样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/23/HEXO博客语法/">HEXO博客语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/21/开干！-开干！！/">开干！ 开干！！</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
