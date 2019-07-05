@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://haha-strong.com/2019/07/05/20190705-BBRU/</loc>
+    <lastmod>2019-07-05</lastmod>
+  </url>  <url>
+    <loc>http://haha-strong.com/2019/07/01/20190701-ACT/</loc>
+    <lastmod>2019-07-05</lastmod>
+  </url>  <url>
+    <loc>http://haha-strong.com/2019/07/03/20190703-introduce-torch/</loc>
+    <lastmod>2019-07-05</lastmod>
+  </url>  <url>
+    <loc>http://haha-strong.com/2019/07/03/20190703-usingtorch/</loc>
+    <lastmod>2019-07-03</lastmod>
+  </url>  <url>
     <loc>http://haha-strong.com/2019/06/28/20190628-TACNet/</loc>
-    <lastmod>2019-06-28</lastmod>
+    <lastmod>2019-07-02</lastmod>
+  </url>  <url>
+    <loc>http://haha-strong.com/2019/07/02/20190702-Tracking-Development/</loc>
+    <lastmod>2019-07-02</lastmod>
+  </url>  <url>
+    <loc>http://haha-strong.com/2019/06/30/20190630-rundaily-1/</loc>
+    <lastmod>2019-07-01</lastmod>
   </url>  <url>
     <loc>http://haha-strong.com/2019/06/26/20190626-KNN/</loc>
-    <lastmod>2019-06-26</lastmod>
+    <lastmod>2019-07-01</lastmod>
   </url>  <url>
     <loc>http://haha-strong.com/2019/06/08/20190608-C-RPN/</loc>
     <lastmod>2019-06-16</lastmod>

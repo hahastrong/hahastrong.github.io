@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>转载：目标跟踪算法未来发展趋势 | hahastrong</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="2019年，目标跟踪未来的发展趋势">
+<meta property="og:type" content="article">
+<meta property="og:title" content="转载：目标跟踪算法未来发展趋势">
+<meta property="og:url" content="http://haha-strong.com/2019/07/02/20190702-Tracking-Development/index.html">
+<meta property="og:site_name" content="hahastrong">
+<meta property="og:description" content="2019年，目标跟踪未来的发展趋势">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-02T03:12:15.286Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="转载：目标跟踪算法未来发展趋势">
+<meta name="twitter:description" content="2019年，目标跟踪未来的发展趋势">
+  
+    <link rel="alternative" href="/atom.xml" title="hahastrong" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: false,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Hahastrong</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">博客首页</a></li>
+                        
+                            <li><a href="/works">作品展示</a></li>
+                        
+                            <li><a href="/about">留言打卡</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/hahastrong" title="github">github</a>
+                            
+                                <a class="fl wechat" target="_blank" href="/wechat" title="wechat">wechat</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/201606/" style="font-size: 10px;">201606</a> <a href="/tags/201808/" style="font-size: 10px;">201808</a> <a href="/tags/201812/" style="font-size: 10px;">201812</a> <a href="/tags/201904/" style="font-size: 10px;">201904</a> <a href="/tags/CVPR-2018/" style="font-size: 10px;">CVPR 2018</a> <a href="/tags/CVPR2017/" style="font-size: 10px;">CVPR2017</a> <a href="/tags/CVPR2018/" style="font-size: 10px;">CVPR2018</a> <a href="/tags/HEXO/" style="font-size: 10px;">HEXO</a> <a href="/tags/ICCV-2015/" style="font-size: 10px;">ICCV 2015</a> <a href="/tags/SiamNet/" style="font-size: 16.67px;">SiamNet</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/传统跟踪算法/" style="font-size: 10px;">传统跟踪算法</a> <a href="/tags/单词/" style="font-size: 10px;">单词</a> <a href="/tags/小技巧/" style="font-size: 10px;">小技巧</a> <a href="/tags/小记/" style="font-size: 10px;">小记</a> <a href="/tags/目标跟踪/" style="font-size: 13.33px;">目标跟踪</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/英语学习/" style="font-size: 10px;">英语学习</a> <a href="/tags/论文笔记/" style="font-size: 20px;">论文笔记</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">游走于宿舍、实验室、食堂。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Hahastrong</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Hahastrong</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">博客首页</a></li>
+                
+                    <li><a href="/works">作品展示</a></li>
+                
+                    <li><a href="/about">留言打卡</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/hahastrong" title="github">github</a>
+                    
+                        <a class="wechat" target="_blank" href="/wechat" title="wechat">wechat</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-20190702-Tracking-Development" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/07/02/20190702-Tracking-Development/" class="article-date">
+      <time datetime="2019-07-02T03:10:04.000Z" itemprop="datePublished">2019-07-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      转载：目标跟踪算法未来发展趋势
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/目标跟踪/">目标跟踪</a>
+    </div>
+
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <a id="more"></a>
+<blockquote>
+<p>转自：<a href="https://zhuanlan.zhihu.com/p/58154634" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/58154634</a></p>
+</blockquote>
+<p>从今年接收的文章已经可以明显看出来，跟踪领域已经基本完成换代更新。接收的文章中Siamese网络的改进工作已经占据了主导的地位。</p>
+<p>SiamRPN++，CIR两篇都是围绕如何使用深度网络主干这个问题，两篇文章都中了oral。这个问题一直困扰着整个跟踪圈子，在此之前的所有工作都采用的是alexnet为主的网络架构。不能使用现代网络架构一直困扰着整个跟踪领域的发展。SiamRPN++通过数据增强的方法解决训练的空间位置偏见。CIR通过crop操作从网络架构上减弱网络padding带来的学习偏见，通过大量的实验分析了感受野等因素对学习的影响。总的来说，当网络问题被解决了之后直接导致了现在在几乎所有的数据集上，SiamRPN++已经超过了相关滤波的方法。</p>
+<p>在SiamRPN++的基础上，网络主干问题已经被解决，我们可以做更多方向的探索。我们可以非常简单的让输出做更复杂的预测，这就催生了SiamMask这篇文章。</p>
+<p>SPM和C-RPN两篇都算是多阶段的SiamRPN扩展。SPM就是典型的faster-RCNN的思路做跟踪，只是最后的score fusion的方式可以再优雅一些。C-RPN当然就是Cascade R-CNN: Delving into High Quality Object Detection 在跟踪领域的翻版。两者的思路都很直接，通过第二/N阶段来学习更精细的判别。</p>
+<p>Martin Danelljan大神的 ATOM: Accurate Tracking by Overlap Maximization这篇肯定也是重量级的文章。Martin大神并没有fellow SiamRPN的架构，转而使用粒子滤波采样搭配IoU预测，多次迭代得到目标结果。在多个库上取得了非常惊人的结果。这项工作我觉得最突破的点是网络学习的问题实际上更hard，更符合跟踪的需求。</p>
+<p>LaSOT这个测评集的接收也是常规操作。希望各位大佬能继续维护好这个库。最近跟踪的数据库相当多，人们都意识到之前的数据已经无法满足深度学习的跟踪算法。</p>
+<p>关于Siamese Tracking 的未来研究方向（free ideas）：<br>当你阅读了一定的文章以及有现成的代码之后，下面当然是如何着手改进。我自己总结了一些小的可以改进的方向，仅供参考。</p>
+<p>1）高效的在线学习算法：进展到目前为止，我的所有实验研究表明。Siamese网络无法真正意义上抑制背景中的困难样本。离线的学习从本质上无法区分两个长相相似的人或者车。而CF相关算法可以通过分析整个环境的上下文关系来进行调整。如果对于提升整个算法的上界（偏学术）的角度考虑，在线学习有必要。如果正常的工程使用，我认为目前的算法只要在相应的场景中进行训练就足够了。</p>
+<p>2）精确输出表达：今年我们的工作提出额外的mask输出。可直接扩展的思路为关键点输出（CornerNet / PoseTrack），极点预测（ExtremeNet），甚至6D pose跟踪。本质上是通过网络可以预测任何与目标相关的输出。大家可以任意的发散思维。</p>
+<p>3）定制网络架构：其中包含两个子方向，一个是追求精度的去探索究竟什么样的网络架构会有利于当前的跟踪框架的学习。另一个有价值的子方向是如何构建超快速的小网络用于实际工程。工程项目中有时并没有GPU的资源供使用，如何提供“廉价”的高质量跟踪算法也具有很强的实际意义。当对网络进行裁剪之后，很容易达到500FPS的高性能算法来对传统的KCF进行真正的替换。</p>
+<p>4）离线训练学习优化：目前的跟踪算法在相似性学习方向还是过于简单，如果去设计更为有效的度量学习方案，应该会有一定的提升。同时我们也并没有很好的掌握网络的训练。当前的训练策略是将网络主干的参数进行固定，先训练head。然后逐步放开。实际上我们发现，当直接将所有层全部放开一起训练的时候，网络的泛化性能会显著下降。另一个方面，train from scratch的概念已经在检测领域非常普遍了。跟踪的网络目前我们的经验在跟踪方面并不work。</p>
+<p>5）更细粒度预测：这一条实际上是上一条的续集，就是专注于score分支的预测。现在大家的做法是&gt;0.6 IoU的都当做前景（正样本），但实际上正样本之间还是有较大的差异的。跟踪本质上也是不断预测一个非常细小物体帧间运动的过程，如果一个网络不能很好的分辨细小的差异，他可能并不是一个最优的设计选择。这也是ATOM的IoUNet主攻的方向。</p>
+<p>6）泛化性能提升：非常推荐自动化所黄凯奇老师组的GOT-10k数据集，数据组织的非常棒。黄老师组在one-shot learning领域有着深厚的积淀，所以站在这个领域的角度，他们提出了严格分离训练集和测试集的物体类别来验证泛化性能。所以原则上所有one-shot learning方向的一些嵌入学习方法都可以移过来用。同时，我觉得Mask-X-RCNN，segment everything这个思路可以借鉴。本质上我也不得不承认，基于深度学习的跟踪算法存在泛化性能问题。我们有理由怀疑跟踪是否会在未知的类别上有较好的泛化性能，实际上肯定是会下降。</p>
+<p>7）long-term跟踪框架：截止到目前为止，虽然VOT组委会以及牛津这边的OxUVA都有专门的long-term的数据集，但long-term算法并没有一个较好的统一框架出来。关于这方面的研究似乎有点停滞，今年大连理工的文章非常可惜，我觉得质量非常不错。</p>
+
+      
+       
+        <div>
+          <wb:share-button appkey="2140538160" addition="number" type="button" ralateuid="3197318510"></wb:share-button>
+        </div>
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫">
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝"></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信"></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/07/02/20190702-Tracking-Development/">转载：目标跟踪算法未来发展趋势</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Hahastrong 的个人博客">Hahastrong</a></p>
+        <p><span>发布时间:</span>2019年07月02日 - 11时10分</p>
+        <p><span>最后更新:</span>2019年07月02日 - 11时12分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/07/02/20190702-Tracking-Development/" title="转载：目标跟踪算法未来发展趋势">http://haha-strong.com/2019/07/02/20190702-Tracking-Development/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/07/02/20190702-Tracking-Development/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2019/07/03/20190703-usingtorch/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          python深度学习相关函数介绍
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/01/20190701-ACT/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">论文分享《动作检测》：ACT</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'hahastrong',
+      repo: 'hahastrong.github.io',
+      oauth: {
+        client_id: '',
+        client_secret: '',
+      },
+    })
+    gitment.render('gitments')
+</script>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/07/03/20190703-usingtorch/" title="上一篇: python深度学习相关函数介绍">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2019/07/01/20190701-ACT/" title="下一篇: 论文分享《动作检测》：ACT">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/07/05/20190705-BBRU/">论文分享：BBRU</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/03/20190703-introduce-torch/">介绍torch一些函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/03/20190703-usingtorch/">python深度学习相关函数介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/02/20190702-Tracking-Development/">转载：目标跟踪算法未来发展趋势</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/01/20190701-ACT/">论文分享《动作检测》：ACT</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/30/20190630-rundaily-1/">跑步圣经《一》：为何跑步？</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/28/20190628-TACNet/">论文分享：TACNet</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/26/20190626-KNN/">论文分享：KNN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/13/20190613-CSRDCF/">目标跟踪论文笔记《十二》：CSRDCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/20190612-daily0612/">小记之第一次刷LeetCode链表题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/20190612-FlowTrack/">目标跟踪论文笔记《十一》：FlowTrack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/20190611-STRCF/">目标跟踪论文笔记《十》：STRCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/20190611-SRDCF/">目标跟踪论文笔记《九》：SRDCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/ALLLEETCODE/">ALLLEETCODE</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/09/20190609-DaSiamRPN/">目标跟踪论文笔记《八》：DaSiamRPN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/09/20190609-SiamNet/">目标跟踪论文笔记《七》：SiamNet</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-C-RPN/">目标跟踪论文笔记《六》：C-RPN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-TADT/">目标跟踪论文笔记《五》：TADT</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/Achangnanju/">英语精读--长难句</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-LeetCode-2-addtwonums/">LeetCode <2>：add two nums</2></a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/20190607-zongjie/">小总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/20190607-LeetCode-twosum/">LeetCode <1>：twosum</1></a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/05/20190605-numpy/">20190605-numpy</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/20190604-SPM-Tracker/">目标跟踪论文笔记《四》：SPM-Tracker</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/03/20190603-SiamRPN/">目标跟踪论文笔记《四》：SiamRPN++： Evolution of Siamese Visual Tracking with Very Deep Networks (SiamRPN++)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/02/20190602-SA-Siam/">目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-Siam-BM/">目标跟踪论文笔记《三》：Siam-BM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-ubuntu-strages/">Ubuntu 一些常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/30/20190530-inroomcoordinate/">基于全景图片进行室内定位</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/29/English-Words/">English_Words</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/20190528-Kalman-filter/">目标跟踪论文笔记《二》：A New Approach to Linear Filtering and Prediction Problems（卡尔曼滤波跟踪算法）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/27/20190527-PTS/">目标跟踪论文笔记《一》：Prediction-Tracking-Segmentation (PTS)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/26/20190526-trackingxinde/">目标跟踪论文--心得体会</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/25/如何写文献综述/">如何写文献综述</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/24/自定义标题样式/">自定义标题样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/23/HEXO博客语法/">HEXO博客语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/21/开干！-开干！！/">开干！ 开干！！</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2019 Hahastrong
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit">海贼到访数:
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit">本页阅读量:
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
