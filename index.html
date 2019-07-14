@@ -229,41 +229,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <a id="more"></a>
-<blockquote>
-<p>AOGNets: Compositional Grammatical Architectures for Deep Learning <a href="https://arxiv.org/abs/1711.05847" target="_blank" rel="noopener">论文地址</a></p>
-</blockquote>
-<h1 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h1><p>将语法模型和深度学习模型组合在一起，创造一种Deep Grammer Model。这种模型可以同时兼顾特征的探索和利用。</p>
-<h1 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h1><p>DNN网络主要通过网络结构工程来获得更好的性能，但是目前CNN网络缺乏足够结构层级。本文将语法结构与深度模型相结合，已获得更好的特征学习能力。</p>
-<h1 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h1><ol>
-<li>首先定义三种不同的语法模型运算操作，terminal-node，AND-node，OR-node。</li>
-</ol>
-<p><img src="/_posts/20190714-AOGnet/0714-1.png" alt></p>
-<div style="text-align: center;"><br><img src="/2019/07/14/20190714-AOGnet/0714-1.png" title="This is an image"><br></div>
-
-<ol start="2">
-<li>图的构造，基于上述三个规则采用下图所示算法</li>
-</ol>
-<p><img src="/_posts/20190714-AOGnet/0714-2.png" alt></p>
-<div style="text-align: center;"><br><img src="/2019/07/14/20190714-AOGnet/0714-2.png" title="This is an image"><br></div>
-
-<p>通过上述算法构造的图如下所示：</p>
-<p><img src="/_posts/20190714-AOGnet/0714-3.png" alt></p>
-<div style="text-align: center;"><br><img src="/2019/07/14/20190714-AOGnet/0714-3.png" title="This is an image"><br></div>
-
-<p>左边是构造出来的图，可以看出有些节点是冗余的。为了简化AOG模块，将一些冗余的节点进行裁剪。得到右图所示的最终AOG模块图。</p>
-<p>整个AOG网络有多个AOG模块组成，网络结构图如下所示：</p>
-<p><img src="/_posts/20190714-AOGnet/0714-4.png" alt></p>
-<div style="text-align: center;"><br><img src="/2019/07/14/20190714-AOGnet/0714-4.png" title="This is an image"><br></div>
-
-<h1 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h1><p><img src="/_posts/20190714-AOGnet/0714-5.png" alt></p>
-<div style="text-align: center;"><br><img src="/2019/07/14/20190714-AOGnet/0714-5.png" title="This is an image"><br></div>
-
-<p>上图所示是在数据集CIFAR上AOGnet与其他网络结构的性能对比，在相同网络参数或较少网络参数的情况下，AOGnet可以获得更低的错误率。<br>以上实验证明了语法模型和深度学习模型结合是可以提升网络特征提取能力。</p>
-<h1 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h1><ul>
-<li>近几年对卷积神经网络各种网络模型的探索，不管是从深度还是广度上，基本上已经充分挖掘卷积神经网络的潜力。在未来也许就是将卷积与其他模型相结合，进而提升网络特征学习能力。主要是学习不同层级的特征，添加一些复杂的链接，毕竟仅仅靠卷积是不能完全模仿人类的大脑的。</li>
-</ul>
-
+              将语法模型和深度学习模型组合在一起，创造一种Deep Grammer Model。这种模型可以同时兼顾特征的探索和利用。
+          
       
       
       
@@ -272,8 +239,16 @@
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/论文笔记/">论文笔记</a>
+    </div>
+
 
       
+      
+        <p class="article-more-link">
+          <a href="/2019/07/14/20190714-AOGnet/#more">查看全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
