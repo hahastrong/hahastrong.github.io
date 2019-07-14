@@ -5,17 +5,19 @@
   
   <title>python深度学习相关函数介绍 | hahastrong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="np.ceil 与 np.floornp.ceil该函数是向上取整，如-1.7，则变成-1；3.4则变成4.np.floor该函数是用于向下取整，如-1.7，变成-2；3.4变成3。">
+  <meta name="description" content="np.ceil 与 np.floornp.ceil该函数是向上取整，如-1.7，则变成-1；3.4则变成4.np.floor该函数是用于向下取整，如-1.7，变成-2；3.4变成3。 np.tile用于将某一向量重复多次。如np.tile(A, 2)，就是将向量A重复2次，按行叠加。 np.argsort()用于返回数组排序后的索引，默认是从小到大。如  x = np.array([3, 1,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python深度学习相关函数介绍">
 <meta property="og:url" content="http://haha-strong.com/2019/07/03/20190703-usingtorch/index.html">
 <meta property="og:site_name" content="hahastrong">
-<meta property="og:description" content="np.ceil 与 np.floornp.ceil该函数是向上取整，如-1.7，则变成-1；3.4则变成4.np.floor该函数是用于向下取整，如-1.7，变成-2；3.4变成3。">
+<meta property="og:description" content="np.ceil 与 np.floornp.ceil该函数是向上取整，如-1.7，则变成-1；3.4则变成4.np.floor该函数是用于向下取整，如-1.7，变成-2；3.4变成3。 np.tile用于将某一向量重复多次。如np.tile(A, 2)，就是将向量A重复2次，按行叠加。 np.argsort()用于返回数组排序后的索引，默认是从小到大。如  x = np.array([3, 1,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-03T13:45:16.022Z">
+<meta property="og:image" content="http://haha-strong.com/2019/07/03/20190703-usingtorch/0703-1.png">
+<meta property="og:updated_time" content="2019-07-11T12:08:41.150Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python深度学习相关函数介绍">
-<meta name="twitter:description" content="np.ceil 与 np.floornp.ceil该函数是向上取整，如-1.7，则变成-1；3.4则变成4.np.floor该函数是用于向下取整，如-1.7，变成-2；3.4变成3。">
+<meta name="twitter:description" content="np.ceil 与 np.floornp.ceil该函数是向上取整，如-1.7，则变成-1；3.4则变成4.np.floor该函数是用于向下取整，如-1.7，变成-2；3.4变成3。 np.tile用于将某一向量重复多次。如np.tile(A, 2)，就是将向量A重复2次，按行叠加。 np.argsort()用于返回数组排序后的索引，默认是从小到大。如  x = np.array([3, 1,">
+<meta name="twitter:image" content="http://haha-strong.com/2019/07/03/20190703-usingtorch/0703-1.png">
   
     <link rel="alternative" href="/atom.xml" title="hahastrong" type="application/atom+xml">
   
@@ -241,6 +243,29 @@
           
         <a id="more"></a>
 <h1 id="np-ceil-与-np-floor"><a href="#np-ceil-与-np-floor" class="headerlink" title="np.ceil 与 np.floor"></a>np.ceil 与 np.floor</h1><p>np.ceil该函数是向上取整，如-1.7，则变成-1；3.4则变成4.<br>np.floor该函数是用于向下取整，如-1.7，变成-2；3.4变成3。</p>
+<h1 id="np-tile"><a href="#np-tile" class="headerlink" title="np.tile"></a>np.tile</h1><p>用于将某一向量重复多次。<br>如np.tile(A, 2)，就是将向量A重复2次，按行叠加。</p>
+<h1 id="np-argsort"><a href="#np-argsort" class="headerlink" title="np.argsort()"></a>np.argsort()</h1><p>用于返回数组排序后的索引，默认是从小到大。<br>如</p>
+<blockquote>
+<p>x = np.array([3, 1, 2])<br> print(np.argsort(x))</p>
+</blockquote>
+<blockquote>
+<p>array([1, 2, 0])</p>
+</blockquote>
+<h1 id="np-hstack"><a href="#np-hstack" class="headerlink" title="np.hstack()"></a>np.hstack()</h1><p>在列的方向拼接矩阵<br>如</p>
+<blockquote>
+<p>x = array([1, 2, 3])<br>y = array([4, 5, 6])<br>print(np.hstack((x, y)))</p>
+</blockquote>
+<blockquote>
+<p>array([1, 2, 3, 4, 5, 6])</p>
+</blockquote>
+<blockquote>
+<p>x = array([ [1], [2], [3] ])<br>y = array([ [4], [5], [6] ])<br>print(np.hstack((x, y)))</p>
+</blockquote>
+<blockquote>
+<p>array([ [1,2 ],<br>          [3,4],<br>          [5,6]])</p>
+</blockquote>
+<h1 id="路径相关"><a href="#路径相关" class="headerlink" title="路径相关"></a>路径相关</h1><h2 id="命令行得到当前路径"><a href="#命令行得到当前路径" class="headerlink" title="命令行得到当前路径"></a>命令行得到当前路径</h2><p>os.getcwd()</p>
+<div style="text-align: center;"><br><img src="/2019/07/03/20190703-usingtorch/0703-1.png" title="This is an image"><br></div>
 
       
        
@@ -305,7 +330,7 @@
         <p><span>本文标题:</span><a href="/2019/07/03/20190703-usingtorch/">python深度学习相关函数介绍</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Hahastrong 的个人博客">Hahastrong</a></p>
         <p><span>发布时间:</span>2019年07月03日 - 21时01分</p>
-        <p><span>最后更新:</span>2019年07月03日 - 21时45分</p>
+        <p><span>最后更新:</span>2019年07月11日 - 20时08分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/07/03/20190703-usingtorch/" title="python深度学习相关函数介绍">http://haha-strong.com/2019/07/03/20190703-usingtorch/</a>
             <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/07/03/20190703-usingtorch/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -346,7 +371,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#np-ceil-与-np-floor"><span class="toc-number">1.</span> <span class="toc-text">np.ceil 与 np.floor</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#np-ceil-与-np-floor"><span class="toc-number">1.</span> <span class="toc-text">np.ceil 与 np.floor</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#np-tile"><span class="toc-number">2.</span> <span class="toc-text">np.tile</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#np-argsort"><span class="toc-number">3.</span> <span class="toc-text">np.argsort()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#np-hstack"><span class="toc-number">4.</span> <span class="toc-text">np.hstack()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#路径相关"><span class="toc-number">5.</span> <span class="toc-text">路径相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#命令行得到当前路径"><span class="toc-number">5.1.</span> <span class="toc-text">命令行得到当前路径</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
 
@@ -423,7 +448,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/07/05/20190705-BBRU/">论文分享：BBRU</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/03/20190703-introduce-torch/">介绍torch一些函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/03/20190703-usingtorch/">python深度学习相关函数介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/02/20190702-Tracking-Development/">转载：目标跟踪算法未来发展趋势</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/01/20190701-ACT/">论文分享《动作检测》：ACT</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/30/20190630-rundaily-1/">跑步圣经《一》：为何跑步？</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/28/20190628-TACNet/">论文分享：TACNet</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/26/20190626-KNN/">论文分享：KNN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/13/20190613-CSRDCF/">目标跟踪论文笔记《十二》：CSRDCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/20190612-daily0612/">小记之第一次刷LeetCode链表题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/20190612-FlowTrack/">目标跟踪论文笔记《十一》：FlowTrack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/20190611-STRCF/">目标跟踪论文笔记《十》：STRCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/20190611-SRDCF/">目标跟踪论文笔记《九》：SRDCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/ALLLEETCODE/">ALLLEETCODE</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/09/20190609-DaSiamRPN/">目标跟踪论文笔记《八》：DaSiamRPN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/09/20190609-SiamNet/">目标跟踪论文笔记《七》：SiamNet</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-C-RPN/">目标跟踪论文笔记《六》：C-RPN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-TADT/">目标跟踪论文笔记《五》：TADT</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/Achangnanju/">英语精读--长难句</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-LeetCode-2-addtwonums/">LeetCode <2>：add two nums</2></a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/20190607-zongjie/">小总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/20190607-LeetCode-twosum/">LeetCode <1>：twosum</1></a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/05/20190605-numpy/">20190605-numpy</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/20190604-SPM-Tracker/">目标跟踪论文笔记《四》：SPM-Tracker</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/03/20190603-SiamRPN/">目标跟踪论文笔记《四》：SiamRPN++： Evolution of Siamese Visual Tracking with Very Deep Networks (SiamRPN++)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/02/20190602-SA-Siam/">目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-Siam-BM/">目标跟踪论文笔记《三》：Siam-BM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-ubuntu-strages/">Ubuntu 一些常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/30/20190530-inroomcoordinate/">基于全景图片进行室内定位</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/29/English-Words/">English_Words</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/20190528-Kalman-filter/">目标跟踪论文笔记《二》：A New Approach to Linear Filtering and Prediction Problems（卡尔曼滤波跟踪算法）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/27/20190527-PTS/">目标跟踪论文笔记《一》：Prediction-Tracking-Segmentation (PTS)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/26/20190526-trackingxinde/">目标跟踪论文--心得体会</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/25/如何写文献综述/">如何写文献综述</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/24/自定义标题样式/">自定义标题样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/23/HEXO博客语法/">HEXO博客语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/21/开干！-开干！！/">开干！ 开干！！</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/07/14/20190714-AOGnet/">20190714-AOGnet</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/09/20190709-GARP/">论文分享：GAPR</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/07/VScodetips/">VS code操作小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/05/20190705-BBRU/">论文分享：BBRU</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/03/20190703-introduce-torch/">介绍torch一些函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/03/20190703-usingtorch/">python深度学习相关函数介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/02/20190702-Tracking-Development/">转载：目标跟踪算法未来发展趋势</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/01/20190701-ACT/">论文分享《动作检测》：ACT</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/30/201980707-rundaily-2/">跑步圣经《二》：跑步的准备工作以及女性、老人、小孩该如何跑</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/30/20190630-rundaily-1/">跑步圣经《一》：为何跑步？</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/28/20190628-TACNet/">论文分享：TACNet</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/26/20190626-KNN/">论文分享：KNN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/13/20190613-CSRDCF/">目标跟踪论文笔记《十二》：CSRDCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/20190612-daily0612/">小记之第一次刷LeetCode链表题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/20190612-FlowTrack/">目标跟踪论文笔记《十一》：FlowTrack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/20190611-STRCF/">目标跟踪论文笔记《十》：STRCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/20190611-SRDCF/">目标跟踪论文笔记《九》：SRDCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/ALLLEETCODE/">ALLLEETCODE</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/09/20190609-DaSiamRPN/">目标跟踪论文笔记《八》：DaSiamRPN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/09/20190609-SiamNet/">目标跟踪论文笔记《七》：SiamNet</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-C-RPN/">目标跟踪论文笔记《六》：C-RPN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-TADT/">目标跟踪论文笔记《五》：TADT</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/Achangnanju/">英语精读--长难句</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-LeetCode-2-addtwonums/">LeetCode <2>：add two nums</2></a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/20190607-zongjie/">小总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/20190607-LeetCode-twosum/">LeetCode <1>：twosum</1></a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/05/20190605-numpy/">20190605-numpy</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/20190604-SPM-Tracker/">目标跟踪论文笔记《四》：SPM-Tracker</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/03/20190603-SiamRPN/">目标跟踪论文笔记《四》：SiamRPN++： Evolution of Siamese Visual Tracking with Very Deep Networks (SiamRPN++)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/02/20190602-SA-Siam/">目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-Siam-BM/">目标跟踪论文笔记《三》：Siam-BM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-ubuntu-strages/">Ubuntu 一些常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/30/20190530-inroomcoordinate/">基于全景图片进行室内定位</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/29/English-Words/">English_Words</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/20190528-Kalman-filter/">目标跟踪论文笔记《二》：A New Approach to Linear Filtering and Prediction Problems（卡尔曼滤波跟踪算法）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/27/20190527-PTS/">目标跟踪论文笔记《一》：Prediction-Tracking-Segmentation (PTS)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/26/20190526-trackingxinde/">目标跟踪论文--心得体会</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/25/如何写文献综述/">如何写文献综述</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/24/自定义标题样式/">自定义标题样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/23/HEXO博客语法/">HEXO博客语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/21/开干！-开干！！/">开干！ 开干！！</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
