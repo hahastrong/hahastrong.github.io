@@ -3,19 +3,28 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>如何写文献综述 | hahastrong</title>
+  <title>目标跟踪论文笔记《十二》：SiamMask | hahastrong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="怎么写Literature review（文献综述）？ - 罗浩.ZJU的回答 - 知乎https://www.zhihu.com/question/303494762/answer/555476024  我来给刚做科研的新人增加一点信心，题主问的只是英语课程大作业的文献综述吧。很多回答都说只有大牛可以写综述，这一点我是赞同，但是我想说的是文献综述和综述论文是有区别的。文献综述可以是学位论文里的">
+  <meta name="description" content="在SiamFC或SiamRPN的基础上添加一个语义分割分支，提升目标的边框精度。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何写文献综述">
-<meta property="og:url" content="http://haha-strong.com/2019/05/25/如何写文献综述/index.html">
+<meta property="og:title" content="目标跟踪论文笔记《十二》：SiamMask">
+<meta property="og:url" content="http://haha-strong.com/2019/07/15/20190715-SiamMask/index.html">
 <meta property="og:site_name" content="hahastrong">
-<meta property="og:description" content="怎么写Literature review（文献综述）？ - 罗浩.ZJU的回答 - 知乎https://www.zhihu.com/question/303494762/answer/555476024  我来给刚做科研的新人增加一点信心，题主问的只是英语课程大作业的文献综述吧。很多回答都说只有大牛可以写综述，这一点我是赞同，但是我想说的是文献综述和综述论文是有区别的。文献综述可以是学位论文里的">
+<meta property="og:description" content="在SiamFC或SiamRPN的基础上添加一个语义分割分支，提升目标的边框精度。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-26T14:04:01.594Z">
+<meta property="og:image" content="http://haha-strong.com/_posts/20190715-SiamMask/0715-1.png">
+<meta property="og:image" content="http://haha-strong.com/2019/07/15/20190715-SiamMask/0715-1.png">
+<meta property="og:image" content="http://haha-strong.com/_posts/20190715-SiamMask/0715-2.png">
+<meta property="og:image" content="http://haha-strong.com/2019/07/15/20190715-SiamMask/0715-2.png">
+<meta property="og:image" content="http://haha-strong.com/_posts/20190715-SiamMask/0715-3.png">
+<meta property="og:image" content="http://haha-strong.com/2019/07/15/20190715-SiamMask/0715-3.png">
+<meta property="og:image" content="http://haha-strong.com/_posts/20190715-SiamMask/0715-4.png">
+<meta property="og:image" content="http://haha-strong.com/2019/07/15/20190715-SiamMask/0715-4.png">
+<meta property="og:updated_time" content="2019-07-15T12:07:17.795Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何写文献综述">
-<meta name="twitter:description" content="怎么写Literature review（文献综述）？ - 罗浩.ZJU的回答 - 知乎https://www.zhihu.com/question/303494762/answer/555476024  我来给刚做科研的新人增加一点信心，题主问的只是英语课程大作业的文献综述吧。很多回答都说只有大牛可以写综述，这一点我是赞同，但是我想说的是文献综述和综述论文是有区别的。文献综述可以是学位论文里的">
+<meta name="twitter:title" content="目标跟踪论文笔记《十二》：SiamMask">
+<meta name="twitter:description" content="在SiamFC或SiamRPN的基础上添加一个语义分割分支，提升目标的边框精度。">
+<meta name="twitter:image" content="http://haha-strong.com/_posts/20190715-SiamMask/0715-1.png">
   
     <link rel="alternative" href="/atom.xml" title="hahastrong" type="application/atom+xml">
   
@@ -203,11 +212,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-如何写文献综述" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-20190715-SiamMask" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/05/25/如何写文献综述/" class="article-date">
-      <time datetime="2019-05-25T11:42:03.000Z" itemprop="datePublished">2019-05-25</time>
+      <a href="/2019/07/15/20190715-SiamMask/" class="article-date">
+      <time datetime="2019-07-15T11:22:40.000Z" itemprop="datePublished">2019-07-15</time>
 </a>
     </div>
   
@@ -218,7 +227,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      如何写文献综述
+      目标跟踪论文笔记《十二》：SiamMask
     </h1>
   
 
@@ -227,7 +236,7 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/论文相关/">论文相关</a>
+    <a class="article-category-link" href="/categories/目标跟踪/">目标跟踪</a>
     </div>
 
 
@@ -239,20 +248,32 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <blockquote>
-<p>怎么写Literature review（文献综述）？ - 罗浩.ZJU的回答 - 知乎<br><a href="https://www.zhihu.com/question/303494762/answer/555476024" target="_blank" rel="noopener">https://www.zhihu.com/question/303494762/answer/555476024</a></p>
+        <a id="more"></a>
+<blockquote>
+<p>Fast Online Object Tracking and Segmentation: A Unifying Approach <a href="https://arxiv.org/abs/1812.05050" target="_blank" rel="noopener">论文地址</a></p>
 </blockquote>
-<p>我来给刚做科研的新人增加一点信心，题主问的只是英语课程大作业的文献综述吧。很多回答都说只有大牛可以写综述，这一点我是赞同，但是我想说的是<strong>文献综述和综述论文是有区别的</strong>。文献综述可以是学位论文里的研究现状，可以是小论文的introduction 和related work，即使刚入门的小白也可以大胆地去写，而且十分有必要去写。而发表在期刊的顶级综述论文（Review,survey ）是在一个领域研究颇深的研究员才能写。<br></p>
-<a id="more"></a>
-<p>先说文献综述的意义再说怎么写综述。我一般会让师弟师妹们定了课题之后第一件事是写综述，一个考虑是强迫他们去看更多的论文，另一个方面是看看他们归纳总结的能力以及科研的悟性或者天赋，最后一个就是希望他们能够自己独立思考出自己课题的发展脉络和自己课题当前的challenge。有一类学术现象是导师给研究新人idea并且验证work，这种新人有可能并没有做一次系统综述调研，所以在写论文的时候特别容易写不清motivation或者讲不好故事，因为他很可能不知道自己研究课题的脉络以及难点在哪，所以不能准确的切入到课题的痛点来提炼自己的motivation。比如把视野局限在改进了某一个方法的某一个缺陷，因为导师可能只给了他这一篇论文。但是这个缺陷可能是某一类方法甚至整个领域的通病，这个写作起来视野上就不一样了。<br></p>
-<p>然后关于如何写文献综述，个人不成熟的见解是，综述分为三个境界，每个境界都有不同的写作特点：<br>1、第一个境界是单点罗列，这是新手的入门阶段，这个可能是课程作业、本科学位论文和一般的硕士学位论文。这个阶段的特点是每篇文章是一个点，综述是点的罗列。作者可能只能<strong>把每个工作堆叠在一起，每个工作用一个简单的小段描述</strong>，可以按照一定格式的展开：某某年，某某人提出了某某方法，该方法主要利用了某某手段解决了某某问题/方法的某某缺陷，最终在某某数据集/实验上提高了多少准确度（或者其他描述实验效果的句子）。大体的成分会包括方法名称、作者、年份、解决的问题、解决的思路、实验效果/结论等等。这种写法能看到清晰的分界线，每个方法都是独立的一个小点，很多人第一次写综述可能会写成这种形式。但是这做到了综述的最基本的要求，用最精炼的话提炼出一个工作的核心部分。<br></p>
-<p>2、第二个境界是点点成线，这是已经入门了的研究生阶段，这个阶段的可能是优秀的硕士论文和博士学位论文，以及发表的小论文的related work部分。这个阶段的作者已经阅读了很多领域的文献，并且汇入了自己的思考, <strong>可以找到各个工作的共性，按照共性对方法进行分类。</strong> 可以看到综述中各个段落线性共存，每个线里面都是完整的点点脉络。比如我之前写的综述博文经典的段落分类：基于A的方法，基于B的方法，基于C的方法。每个段落拿出来都是独立的，在段落内可以看到每个方法的关系和发展脉络。在综述里面可以有ABCDEF类，作者可以根据自己当前小论文的主题在related work里面挑选几类甚至对点进行重新聚类出新的GH。这个是一个博士应该达到的基本能力。<br></p>
-<p>3、第三个境界是线线成面、贯通古今，这是前面提到的大师（资深的研究员）才能写的综述，这种综述需要在一个领域里面耕耘很久很久。作者不仅能够清晰地找到点与点之间的共性形成线，还能挖掘线与线之间的相爱相杀。不同类别方法诞生的源头与理由、各自的优缺点、隐藏的关系、发展脉络等等都能够提炼出来。作者可能比这个研究领域活的还长，看到了整个领域的发展进程。并且作者用自己的思辨为综述注入了灵魂，两个作者利用同一批文献可能写出两篇不一样的综述，因为他们注入的灵魂是不一样的。作者会通过综述来 <strong>还原领域的发展进程，当前研究的难点，并提出未来的发展方向，去指引后世的研究者。</strong> 并且作者会用一张图表去展现大量的信息，所谓一图胜千言。<br></p>
-<p>综上， <strong>第一境界需要的是读懂，第二境界需要的是归纳，第三境界需要的是思辨。</strong> 对于新人而言， <strong>最简单的方式就是去模仿</strong> ，模仿名校博士学位论文。在 <strong>阅读大量文献之后</strong> 就可以进入第一境界，在一定的研究积累之后就可以进入第二境界，通过很长时间的耕耘，最终也不知道能不能进入第三境界。题主只需要达到一、二境界就可以交差大作业了。<br></p>
-<p>要想进入第一、二境界，六句真言：<br></p>
-<p>三分靠天赋，七分靠努力；<br></p>
-<p>剩下九十分，就要靠模仿；<br></p>
-<p>还有九百分，买个论文架。<br></p>
+<h1 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h1><p>在SiamFC或SIamRPN的基础上添加一个用于分割目标的语义分割分支，提高目标边框的预测精度。</p>
+<h1 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h1><p>得益于SiamNet网络架构的简洁性，基于SiamNet的跟踪算法可以在保持跟踪精度的情况下取得较高的跟踪速度。目前最新的基于SiamNet框架的跟踪算法性能已经超过基于相关滤波的算法。但是此类算法大多是直接目标的位置或者轴平行的边框，因而在IoU性能上还有些提升的空间。本文提出将语义分割算法引入到该框架中，不仅预测出目标的位置，同时预测出每个位置下的目标语义分割图，进而提升目标边框的预测精度。</p>
+<h1 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h1><p><img src="/_posts/20190715-SiamMask/0715-1.png" alt></p>
+<div style="text-align: center;"><br><img src="/2019/07/15/20190715-SiamMask/0715-1.png" title="This is an image"><br></div>
+
+<p>上图所示就是本文提出的算法框架图。在target特征与候选特征进行卷积后有三个或者两个不同功能的预测分支。</p>
+<p>下图所示为mask预测分支</p>
+<p><img src="/_posts/20190715-SiamMask/0715-2.png" alt></p>
+<div style="text-align: center;"><br><img src="/2019/07/15/20190715-SiamMask/0715-2.png" title="This is an image"><br></div>
+
+<p>上图中的U是refinement模块，只要用来融合不同层的特征，提升mask语义标签的精确度。最终该分支的输出为17<em>17</em>(63*63)<br>mask响应图如下所示：</p>
+<p><img src="/_posts/20190715-SiamMask/0715-3.png" alt></p>
+<div style="text-align: center;"><br><img src="/2019/07/15/20190715-SiamMask/0715-3.png" title="This is an image"><br></div>
+
+<p>总共有17*17个大方格，每个放方格代表该位置上预测的mask标签图。<br>从上图可以看出在目标位置附近的mask更准确。</p>
+<h1 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h1><p><img src="/_posts/20190715-SiamMask/0715-4.png" alt></p>
+<div style="text-align: center;"><br><img src="/2019/07/15/20190715-SiamMask/0715-4.png" title="This is an image"><br></div>
+
+<p>上图所示为在测试集VOT-2018上的各个算法结果。本文提出的siammask以及他的变种都取得最佳成绩，同时速度也达到实时性的要求。</p>
+<h1 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h1><ul>
+<li>目前简单的预测目标位置或者边框的方法已经无法在提升IoU性能，作者提出使用语义标签来提升目标的边框预测能力，进而提升IoU性能。目标跟踪算法逐渐与其他领域方法相融合，进而提升算法的某一种性能。</li>
+</ul>
 
       
        
@@ -314,13 +335,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/05/25/如何写文献综述/">如何写文献综述</a></p>
+        <p><span>本文标题:</span><a href="/2019/07/15/20190715-SiamMask/">目标跟踪论文笔记《十二》：SiamMask</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Hahastrong 的个人博客">Hahastrong</a></p>
-        <p><span>发布时间:</span>2019年05月25日 - 19时42分</p>
-        <p><span>最后更新:</span>2019年05月26日 - 22时04分</p>
+        <p><span>发布时间:</span>2019年07月15日 - 19时22分</p>
+        <p><span>最后更新:</span>2019年07月15日 - 20时07分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/05/25/如何写文献综述/" title="如何写文献综述">http://haha-strong.com/2019/05/25/如何写文献综述/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/05/25/如何写文献综述/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/07/15/20190715-SiamMask/" title="目标跟踪论文笔记《十二》：SiamMask">http://haha-strong.com/2019/07/15/20190715-SiamMask/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/07/15/20190715-SiamMask/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -333,18 +354,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/05/26/20190526-trackingxinde/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          目标跟踪论文--心得体会
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/05/24/自定义标题样式/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">自定义标题样式</div>
+    <a href="/2019/07/14/20190714-AOGnet/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">论文分享：AOGnet</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -358,7 +370,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#算法思路"><span class="toc-number">1.</span> <span class="toc-text">算法思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#motivation"><span class="toc-number">2.</span> <span class="toc-text">motivation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#做法"><span class="toc-number">3.</span> <span class="toc-text">做法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#性能"><span class="toc-number">4.</span> <span class="toc-text">性能</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Thoughts"><span class="toc-number">5.</span> <span class="toc-text">Thoughts</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
 
@@ -424,13 +436,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/05/26/20190526-trackingxinde/" title="上一篇: 目标跟踪论文--心得体会">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2019/05/24/自定义标题样式/" title="下一篇: 自定义标题样式">
+            <a href="/2019/07/14/20190714-AOGnet/" title="下一篇: 论文分享：AOGnet">
                 <i class="fa fa-angle-right"></i>
             </a>
         
