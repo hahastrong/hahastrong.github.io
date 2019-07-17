@@ -3,25 +3,21 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>目标跟踪论文笔记《八》：DaSiamRPN | hahastrong</title>
+  <title>clean | hahastrong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="去除相似目标的影响，有效地提高了跟踪精度">
-<meta name="keywords" content="论文笔记,SiamNet,201808">
+  <meta name="description" content="算法思路  motivation做法Thoughts">
 <meta property="og:type" content="article">
-<meta property="og:title" content="目标跟踪论文笔记《八》：DaSiamRPN">
-<meta property="og:url" content="http://haha-strong.com/2019/06/09/20190609-DaSiamRPN/index.html">
+<meta property="og:title" content="clean">
+<meta property="og:url" content="http://haha-strong.com/2019/07/17/clean/index.html">
 <meta property="og:site_name" content="hahastrong">
-<meta property="og:description" content="去除相似目标的影响，有效地提高了跟踪精度">
+<meta property="og:description" content="算法思路  motivation做法Thoughts">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://haha-strong.com/2019/06/09/20190609-DaSiamRPN/0609-1.png">
-<meta property="og:image" content="http://haha-strong.com/2019/06/09/20190609-DaSiamRPN/0609-2.png">
-<meta property="og:image" content="http://haha-strong.com/2019/06/09/20190609-DaSiamRPN/0609-3.png">
-<meta property="og:image" content="http://haha-strong.com/2019/06/09/20190609-DaSiamRPN/0609-4.png">
-<meta property="og:updated_time" content="2019-06-09T13:03:29.356Z">
+<meta property="og:image" content="http://haha-strong.com/_posts/20190709-GAPR/0709-1.png">
+<meta property="og:updated_time" content="2019-07-17T13:04:27.386Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="目标跟踪论文笔记《八》：DaSiamRPN">
-<meta name="twitter:description" content="去除相似目标的影响，有效地提高了跟踪精度">
-<meta name="twitter:image" content="http://haha-strong.com/2019/06/09/20190609-DaSiamRPN/0609-1.png">
+<meta name="twitter:title" content="clean">
+<meta name="twitter:description" content="算法思路  motivation做法Thoughts">
+<meta name="twitter:image" content="http://haha-strong.com/_posts/20190709-GAPR/0709-1.png">
   
     <link rel="alternative" href="/atom.xml" title="hahastrong" type="application/atom+xml">
   
@@ -209,11 +205,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-20190609-DaSiamRPN" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-clean" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/06/09/20190609-DaSiamRPN/" class="article-date">
-      <time datetime="2019-06-09T12:06:56.000Z" itemprop="datePublished">2019-06-09</time>
+      <a href="/2019/07/17/clean/" class="article-date">
+      <time datetime="2019-07-17T13:04:27.000Z" itemprop="datePublished">2019-07-17</time>
 </a>
     </div>
   
@@ -224,7 +220,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      目标跟踪论文笔记《八》：DaSiamRPN
+      clean
     </h1>
   
 
@@ -232,16 +228,8 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/目标检测/">目标检测</a>
-    </div>
-
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/201808/">201808</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SiamNet/">SiamNet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文笔记/">论文笔记</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -250,34 +238,9 @@
       
           
         <a id="more"></a>
-<blockquote>
-<p>Distractor-aware Siamese Networks for Visual Object Tracking <a href="https://arxiv.org/abs/1808.06048" target="_blank" rel="noopener">论文地址</a></p>
-</blockquote>
-<h1 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h1><p>采用不同的训练数据集平衡类间、类内样本不平衡问题。提出Distractor-aware incremental learning策略，在预测目标的位置时考虑distractor目标带来的负面影响并将其提出。并对target template和distractor template以$\beta_t$的学习率更新模板。</p>
-<h1 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h1><p>大多数Siam网络都是在不具有语义信息特征的样本上进行学习训练的，因而对distractor不具有较强的分辨力，即训练样本正负不均衡带来的影响。</p>
-<h1 id="本文贡献"><a href="#本文贡献" class="headerlink" title="本文贡献"></a>本文贡献</h1><blockquote>
-<ol>
-<li>分析常见的Siam网络训练数据的缺点，不含语义和含语义背景的样本分布不均。<br><br></li>
-<li>提出DaSiamRPN用于学习distractor-aware特征，从而在跟踪时抑制相似特征的影响。<br><br></li>
-<li>将DaSiamRPN扩展到长时跟踪中，通过local-to-global策略有效地解决了目标不在视线中以及完全遮挡的情况。</li>
-</ol>
-</blockquote>
-<h1 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h1><h2 id="针对数据分布不均"><a href="#针对数据分布不均" class="headerlink" title="针对数据分布不均"></a>针对数据分布不均</h2><p>作者额外使用了Youtube-BB数据集，该数据集包含超过200,000个视频，同时还使用COCO Detection数据集通过数据扩充的方法增加类间样本。几种样本如下所示：</p>
-<div style="text=align: center;"><br><img src="/2019/06/09/20190609-DaSiamRPN/0609-1.png" title="This is an image"><br></div>
-
-<h2 id="Distractor-aware-Incremental-Learning"><a href="#Distractor-aware-Incremental-Learning" class="headerlink" title="Distractor-aware Incremental Learning"></a>Distractor-aware Incremental Learning</h2><p>仅仅通过上述得到数据扩充还不能抑制distractor问题，为了完全利用标签信息，将目标背景下的难负样本（distractor）集成到相似性测量尺度中。<br>具体做法如下：</p>
-<blockquote>
-<p>在某帧$t$，响应最大的proposal选为目标$z_l$，对于其他的proposal，响应值大于某个阈值的选为distractor。</p>
-<p>引入一个distractor-aware目标函数对所有proposal重新排序选取最高的k个。函数如下所示：</p>
-<div style="text=align: center;"><br><img src="/2019/06/09/20190609-DaSiamRPN/0609-2.png" title="This is an image"><br></div><br> <br><br> 同时也对target template进行更新<br><br> <div style="text=align: center;"><br><img src="/2019/06/09/20190609-DaSiamRPN/0609-3.png" title="This is an image"><br></div>
-</blockquote>
-<h2 id="长时跟踪"><a href="#长时跟踪" class="headerlink" title="长时跟踪"></a>长时跟踪</h2><p>上一部分提出的distractor-aware部分可以增加响应分数的可信度，因此将跟踪结果作为是否跟丢目标的指标。当目标跟丢时就扩大搜索框大小。<br>尝试跟踪效果图如下所示</p>
-<p><div style="text=align: center;"><br><img src="/2019/06/09/20190609-DaSiamRPN/0609-4.png" title="This is an image"><br></div><br>SiamRPN（左图）跟丢目标时分数仍很高，导致tracker无法及时调整搜索框，而DaSiamRPN（右图）在跟丢目标时分数会随之下降，启动local-to-global策略扩大搜索框，最终再次跟踪上目标。</p>
-<h1 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h1><ul>
-<li>引入更多的训练数据可以提高tracker的跟踪性能</li>
-<li>对于distractor目标，以其人之道还其人之身的方法解决，直接使用该目标的特征进行抵消。万一distractor突然出现在某一帧的话，岂不是全军覆没。。。。。。。</li>
-</ul>
-
+<h1 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h1><p><img src="/_posts/20190709-GAPR/0709-1.png" alt></p>
+<p><div style="text-align: center;"><br><br></div></p>
+<h1 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h1><h1 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h1><h1 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h1>
       
        
         <div>
@@ -338,13 +301,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/06/09/20190609-DaSiamRPN/">目标跟踪论文笔记《八》：DaSiamRPN</a></p>
+        <p><span>本文标题:</span><a href="/2019/07/17/clean/">clean</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Hahastrong 的个人博客">Hahastrong</a></p>
-        <p><span>发布时间:</span>2019年06月09日 - 20时06分</p>
-        <p><span>最后更新:</span>2019年06月09日 - 21时03分</p>
+        <p><span>发布时间:</span>2019年07月17日 - 21时04分</p>
+        <p><span>最后更新:</span>2019年07月17日 - 21时04分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/06/09/20190609-DaSiamRPN/" title="目标跟踪论文笔记《八》：DaSiamRPN">http://haha-strong.com/2019/06/09/20190609-DaSiamRPN/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/06/09/20190609-DaSiamRPN/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/07/17/clean/" title="clean">http://haha-strong.com/2019/07/17/clean/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/07/17/clean/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -357,18 +320,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/06/11/ALLLEETCODE/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          ALLLEETCODE
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/09/20190609-SiamNet/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">目标跟踪论文笔记《七》：SiamNet</div>
+    <a href="/2019/07/17/20190717-ExtremeNet/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">论文笔记《目标检测》：ExtremeNet</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -382,7 +336,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#算法思路"><span class="toc-number">1.</span> <span class="toc-text">算法思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#motivation"><span class="toc-number">2.</span> <span class="toc-text">motivation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#本文贡献"><span class="toc-number">3.</span> <span class="toc-text">本文贡献</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#做法"><span class="toc-number">4.</span> <span class="toc-text">做法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#针对数据分布不均"><span class="toc-number">4.1.</span> <span class="toc-text">针对数据分布不均</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Distractor-aware-Incremental-Learning"><span class="toc-number">4.2.</span> <span class="toc-text">Distractor-aware Incremental Learning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#长时跟踪"><span class="toc-number">4.3.</span> <span class="toc-text">长时跟踪</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Thoughts"><span class="toc-number">5.</span> <span class="toc-text">Thoughts</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#算法思路"><span class="toc-number">1.</span> <span class="toc-text">算法思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#motivation"><span class="toc-number">2.</span> <span class="toc-text">motivation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#做法"><span class="toc-number">3.</span> <span class="toc-text">做法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Thoughts"><span class="toc-number">4.</span> <span class="toc-text">Thoughts</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
 
@@ -448,13 +402,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/06/11/ALLLEETCODE/" title="上一篇: ALLLEETCODE">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2019/06/09/20190609-SiamNet/" title="下一篇: 目标跟踪论文笔记《七》：SiamNet">
+            <a href="/2019/07/17/20190717-ExtremeNet/" title="下一篇: 论文笔记《目标检测》：ExtremeNet">
                 <i class="fa fa-angle-right"></i>
             </a>
         
