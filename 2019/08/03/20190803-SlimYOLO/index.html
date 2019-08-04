@@ -3,23 +3,25 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>小总结 | hahastrong</title>
+  <title>论文分享：目标检测-SlimYOLO | hahastrong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="小总结-20190607">
+  <meta name="description" content="由于无人机平台数据处理能力较弱以及内存较小，无法直接使用现有的性能好但网络系数较大的神经网络。如何将现有神经网络算法在不损失精度的情况下进行瘦身仍是一个问题。本文通过卷积通道裁剪来训练一个高效的深度目标检测网络。通过对通道尺度因子添加一个卷积通道层面上的稀疏学习，将那些只含少量信息的卷积通道裁剪从而达到网络瘦身的目的。">
+<meta name="keywords" content="论文笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小总结">
-<meta property="og:url" content="http://haha-strong.com/2019/06/07/20190607-zongjie/index.html">
+<meta property="og:title" content="论文分享：目标检测-SlimYOLO">
+<meta property="og:url" content="http://haha-strong.com/2019/08/03/20190803-SlimYOLO/index.html">
 <meta property="og:site_name" content="hahastrong">
-<meta property="og:description" content="小总结-20190607">
+<meta property="og:description" content="由于无人机平台数据处理能力较弱以及内存较小，无法直接使用现有的性能好但网络系数较大的神经网络。如何将现有神经网络算法在不损失精度的情况下进行瘦身仍是一个问题。本文通过卷积通道裁剪来训练一个高效的深度目标检测网络。通过对通道尺度因子添加一个卷积通道层面上的稀疏学习，将那些只含少量信息的卷积通道裁剪从而达到网络瘦身的目的。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://haha-strong.com/2019/06/07/20190607-zongjie/0607-1.jpg">
-<meta property="og:image" content="http://haha-strong.com/2019/06/07/20190607-zongjie/0607-2.jpg">
-<meta property="og:image" content="http://haha-strong.com/2019/06/07/20190607-zongjie/0607-3.jpg">
-<meta property="og:updated_time" content="2019-06-09T12:08:37.958Z">
+<meta property="og:image" content="http://haha-strong.com/_posts/20190803-SlimYOLO/0803-1.png">
+<meta property="og:image" content="http://haha-strong.com/2019/08/03/20190803-SlimYOLO/0803-1.png">
+<meta property="og:image" content="http://haha-strong.com/_posts/20190803-SlimYOLO/0803-2.png">
+<meta property="og:image" content="http://haha-strong.com/2019/08/03/20190803-SlimYOLO/0803-2.png">
+<meta property="og:updated_time" content="2019-08-03T14:18:41.989Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小总结">
-<meta name="twitter:description" content="小总结-20190607">
-<meta name="twitter:image" content="http://haha-strong.com/2019/06/07/20190607-zongjie/0607-1.jpg">
+<meta name="twitter:title" content="论文分享：目标检测-SlimYOLO">
+<meta name="twitter:description" content="由于无人机平台数据处理能力较弱以及内存较小，无法直接使用现有的性能好但网络系数较大的神经网络。如何将现有神经网络算法在不损失精度的情况下进行瘦身仍是一个问题。本文通过卷积通道裁剪来训练一个高效的深度目标检测网络。通过对通道尺度因子添加一个卷积通道层面上的稀疏学习，将那些只含少量信息的卷积通道裁剪从而达到网络瘦身的目的。">
+<meta name="twitter:image" content="http://haha-strong.com/_posts/20190803-SlimYOLO/0803-1.png">
   
     <link rel="alternative" href="/atom.xml" title="hahastrong" type="application/atom+xml">
   
@@ -207,11 +209,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-20190607-zongjie" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-20190803-SlimYOLO" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/06/07/20190607-zongjie/" class="article-date">
-      <time datetime="2019-06-07T13:56:54.000Z" itemprop="datePublished">2019-06-07</time>
+      <a href="/2019/08/03/20190803-SlimYOLO/" class="article-date">
+      <time datetime="2019-08-03T13:49:08.000Z" itemprop="datePublished">2019-08-03</time>
 </a>
     </div>
   
@@ -222,7 +224,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      小总结
+      论文分享：目标检测-SlimYOLO
     </h1>
   
 
@@ -230,8 +232,16 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/目标检测/">目标检测</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文笔记/">论文笔记</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -240,28 +250,19 @@
       
           
         <a id="more"></a>
-<p>期末考快到了，大作业也随之而来。<br>这次机器视觉的大作业很要命，看20篇文献写个综述。<br>还好之前看了几篇CV相关的文献，不然14天之内怎么能看得完加写好综述。。。。</p>
-<p>列列我近期的打算：</p>
-<ul>
-<li>看20篇文献并写个4000字的综述</li>
-<li>刷LeetCode</li>
-<li>阅读原著30分钟</li>
-<li>每日整理一句长难句</li>
-<li><p>刷统计学习方法</p>
-<img src="/2019/06/07/20190607-zongjie/0607-1.jpg" title="This is an image">
-</li>
-<li><p>学习算法导论</p>
-<img src="/2019/06/07/20190607-zongjie/0607-2.jpg" title="This is an image">
-</li>
-<li><p>学习C++</p>
-<img src="/2019/06/07/20190607-zongjie/0607-3.jpg" title="This is an image">
-</li>
-</ul>
 <blockquote>
-<p>以上这些计划有些事相辅相成的，比如再刷LeetCode的同时可以巩固c++语法知识，也会用到算法的知识，举一反三。哈哈哈哈哈哈</p>
+<p>SlimYOLOv3: Narrower, Faster and Better for Real-Time UAV Applications <a href="https://arxiv.org/abs/1907.11093" target="_blank" rel="noopener">论文地址</a></p>
 </blockquote>
-<p>具体的时间该怎么划分呢？<br><strong>具体问题得具体分析！！！</strong><br>阅读与整理长难句属于日常操作，所以无需多加计划。<strong>只需每日提醒自己</strong>即可。（阅读花费时间： 30min，长难句花费时间：20min）<br><strong>LeetCode</strong> 需每周刷两题，周一周四各一题。每周二周五需要将下一次LeetCode题打印下来，提前看看，平时想想解题思路。（每题花费时间：1h）<br><strong>统计学习方法</strong> 有两个多月没看了。。。。这次暂且每周一章，周二学习做笔记，周三笔记做成博客形式。（每次花费时间：~2h）<br><strong>算法导论</strong> 大块头！！！ 每周三周六看20页并做笔记即可。（每次花费时间：1h）</p>
-<p>那20篇文献，每篇需要花费时间：2h，总共花费时间：40h。每天看两篇，还需看6天。每篇论文做笔记需30min。<br>每天固定花费时间大概是7h，一天有效学习也就7h。。。。其他时间就看看杂书吧。再刷刷微博。。溜溜星球。。。跑跑步吧！</p>
+<h1 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h1><p>根据每个卷积层后面BN层scale factor大小判断该层的贡献率，在不影响整个网络性能的同时去掉贡献率小的卷积层，达到网络瘦身的效果。</p>
+<h1 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h1><p>由于无人机平台数据处理能力较弱以及内存较小，无法直接使用现有的性能好但网络系数较大的神经网络。如何将现有神经网络算法在不损失精度的情况下进行瘦身仍是一个问题。</p>
+<h1 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h1><p>本文通过卷积通道裁剪来训练一个高效的深度目标检测网络。通过对通道尺度因子添加一个卷积通道层面上的稀疏学习，将那些只含少量信息的卷积通道裁剪从而达到网络瘦身的目的。</p>
+<p><img src="/_posts/20190803-SlimYOLO/0803-1.png" alt></p>
+<div style="text-align: center;"><br><img src="/2019/08/03/20190803-SlimYOLO/0803-1.png" title="This is an image"><br></div><br>整个网络瘦身过程如上图所示，首先得到一个训练好的网络，然后评估网络每个卷积层的重要性，然后将那些不重要的卷积层去掉。再进行微调网络，接着测试网络的性能，如果性能降低太多则继续减枝；如果性能满足要求则停止减枝保存该模型。<br><br># 性能<br><br><img src="/_posts/20190803-SlimYOLO/0803-2.png" alt><br><br><br><div style="text-align: center;"><br><img src="/2019/08/03/20190803-SlimYOLO/0803-2.png" title="This is an image"><br></div>
+
+<p>上图所示是YOLOv3与不同裁剪率的SlimYOLOv3性能对比。<br>可以看出裁剪率为50的模型跟未裁剪的性能差不多，但是网络系数少了一半。裁剪率为90的模型在网络大小减少85%d的情况下获得未裁剪差不多的性能。</p>
+<h1 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h1><ul>
+<li>专家手动设计的网路模型，虽然性能优异，但是并不是所有的卷积层都对高性能的结果有突出贡献。只有部分通道的卷积提取的特征对实验组中结果有作用。因此可以通过一些手段将一些贡献小的卷积层去掉，在不影响整体网络性能的情况下。</li>
+</ul>
 
       
        
@@ -323,13 +324,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/06/07/20190607-zongjie/">小总结</a></p>
+        <p><span>本文标题:</span><a href="/2019/08/03/20190803-SlimYOLO/">论文分享：目标检测-SlimYOLO</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Hahastrong 的个人博客">Hahastrong</a></p>
-        <p><span>发布时间:</span>2019年06月07日 - 21时56分</p>
-        <p><span>最后更新:</span>2019年06月09日 - 20时08分</p>
+        <p><span>发布时间:</span>2019年08月03日 - 21时49分</p>
+        <p><span>最后更新:</span>2019年08月03日 - 22时18分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/06/07/20190607-zongjie/" title="小总结">http://haha-strong.com/2019/06/07/20190607-zongjie/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/06/07/20190607-zongjie/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/08/03/20190803-SlimYOLO/" title="论文分享：目标检测-SlimYOLO">http://haha-strong.com/2019/08/03/20190803-SlimYOLO/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/08/03/20190803-SlimYOLO/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -342,18 +343,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/06/08/20190608-LeetCode-2-addtwonums/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/08/04/20190804-IoUNET/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          LeetCode &lt;2&gt;：add two nums
+          20190804-IoUNET
         
       </div>
     </a>
   
   
-    <a href="/2019/06/07/20190607-LeetCode-twosum/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LeetCode &lt;1&gt;：twosum</div>
+    <a href="/2019/07/26/20190725-SSD/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《论文分享》-目标检测：SSD</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -367,7 +368,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#算法思路"><span class="toc-number">1.</span> <span class="toc-text">算法思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#motivation"><span class="toc-number">2.</span> <span class="toc-text">motivation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#做法"><span class="toc-number">3.</span> <span class="toc-text">做法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Thoughts"><span class="toc-number">4.</span> <span class="toc-text">Thoughts</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
 
@@ -433,13 +434,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/06/08/20190608-LeetCode-2-addtwonums/" title="上一篇: LeetCode &lt;2&gt;：add two nums">
+            <a href="/2019/08/04/20190804-IoUNET/" title="上一篇: 20190804-IoUNET">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2019/06/07/20190607-LeetCode-twosum/" title="下一篇: LeetCode &lt;1&gt;：twosum">
+            <a href="/2019/07/26/20190725-SSD/" title="下一篇: 《论文分享》-目标检测：SSD">
                 <i class="fa fa-angle-right"></i>
             </a>
         
