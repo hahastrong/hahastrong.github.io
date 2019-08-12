@@ -229,21 +229,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <a id="more"></a>
-<blockquote>
-<p>CenterNet: Keypoint Triplets for Object Detection <a href="https://arxiv.org/abs/1904.08189" target="_blank" rel="noopener">论文地址</a></p>
-</blockquote>
-<h1 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h1><p>在获取目标框时，将每个检测目标看做是三点（triplet）,而不是一对关键点构成，相应地，还设计了两个自定义模块，分别叫做cascade corner pooling（级联角点池化） 和 center pooling（中心点池化），各自的作用是丰富了利用左上和右下角收集的信息，提供更多中心区域的识别信息。</p>
-<h1 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h1><p>当前较为流行的目标检测方法是基于锚点的，具体流程是将预先定义好尺寸大小的一系列矩形框放在图像上，然后在真实框（监督的GT）的帮助下，回归到期望位置。该类基于锚点的检测方法缺点是：1.往往需要大量锚点从而确保与GT目标有较高的IOU；2.框的尺寸和比例需要手动设计；3.锚点框往往不与实际框对齐，这不利于Bbox做分类任务。</p>
-<p>为了克服如上问题，提出了基于关键点的目标检测方法——CornerNet; 以一对角点方式构建目标，绕过锚点问题，实现one-srage目标检测最好的精度度。</p>
-<h1 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h1><p><img src="/_posts/20190811-CenterNet/0811-1.png" alt></p>
-<div style="text-align: center;"><br><img src="/2019/08/11/20190811-CenterNet/0811-1.png" title="This is an image"><br></div><br>上图所示为本文提出的检测框架，该方法有两个分支–角点与中心。<br>通过一个中心关键点和一对角点来描述每个目标。利用检测到的中心关键点来重新排列top-k个bbox，从而滤除不正确的bbox,流程如下：（1）根据得分情况，选择top-k个中心关键点；（2）根据相应偏移值，将这些选出的中心关键点在输入图像上重绘；（3）为每个BBox设计一个中心区域，并检查这个中心区域中是否包含中心关键点，需要注意的是检测的中心关键点所属类别需要与Bbox的类别一致；（4）如果在中心区域中检测到中心关键点，将保留该Bbox. 这个Bbox的得分值等于 三个点（top-left, bottom-right, center keypoint）得分的平均值。倘若没有在中心区域检测到中心关键点，则该Bbox将被移除。<br><br>## Center pooling<br><br>物体的几何中心可能不会传达可识别性较强的模式（如人的头可识别性较强，却不是人体中心）。本文提出用center pooling来获取更丰富更具识别性的视觉模式。图4 显示了center pooling的原理，详细过程如下：首先backbone会输出一个特征图，为了确定特征图上的某个像素是否为中心关键点，需要在水平和垂直方向寻找最大值，并且将最大值相加。 center pooling有利于更好检测中心关键点。<br><br>## Cascade corner pooling<br><br> corners(我翻译成了角点，表示四角上的点) 通常在物体之外，缺乏局部外观特性。CornerNet用corner Pooling来解决此问题，通过沿边界方向找到最大值从而确定角点（见图4（b）），但其确实点角点对边界特别敏感（因为是针对边界的特征信息做的池化操作，受边界信息变化影响较大）。为此，本文作者提出让角点可看到更多的目标视觉模式信息（即获取物体内部的信息，而非单单边界的），见图4（c），原理是沿边界寻找最大值，根据边界沿物体内部方向寻找最大值，将两个最大值相加。该方法获取的角点 带有边界信息以及物体内部的数据模式信息。<br><br><br> # 性能<br><br><img src="/_posts/20190811-CenterNet/0811-2.png" alt><br><br><br><div style="text-align: center;"><br><img src="/2019/08/11/20190811-CenterNet/0811-2.png" title="This is an image"><br></div>
-
-<p>对比几种不同架构的方法，可以看出本文提出的算法取得了最佳的精度。证明通过预测目标的角点和中心来实现目标框的预测s这一思路是可行的。</p>
-<h1 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h1><ul>
-<li>通过边框回归算法来优化目标边框的方法已经达不到现有算法的要求，通过对目标关键点的预测来实现目标框更精准的预测已经成为一种趋势。</li>
-</ul>
-
+              当前较为流行的目标检测方法是基于锚点的，具体流程是将预先定义好尺寸大小的一系列矩形框放在图像上，然后在真实框（监督的GT）的帮助下，回归到期望位置。该类基于锚点的检测方法缺点是：1.往往需要大量锚点从而确保与GT目标有较高的IOU；2.框的尺寸和比例需要手动设计；3.锚点框往往不与实际框对齐，这不利于Bbox做分类任务。
+          
       
       
       
@@ -262,6 +249,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/目标检测/">目标检测</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2019/08/11/20190811-CenterNet/#more">查看全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
