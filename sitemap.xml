@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://haha-strong.com/2019/08/19/20190819-CornerNet-Lite/</loc>
+    
+    <lastmod>2019-08-19T11:21:46.843Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://haha-strong.com/2019/08/11/20190811-CenterNet/</loc>
     
-    <lastmod>2019-08-12T02:17:02.533Z</lastmod>
+    <lastmod>2019-08-19T10:04:12.637Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haha-strong.com/2019/08/04/20190804-IoUNET/</loc>
+    
+    <lastmod>2019-08-19T10:04:05.499Z</lastmod>
     
   </url>
   
@@ -12,13 +26,6 @@
     <loc>http://haha-strong.com/2019/08/11/20190811-MOSSE/</loc>
     
     <lastmod>2019-08-11T14:14:17.086Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://haha-strong.com/2019/08/04/20190804-IoUNET/</loc>
-    
-    <lastmod>2019-08-04T15:06:04.499Z</lastmod>
     
   </url>
   
