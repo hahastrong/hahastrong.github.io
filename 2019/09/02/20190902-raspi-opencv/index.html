@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>树莓派编译安装opencv：OpenCV 3 + Python on your Raspberry Pi | hahastrong</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Step 1: 扩充文件系统大小如果你是使用最新版本的树莓派该套件的话，需要将你的文件系统大小扩充到整个SD卡大小，以保证安装过程的顺利进行。 1sudo raspi-config 然后选择菜单栏中“Advanced Options”选项：    接着选择”Expand filesystem”:    点击回车键，然后选择“Finish”，最后在命令行执行： 1sudo reboot 重启之后，在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派编译安装opencv：OpenCV 3 + Python on your Raspberry Pi">
+<meta property="og:url" content="http://haha-strong.com/2019/09/02/20190902-raspi-opencv/index.html">
+<meta property="og:site_name" content="hahastrong">
+<meta property="og:description" content="Step 1: 扩充文件系统大小如果你是使用最新版本的树莓派该套件的话，需要将你的文件系统大小扩充到整个SD卡大小，以保证安装过程的顺利进行。 1sudo raspi-config 然后选择菜单栏中“Advanced Options”选项：    接着选择”Expand filesystem”:    点击回车键，然后选择“Finish”，最后在命令行执行： 1sudo reboot 重启之后，在">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://haha-strong.com/_posts/20190902-raspi-opencv/0902-1.png">
+<meta property="og:image" content="http://haha-strong.com/2019/09/02/20190902-raspi-opencv/0902-1.png">
+<meta property="og:image" content="http://haha-strong.com/_posts/20190902-raspi-opencv/0902-2.png">
+<meta property="og:image" content="http://haha-strong.com/2019/09/02/20190902-raspi-opencv/0902-2.png">
+<meta property="og:image" content="http://haha-strong.com/_posts/20190902-raspi-opencv/0902-3.png">
+<meta property="og:image" content="http://haha-strong.com/2019/09/02/20190902-raspi-opencv/0902-3.png">
+<meta property="og:image" content="http://haha-strong.com/_posts/20190902-raspi-opencv/0902-4.png">
+<meta property="og:image" content="http://haha-strong.com/2019/09/02/20190902-raspi-opencv/0902-4.png">
+<meta property="og:image" content="http://haha-strong.com/_posts/20190902-raspi-opencv/0902-5.png">
+<meta property="og:image" content="http://haha-strong.com/2019/09/02/20190902-raspi-opencv/0902-5.png">
+<meta property="og:image" content="http://haha-strong.com/_posts/20190902-raspi-opencv/0902-6.png">
+<meta property="og:image" content="http://haha-strong.com/2019/09/02/20190902-raspi-opencv/0902-6.png">
+<meta property="og:image" content="http://haha-strong.com/_posts/20190902-raspi-opencv/0902-7.png">
+<meta property="og:image" content="http://haha-strong.com/2019/09/02/20190902-raspi-opencv/0902-7.png">
+<meta property="og:image" content="http://haha-strong.com/_posts/20190902-raspi-opencv/0902-8.png">
+<meta property="og:image" content="http://haha-strong.com/2019/09/02/20190902-raspi-opencv/0902-8.png">
+<meta property="og:updated_time" content="2019-09-02T11:16:31.126Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="树莓派编译安装opencv：OpenCV 3 + Python on your Raspberry Pi">
+<meta name="twitter:description" content="Step 1: 扩充文件系统大小如果你是使用最新版本的树莓派该套件的话，需要将你的文件系统大小扩充到整个SD卡大小，以保证安装过程的顺利进行。 1sudo raspi-config 然后选择菜单栏中“Advanced Options”选项：    接着选择”Expand filesystem”:    点击回车键，然后选择“Finish”，最后在命令行执行： 1sudo reboot 重启之后，在">
+<meta name="twitter:image" content="http://haha-strong.com/_posts/20190902-raspi-opencv/0902-1.png">
+  
+    <link rel="alternative" href="/atom.xml" title="hahastrong" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: false,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Hahastrong</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">博客首页</a></li>
+                        
+                            <li><a href="/works">作品展示</a></li>
+                        
+                            <li><a href="/about">留言打卡</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/hahastrong" title="github">github</a>
+                            
+                                <a class="fl wechat" target="_blank" href="/wechat" title="wechat">wechat</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/201606/" style="font-size: 10px;">201606</a> <a href="/tags/201808/" style="font-size: 10px;">201808</a> <a href="/tags/201812/" style="font-size: 10px;">201812</a> <a href="/tags/201904/" style="font-size: 10px;">201904</a> <a href="/tags/CVPR-2018/" style="font-size: 10px;">CVPR 2018</a> <a href="/tags/CVPR2017/" style="font-size: 10px;">CVPR2017</a> <a href="/tags/CVPR2018/" style="font-size: 10px;">CVPR2018</a> <a href="/tags/HEXO/" style="font-size: 10px;">HEXO</a> <a href="/tags/ICCV-2015/" style="font-size: 10px;">ICCV 2015</a> <a href="/tags/SiamNet/" style="font-size: 16.67px;">SiamNet</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/传统跟踪算法/" style="font-size: 10px;">传统跟踪算法</a> <a href="/tags/单词/" style="font-size: 10px;">单词</a> <a href="/tags/小技巧/" style="font-size: 10px;">小技巧</a> <a href="/tags/小记/" style="font-size: 10px;">小记</a> <a href="/tags/目标检测/" style="font-size: 13.33px;">目标检测</a> <a href="/tags/目标跟踪/" style="font-size: 13.33px;">目标跟踪</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/英语学习/" style="font-size: 10px;">英语学习</a> <a href="/tags/论文笔记/" style="font-size: 20px;">论文笔记</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">游走于宿舍、实验室、食堂。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Hahastrong</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Hahastrong</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">博客首页</a></li>
+                
+                    <li><a href="/works">作品展示</a></li>
+                
+                    <li><a href="/about">留言打卡</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/hahastrong" title="github">github</a>
+                    
+                        <a class="wechat" target="_blank" href="/wechat" title="wechat">wechat</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-20190902-raspi-opencv" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/02/20190902-raspi-opencv/" class="article-date">
+      <time datetime="2019-09-02T10:09:36.000Z" itemprop="datePublished">2019-09-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      树莓派编译安装opencv：OpenCV 3 + Python on your Raspberry Pi
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Step-1-扩充文件系统大小"><a href="#Step-1-扩充文件系统大小" class="headerlink" title="Step 1: 扩充文件系统大小"></a>Step 1: 扩充文件系统大小</h1><p>如果你是使用最新版本的树莓派该套件的话，需要将你的文件系统大小扩充到整个SD卡大小，以保证安装过程的顺利进行。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo raspi-config</span><br></pre></td></tr></table></figure>
+<p>然后选择菜单栏中“Advanced Options”选项：</p>
+<p><img src="/_posts/20190902-raspi-opencv/0902-1.png" alt></p>
+<div style="text-align: center;"><br><img src="/2019/09/02/20190902-raspi-opencv/0902-1.png" title="This is an image"><br></div>
+
+<p>接着选择”Expand filesystem”:</p>
+<p><img src="/_posts/20190902-raspi-opencv/0902-2.png" alt></p>
+<div style="text-align: center;"><br><img src="/2019/09/02/20190902-raspi-opencv/0902-2.png" title="This is an image"><br></div>
+
+<p>点击回车键，然后选择“Finish”，最后在命令行执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+<p>重启之后，在命令行输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></figure>
+<p>查看/dev/root 目录是否为SD卡大小</p>
+<p><img src="/_posts/20190902-raspi-opencv/0902-3.png" alt></p>
+<div style="text-align: center;"><br><img src="/2019/09/02/20190902-raspi-opencv/0902-3.png" title="This is an image"><br></div>
+
+<h1 id="Step-2-安装相关依赖"><a href="#Step-2-安装相关依赖" class="headerlink" title="Step 2: 安装相关依赖"></a>Step 2: 安装相关依赖</h1><ol>
+<li>首先就是更新升级已有的相关软件</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update &amp;&amp; sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>安装一些开发者工具，如Cmake</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential cmake pkg-config</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>安装图片I/O软件包</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>安装视频I/O软件包</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev</span><br><span class="line">sudo apt-get install libxvidcore-dev libx264-dev</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>安装一些显示图片的GUI软件包</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libgtk2.0-dev libgtk-3-dev</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>安装一些可以加速OPENCV操作的软件包</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libatlas-base-dev gfortran</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>编译OPNECV时需要的python依赖包</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python2.7-dev python3-dev</span><br></pre></td></tr></table></figure>
+<h1 id="Step-3-下载OpenCv源码"><a href="#Step-3-下载OpenCv源码" class="headerlink" title="Step 3: 下载OpenCv源码"></a>Step 3: 下载OpenCv源码</h1><ol>
+<li>从官方源下载最新的OpenCv源码，笔者下载的版本是3.4.5</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">wget -O opencv.zip https://github.com/Itseez/opencv/archive/3.4.5.zip</span><br><span class="line">unzip opencv.zip</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>如果想安装完整版的OpenCv，则需要下载相关的依赖包，注意版本号需要与OpenCv的相同</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -O opencv_contrib.zip https://github.com/Itseez/opencv_contrib/archive/3.4.5.zip</span><br><span class="line">unzip opencv_contrib.zip</span><br></pre></td></tr></table></figure>
+<p>#Step 4: 选择Python 2.7 还是 Python 3?</p>
+<ol start="0">
+<li>在编译OpenCV之前，需要安装一些pip软件包</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://bootstrap.pypa.io/get-pip.py</span><br><span class="line">sudo python get-pip.py</span><br><span class="line">sudo python3 get-pip.py</span><br></pre></td></tr></table></figure>
+<ol>
+<li>强烈建议在虚拟python环境下编译opencv，以免各个软件包冲突</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install virtualenv virtualenvwrapper</span><br><span class="line">sudo rm -rf ~/.cache/pip</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 $~/.profile$ 文件后面添加几行代码,使用nano，vim都可以，需要使用sudo</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> virtualenv and virtualenvwrapper</span><br><span class="line">export WORKON_HOME=$HOME/.virtualenvs</span><br><span class="line">export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3</span><br><span class="line">source /usr/local/bin/virtualenvwrapper.sh</span><br></pre></td></tr></table></figure>
+<p>或者也可以使用echo命令进行写入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">echo -e "\n# virtualenv and virtualenvwrapper" &gt;&gt; ~/.profile</span><br><span class="line">echo "export WORKON_HOME=$HOME/.virtualenvs" &gt;&gt; ~/.profile</span><br><span class="line">echo "export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3" &gt;&gt; ~/.profile</span><br><span class="line">echo "source /usr/local/bin/virtualenvwrapper.sh" &gt;&gt; ~/.profile</span><br></pre></td></tr></table></figure>
+<p>此时，~/.profile 文件已经更新，可以通过关闭终端，再打开新的终端这一方式。</p>
+<ol start="3">
+<li>创建你的python虚拟环境</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source ~/.profile</span><br><span class="line">mkvirtualenv cv -p python2</span><br></pre></td></tr></table></figure>
+<p> 上述命令中，cv是环境名，python2是python的版本。</p>
+<ol start="4">
+<li><p>检查虚拟环境是否创建成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source ~/.profile</span><br><span class="line">workon cv</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注：每次使用 workon 命令时需要先 source ~/.profile 一下</p>
+<p><img src="/_posts/20190902-raspi-opencv/0902-4.png" alt></p>
+<div style="text-align: center;"><br><img src="/2019/09/02/20190902-raspi-opencv/0902-4.png" title="This is an image"><br></div>
+
+<ol start="5">
+<li>在虚拟环境中安装 numpy</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install numpy</span><br></pre></td></tr></table></figure>
+<p>#Step 5: 编译安装OpenCv</p>
+<ol>
+<li>在cv虚拟环境中执行以下命令</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd ~/opencv-3.3.0/</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE \</span><br><span class="line">    -D CMAKE_INSTALL_PREFIX=/usr/local \</span><br><span class="line">    -D INSTALL_PYTHON_EXAMPLES=ON \</span><br><span class="line">    -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib-3.4.5/modules \</span><br><span class="line">    -D BUILD_EXAMPLES=ON ..</span><br></pre></td></tr></table></figure>
+<p><img src="/_posts/20190902-raspi-opencv/0902-5.png" alt></p>
+<div style="text-align: center;"><br><img src="/2019/09/02/20190902-raspi-opencv/0902-5.png" title="This is an image"><br></div>
+
+<p>检查python2或python3中interpreter是否在虚拟环境中，有一个在即可。</p>
+<ol start="2">
+<li>更改交换空间的大小，以保证编译正常进行<br>打开/etc/dphys-swapfile文件，并将CONF_SWAPSIZE值设为1024</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> set size to absolute value, leaving empty (default) then uses computed value</span><br><span class="line"><span class="meta">#</span>   you most likely don't want this, unless you have an special disk situation</span><br><span class="line"><span class="meta">#</span> CONF_SWAPSIZE=100</span><br><span class="line">CONF_SWAPSIZE=1024</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>执行以下命令激活新的交换空间</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/dphys-swapfile stop</span><br><span class="line">sudo /etc/init.d/dphys-swapfile start</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>开始编译</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make j4</span><br></pre></td></tr></table></figure>
+<p><img src="/_posts/20190902-raspi-opencv/0902-6.png" alt></p>
+<div style="text-align: center;"><br><img src="/2019/09/02/20190902-raspi-opencv/0902-6.png" title="This is an image"><br></div>
+
+<p>不报错，且完成100%则编译成功</p>
+<ol start="5">
+<li>将opencv安装到raspi中</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo make install</span><br><span class="line">sudo ldconfig</span><br></pre></td></tr></table></figure>
+<h1 id="Step-6-完成安装"><a href="#Step-6-完成安装" class="headerlink" title="Step 6: 完成安装"></a>Step 6: 完成安装</h1><ol>
+<li>此时安装的opencv在$/usr/local/lib/python3.7/site-pacakges$ 路径下，我们需要将此软链接到虚拟环境路径下：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/lib/python3.7/site-packages/</span><br><span class="line">ln -s /usr/local/lib/python3.7/site-packages/cv2 cv2</span><br></pre></td></tr></table></figure>
+<h1 id="Step-7-测试安装好的opencv"><a href="#Step-7-测试安装好的opencv" class="headerlink" title="Step 7: 测试安装好的opencv"></a>Step 7: 测试安装好的opencv</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">source ~/.profile</span><br><span class="line">workon cv</span><br><span class="line">python</span><br><span class="line"><span class="meta">&gt;</span>&gt;&gt; import cv2</span><br><span class="line"><span class="meta">&gt;</span>&gt;&gt; cv2.__version__</span><br><span class="line">'3.3.0'</span><br><span class="line"><span class="meta">&gt;</span>&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/_posts/20190902-raspi-opencv/0902-7.png" alt></p>
+<div style="text-align: center;"><br><img src="/2019/09/02/20190902-raspi-opencv/0902-7.png" title="This is an image"><br></div>
+
+<ol start="2">
+<li>测试一下人脸检测</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">face_cascade = cv2.CascadeClassifier(<span class="string">'/home/pi/opencv-3.1.0/data/haarcascades/haarcascade_frontalface_default.xml'</span>)</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</span><br><span class="line">gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</span><br><span class="line">faces = face_cascade.detectMultiScale(gray, <span class="number">1.3</span>, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (x,y,w,h) <span class="keyword">in</span> faces:</span><br><span class="line">    cv2.rectangle(img,(x,y),(x+w,y+h),(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>),<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'img'</span>,img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p><img src="/_posts/20190902-raspi-opencv/0902-8.png" alt></p>
+<div style="text-align: center;"><br><img src="/2019/09/02/20190902-raspi-opencv/0902-8.png" title="This is an image"><br></div>
+
+<h2 id="整个编译安装过程已经完成！！！"><a href="#整个编译安装过程已经完成！！！" class="headerlink" title="整个编译安装过程已经完成！！！"></a>整个编译安装过程已经完成！！！</h2>
+      
+       
+        <div>
+          <wb:share-button appkey="2140538160" addition="number" type="button" ralateuid="3197318510"></wb:share-button>
+        </div>
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫">
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝"></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信"></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/09/02/20190902-raspi-opencv/">树莓派编译安装opencv：OpenCV 3 + Python on your Raspberry Pi</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Hahastrong 的个人博客">Hahastrong</a></p>
+        <p><span>发布时间:</span>2019年09月02日 - 18时09分</p>
+        <p><span>最后更新:</span>2019年09月02日 - 19时16分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/09/02/20190902-raspi-opencv/" title="树莓派编译安装opencv：OpenCV 3 + Python on your Raspberry Pi">http://haha-strong.com/2019/09/02/20190902-raspi-opencv/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://haha-strong.com/2019/09/02/20190902-raspi-opencv/　　作者: Hahastrong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2019/09/06/R-CNN/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          R-CNN
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/11/20190811-CenterNet/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">论文分享：目标检测-CenterNet</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Step-1-扩充文件系统大小"><span class="toc-number">1.</span> <span class="toc-text">Step 1: 扩充文件系统大小</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step-2-安装相关依赖"><span class="toc-number">2.</span> <span class="toc-text">Step 2: 安装相关依赖</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step-3-下载OpenCv源码"><span class="toc-number">3.</span> <span class="toc-text">Step 3: 下载OpenCv源码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step-6-完成安装"><span class="toc-number">4.</span> <span class="toc-text">Step 6: 完成安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step-7-测试安装好的opencv"><span class="toc-number">5.</span> <span class="toc-text">Step 7: 测试安装好的opencv</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#整个编译安装过程已经完成！！！"><span class="toc-number">5.1.</span> <span class="toc-text">整个编译安装过程已经完成！！！</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'hahastrong',
+      repo: 'hahastrong.github.io',
+      oauth: {
+        client_id: '',
+        client_secret: '',
+      },
+    })
+    gitment.render('gitments')
+</script>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/09/06/R-CNN/" title="上一篇: R-CNN">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2019/08/11/20190811-CenterNet/" title="下一篇: 论文分享：目标检测-CenterNet">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/09/06/20190906-MaskR-CNN/">《目标检测》：Mask R-CNN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/06/R-CNN/">R-CNN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/02/20190902-raspi-opencv/">树莓派编译安装opencv：OpenCV 3 + Python on your Raspberry Pi</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/11/20190811-CenterNet/">论文分享：目标检测-CenterNet</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/11/20190811-MOSSE/">目标跟踪论文笔记《十三》：MOSSE</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/04/20190804-IoUNET/">论文分享：目标检测-IoUNET</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/03/20190803-SlimYOLO/">论文分享：目标检测-SlimYOLO</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/26/20190725-SSD/">《论文分享》-目标检测：SSD</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/25/20190725-TridentNet/">《论文分享》：目标检测 - TridentNet</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/17/20190717-ExtremeNet/">论文笔记《目标检测》：ExtremeNet</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/15/20190715-SiamMask/">目标跟踪论文笔记《十二》：SiamMask</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/14/20190714-AOGnet/">论文分享：AOGnet</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/09/20190709-GARP/">论文分享：GAPR</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/07/VScodetips/">VS code操作小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/05/20190705-BBRU/">论文分享：BBRU</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/03/20190703-introduce-torch/">介绍torch一些函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/03/20190703-usingtorch/">python深度学习相关函数介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/02/20190702-Tracking-Development/">转载：目标跟踪算法未来发展趋势</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/01/20190701-ACT/">论文分享《动作检测》：ACT</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/30/20190630-rundaily-1/">跑步圣经《一》：为何跑步？</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/30/201980707-rundaily-2/">跑步圣经《二》：跑步的准备工作以及女性、老人、小孩该如何跑</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/28/20190628-TACNet/">论文分享：TACNet</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/26/20190626-KNN/">论文分享：KNN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/13/20190613-CSRDCF/">目标跟踪论文笔记《十二》：CSRDCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/20190612-daily0612/">小记之第一次刷LeetCode链表题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/20190612-FlowTrack/">目标跟踪论文笔记《十一》：FlowTrack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/20190611-STRCF/">目标跟踪论文笔记《十》：STRCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/20190611-SRDCF/">目标跟踪论文笔记《九》：SRDCF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/ALLLEETCODE/">ALLLEETCODE</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/09/20190609-DaSiamRPN/">目标跟踪论文笔记《八》：DaSiamRPN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/09/20190609-SiamNet/">目标跟踪论文笔记《七》：SiamNet</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-C-RPN/">目标跟踪论文笔记《六》：C-RPN</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-TADT/">目标跟踪论文笔记《五》：TADT</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/Achangnanju/">英语精读--长难句</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/20190608-LeetCode-2-addtwonums/">LeetCode <2>：add two nums</2></a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/20190607-zongjie/">小总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/20190607-LeetCode-twosum/">LeetCode <1>：twosum</1></a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/05/20190605-numpy/">20190605-numpy</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/20190604-SPM-Tracker/">目标跟踪论文笔记《四》：SPM-Tracker</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/03/20190603-SiamRPN/">目标跟踪论文笔记《四》：SiamRPN++： Evolution of Siamese Visual Tracking with Very Deep Networks (SiamRPN++)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/02/20190602-SA-Siam/">目标跟踪论文笔记《四》：A Twofold Siamese Network for Real-Time Object Tracking (SA-Siam)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-Siam-BM/">目标跟踪论文笔记《三》：Siam-BM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/31/20190531-ubuntu-strages/">Ubuntu 一些常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/30/20190530-inroomcoordinate/">基于全景图片进行室内定位</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/29/English-Words/">English_Words</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/20190528-Kalman-filter/">目标跟踪论文笔记《二》：A New Approach to Linear Filtering and Prediction Problems（卡尔曼滤波跟踪算法）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/27/20190527-PTS/">目标跟踪论文笔记《一》：Prediction-Tracking-Segmentation (PTS)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/26/20190526-trackingxinde/">目标跟踪论文--心得体会</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/25/如何写文献综述/">如何写文献综述</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/24/自定义标题样式/">自定义标题样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/23/HEXO博客语法/">HEXO博客语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/21/开干！-开干！！/">开干！ 开干！！</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2019 Hahastrong
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit">海贼到访数:
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit">本页阅读量:
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
