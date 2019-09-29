@@ -204,6 +204,143 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-20190929-RPCF" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/29/20190929-RPCF/" class="article-date">
+      <time datetime="2019-09-29T12:51:34.000Z" itemprop="datePublished">2019-09-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/29/20190929-RPCF/">20190929-RPCF</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <a id="more"></a>
+<h1 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h1><p><img src="/_posts/20190709-GAPR/0709-1.png" alt></p>
+<p><div style="text-align: center;"><br><br></div></p>
+<h1 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h1><h1 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h1><h1 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h1>
+      
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-20190923-RoiCF" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/23/20190923-RoiCF/" class="article-date">
+      <time datetime="2019-09-23T02:11:53.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/20190923-RoiCF/">目标跟踪：基于兴趣区域的池化相关滤波方法的视觉跟踪</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <a id="more"></a>
+<p>ROI Pooled Correlation Filters for Visual Tracking<a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Sun_ROI_Pooled_Correlation_Filters_for_Visual_Tracking_CVPR_2019_paper.pdf" target="_blank" rel="noopener">论文地址</a></p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>研究了池操作对视觉跟踪的影响，提出了一种新的ROI池相关滤波算法。虽然基于roi的池算法在许多基于深度学习的应用中得到了成功的应用，但是在视觉跟踪领域，尤其是在基于相关滤波的方法中，却很少考虑到它。由于相关滤波公式并不能真正提取出正样本和负样本，所以快速R-CNN[14]等基于roi的池是不可行的。通过数学推导，给出了实现基于roi的池的另一种解决方案。提出了一种具有等式约束的相关滤波算法，通过该算法可以等价地实现基于roi的池。提出了一种求解优化问题的交替方向乘法器(ADMM)算法，并在傅里叶域中给出了一种有效的求解方法。</p>
+<h1 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h1><ul>
+<li>本文首次尝试在相关滤波公式中引入基于roi的池的思想。提出了一种具有等式约束的相关滤波算法，通过该算法可以实现基于ROI的池操作的等价性，而不需要提取真实的ROI样本。学习的滤波器权值不受过拟合问题的影响</li>
+</ul>
+<p>而且对变形更有抵抗力。</p>
+<ul>
+<li><p>本文提出了一种鲁棒ADMM方法，在傅里叶域中对提出的相关滤波公式进行优化。利用计算得到的拉格朗日乘子，采用共轭梯度法进行滤波学习，并对每一步都给出了有效的优化策略。</p>
+</li>
+<li><p>本文对三个可用的公共数据集进行了大量的实验。实验结果验证了该方法的有效性。</p>
+</li>
+</ul>
+<h1 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h1><p>在OTB50上的性能<br><img src="/_posts/20190923-RoiCF/0923-1.png" alt></p>
+<div style="text-align: center;"><br><img src="/2019/09/23/20190923-RoiCF/0923-1.png" title="This is an image"><br></div>
+
+<p>在OTB100上的性能<br><img src="/_posts/20190923-RoiCF/0923-2.png" alt></p>
+<div style="text-align: center;"><br><img src="/2019/09/23/20190923-RoiCF/0923-2.png" title="This is an image"><br></div>
+
+<p>从上图可以看出，无论是在精度上还是AUC上，本文提出的算法都获得不错的成绩。</p>
+
+      
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-20190918-FocalLoss" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -219,7 +356,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/18/20190918-FocalLoss/">20190918-FocalLoss</a>
+      <a class="article-title" href="/2019/09/18/20190918-FocalLoss/">目标检测：损失函数论文</a>
     </h1>
   
 
@@ -734,142 +871,6 @@
       
         <p class="article-more-link">
           <a href="/2019/08/03/20190803-SlimYOLO/#more">查看全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-20190725-SSD" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/07/26/20190725-SSD/" class="article-date">
-      <time datetime="2019-07-26T04:49:46.000Z" itemprop="datePublished">2019-07-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/26/20190725-SSD/">《论文分享》-目标检测：SSD</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              当时目标检测的方法分为两类，一类是two-stage，一类是one-stage。两类各有千秋，但都有自己的缺点。本文作者尝试能否在高精度的情况下达到检测的实时性。进而提出使用一组预设的边框来代替RPN网络的边框回归，并自动预测边框的偏移量。
-          
-      
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/论文分享/">论文分享</a><a class="article-category-link" href="/categories/论文分享/目标检测/">目标检测</a>
-    </div>
-
-
-      
-      
-        <p class="article-more-link">
-          <a href="/2019/07/26/20190725-SSD/#more">查看全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-20190725-TridentNet" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/07/25/20190725-TridentNet/" class="article-date">
-      <time datetime="2019-07-25T01:58:40.000Z" itemprop="datePublished">2019-07-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/25/20190725-TridentNet/">《论文分享》：目标检测 - TridentNet</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              目前大多数目标检测算法是通过图像金字塔或者特征金字塔的形式获得多尺度特征，本文通过一个多孔卷积来获得不同尺度的特征，再不增加算法复杂度的情况下提升检测精度。
-          
-      
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/论文笔记/">论文笔记</a><a class="article-category-link" href="/categories/论文笔记/目标检测/">目标检测</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/目标检测/">目标检测</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/07/25/20190725-TridentNet/#more">查看全文 >></a>
         </p>
       
       <div class="clearfix"></div>
